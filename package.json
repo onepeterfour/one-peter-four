@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prepare": "husky install",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -21,9 +22,20 @@
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
+    "gitmoji-cli": "^9.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "postcss": "^8",
     "prettier": "^3.1.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
+  },
+  "gitmoji": {
+    "autoAdd": false,
+    "emojiFormat": "emoji",
+    "scopePrompt": true,
+    "messagePrompt": true,
+    "capitalizeTitle": true,
+    "gitmojisUrl": "https://gitmoji.dev/api/gitmojis"
   }
 }
