@@ -1,8 +1,8 @@
 export default function Team() {
   return (
-    <main className='flex flex-col items-center justify-center p-24 min-h-dvh'>
+    <main className='flex flex-col items-center justify-center p-24'>
       <div className='text-center'>
-        <h1 className='font-serif font-bold text-3xl sm:text-5xl py-8'>
+        <h1 className='py-8 font-serif text-3xl font-bold sm:text-5xl'>
           Team Page
         </h1>
       </div>

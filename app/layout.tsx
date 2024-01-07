@@ -1,9 +1,9 @@
-import { Navigation } from '@/components/organisms/Navigation'
+import { Footer, Navigation } from '@/components/organisms'
 import type { Metadata } from 'next'
 import { noto_serif, open_sans } from './fonts'
 import './globals.css'
 
-import { navData } from '@/mockedCMSData'
+import { footerData, navData } from '@/mockedCMSData'
 
 export const metadata: Metadata = {
   title: 'One Peter Four: Coming Soon',
@@ -17,9 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${noto_serif.variable} ${open_sans.variable}`}>
+      <body
+        className={`${noto_serif.variable} ${open_sans.variable} grid min-h-dvh grid-rows-[auto_1fr_auto]`}
+      >
         <Navigation navData={navData} />
         {children}
+        <Footer footerData={footerData} />
       </body>
     </html>
   )

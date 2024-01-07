@@ -1,1 +1,5 @@
-type NavData = Array<{ href: string; label: string }>
+type SiteLink = { href: string; label: string }
+
+type NavData = SiteLink[]
+
+type FooterData = Array<SiteLink[]>
