@@ -7,6 +7,7 @@ const config = {
   jsxSingleQuote: true,
   printWidth: 80,
   endOfLine: 'lf',
+  plugins: ['prettier-plugin-tailwindcss'],
 }
 
 module.exports = config
