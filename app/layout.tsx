@@ -7,11 +7,11 @@ import { footerData, navData } from '@/mockedCMSData'
 
 export const metadata: Metadata = {
   title: 'One Peter Four: Coming Soon',
-  description: 'Organisation design from people who care',
+  description: 'Organisation design from people who care'
 }
 
 export default function RootLayout({
-  children,
+  children
 }: {
   children: React.ReactNode
 }) {
