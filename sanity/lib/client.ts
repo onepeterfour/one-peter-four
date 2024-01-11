@@ -1,12 +1,18 @@
 // whilst using fetch for api queries, we don't need to use the sanity client
 
-import { createClient } from 'next-sanity'
-
+import { createClient } from '@sanity/client/stega'
 import { apiVersion, dataset, projectId, useCdn } from '../env'
 
 export const client = createClient({
   apiVersion,
   dataset,
   projectId,
-  useCdn
+  useCdn,
+  // These settings will be overridden in
+  // ./sanity/lib/store.ts when draftMode is enabled
+  perspective: 'published',
+  stega: {
+    enabled: false,
+    studioUrl: '/studio'
+  }
 })

@@ -1,5 +1,7 @@
+import VisualEditing from '@/components/VisualEditing'
 import { Footer, Navigation } from '@/components/organisms'
 import { footerData, navData } from '@/mockedCMSData'
+import { draftMode } from 'next/headers'
 import { PropsWithChildren } from 'react'
 import { noto_serif, open_sans } from './fonts'
 import './globals.css'
@@ -13,6 +15,7 @@ export default function SiteLayout({ children }: PropsWithChildren) {
         <Navigation navData={navData} />
         {children}
         <Footer footerData={footerData} />
+        {draftMode().isEnabled && <VisualEditing />}
       </body>
     </html>
   )
