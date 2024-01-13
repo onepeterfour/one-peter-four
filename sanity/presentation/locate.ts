@@ -1,8 +1,17 @@
 import { map } from 'rxjs'
-import { DocumentLocationResolver } from 'sanity/presentation'
+import {
+  DocumentLocationResolver,
+  DocumentLocationsState
+} from 'sanity/presentation'
 
 // Pass 'context' as the second argument
 export const locate: DocumentLocationResolver = (params, context) => {
+  if (params.type === 'siteSettings') {
+    return {
+      message: 'This document is used on all pages',
+      tone: 'caution'
+    } satisfies DocumentLocationsState
+  }
   // Set up locations for post documents
   if (params.type === 'post') {
     // Subscribe to the latest slug and title
