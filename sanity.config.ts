@@ -37,13 +37,19 @@ const deskToolOptions: DeskToolOptions = {
                   .title('Home')
                   .icon(HomeIcon)
                   .child(
-                    S.document().schemaType('homePage').documentId('homePage')
+                    S.document()
+                      .schemaType('homePage')
+                      .documentId('homePage')
+                      .title('Home')
                   ),
                 S.listItem()
                   .title('Team')
                   .icon(UsersIcon)
                   .child(
-                    S.document().schemaType('teamPage').documentId('teamPage')
+                    S.document()
+                      .schemaType('teamPage')
+                      .documentId('teamPage')
+                      .title('Team')
                   ),
                 S.listItem()
                   .title('Research')
@@ -52,6 +58,7 @@ const deskToolOptions: DeskToolOptions = {
                     S.document()
                       .schemaType('researchPage')
                       .documentId('researchPage')
+                      .title('Research')
                   ),
                 S.listItem()
                   .title('Services')
@@ -60,6 +67,7 @@ const deskToolOptions: DeskToolOptions = {
                     S.document()
                       .schemaType('servicesPage')
                       .documentId('servicesPage')
+                      .title('Services')
                   ),
                 S.listItem()
                   .title('Learning')
@@ -68,6 +76,7 @@ const deskToolOptions: DeskToolOptions = {
                     S.document()
                       .schemaType('learningPage')
                       .documentId('learningPage')
+                      .title('Learning')
                   ),
                 S.listItem()
                   .title('Partners')
@@ -76,6 +85,7 @@ const deskToolOptions: DeskToolOptions = {
                     S.document()
                       .schemaType('partnersPage')
                       .documentId('partnersPage')
+                      .title('Partners')
                   ),
                 S.listItem()
                   .title('Contact')
@@ -84,6 +94,7 @@ const deskToolOptions: DeskToolOptions = {
                     S.document()
                       .schemaType('contactPage')
                       .documentId('contactPage')
+                      .title('Contact')
                   )
               ])
           ),
