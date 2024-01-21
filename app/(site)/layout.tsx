@@ -1,6 +1,5 @@
+import { RootLayout } from '@/components/RootLayout'
 import VisualEditing from '@/components/VisualEditing'
-import { Footer, Navigation } from '@/components/organisms'
-import { footerData, navData } from '@/mockedCMSData'
 import { draftMode } from 'next/headers'
 import { PropsWithChildren } from 'react'
 import { noto_serif, open_sans } from './fonts'
@@ -8,13 +7,11 @@ import './globals.css'
 
 export default function SiteLayout({ children }: PropsWithChildren) {
   return (
-    <html lang='en'>
+    <html lang='en' className='h-full bg-neutral-950 text-base antialiased'>
       <body
-        className={`${noto_serif.variable} ${open_sans.variable} grid min-h-dvh grid-rows-[auto_1fr_auto]`}
+        className={`${noto_serif.variable} ${open_sans.variable} flex min-h-full flex-col font-sans`}
       >
-        <Navigation navData={navData} />
-        {children}
-        <Footer footerData={footerData} />
+        <RootLayout>{children}</RootLayout>
         {draftMode().isEnabled && <VisualEditing />}
       </body>
     </html>
