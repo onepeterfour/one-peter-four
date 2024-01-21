@@ -21,9 +21,16 @@ const config: Config = {
       '7xl': ['4rem', { lineHeight: '4.5rem' }]
     },
     extend: {
+      borderRadius: {
+        '4xl': '2.5rem'
+      },
       fontFamily: {
         sans: ['var(--font-open-sans)', ...defaultTheme.fontFamily.sans],
-        serif: ['var(--font-noto-serif)', ...defaultTheme.fontFamily.serif]
+        serif: ['var(--font-noto-serif)', ...defaultTheme.fontFamily.serif],
+        display: [
+          ['var(--font-open-sans)', ...defaultTheme.fontFamily.sans],
+          { fontVariationSettings: '"wdth" 125' }
+        ]
       }
     }
   },

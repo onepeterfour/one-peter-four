@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "browserslist": "defaults, not ie <= 11",
   "dependencies": {
     "@portabletext/react": "^3.0.11",
     "@sanity/client": "^6.11.1",
@@ -17,22 +18,28 @@
     "@sanity/overlays": "^2.3.4",
     "@sanity/react-loader": "^1.7.3",
     "@sanity/vision": "^3.23.4",
+    "acorn": "^8.11.3",
+    "acorn-jsx": "^5.3.2",
     "clsx": "^2.1.0",
+    "escape-string-regexp": "^5.0.0",
+    "fast-glob": "^3.3.2",
     "framer-motion": "^10.18.0",
     "next": "14.0.4",
     "next-sanity": "^7.0.7",
     "react": "^18",
     "react-dom": "^18",
+    "recma-import-images": "^0.0.3",
     "sanity": "^3.23.4",
     "styled-components": "^6.1.7",
-    "tailwind-merge": "^2.2.0"
+    "tailwind-merge": "^2.2.0",
+    "unified-conditional": "^0.0.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.10",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "autoprefixer": "^10.0.1",
+    "autoprefixer": "^10.4.17",
     "eslint": "^8",
     "eslint-config-next": "14.0.4",
     "eslint-config-prettier": "^9.1.0",
