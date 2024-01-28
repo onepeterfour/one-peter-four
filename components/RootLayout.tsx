@@ -16,7 +16,6 @@ import {
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Footer } from '@/components/Footer'
-import { GridPattern } from '@/components/GridPattern'
 import { Logo, Logomark } from '@/components/Logo'
 import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
@@ -237,7 +236,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
                 <div className='grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16'>
                   <div>
                     <h2 className='font-display text-base font-semibold text-white'>
-                      Our office
+                      Our offices
                     </h2>
                     <Offices
                       invert
@@ -266,14 +265,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
           layout
           className='relative isolate flex w-full flex-col pt-9'
         >
-          <GridPattern
-            className='absolute inset-x-0 -top-14 -z-10 h-[1000px] w-full fill-neutral-50 stroke-neutral-950/5 [mask-image:linear-gradient(to_bottom_left,white_40%,transparent_50%)]'
-            yOffset={-96}
-            interactive
-          />
-
           <main className='w-full flex-auto'>{children}</main>
-
           <Footer />
         </motion.div>
       </motion.div>
