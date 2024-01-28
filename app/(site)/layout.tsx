@@ -9,7 +9,7 @@ export default function SiteLayout({ children }: PropsWithChildren) {
   return (
     <html lang='en' className='h-full bg-neutral-950 text-base antialiased'>
       <body
-        className={`${noto_serif.variable} ${open_sans.variable} flex min-h-full flex-col font-sans`}
+        className={`${noto_serif.variable} ${open_sans.variable} flex min-h-full flex-col`}
       >
         <RootLayout>{children}</RootLayout>
         {draftMode().isEnabled && <VisualEditing />}
