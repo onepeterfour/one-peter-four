@@ -1,27 +1,26 @@
+import { PageIntro } from '@/components/PageIntro'
 import { client } from '@/sanity/lib/client'
 import { LEARNINGPAGE_QUERY } from '@/sanity/lib/queries'
 import { BasePage } from '@/types'
 import { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 
-const partnersPage =
+const learningPage =
   await client.fetch<SanityDocument<BasePage>>(LEARNINGPAGE_QUERY)
 
 export const metadata: Metadata = {
-  title: `1P4: ${partnersPage?.title}`,
-  description: partnersPage?.description
+  title: `1P4: ${learningPage?.title}`,
+  description: learningPage?.description
 }
 export default async function Learning() {
-  const partnersPage =
-    await client.fetch<SanityDocument<BasePage>>(LEARNINGPAGE_QUERY)
+  // const learningPage =
+  //   await client.fetch<SanityDocument<BasePage>>(LEARNINGPAGE_QUERY)
 
   return (
-    <main className='flex flex-col items-center justify-center p-24'>
-      <div className='text-center'>
-        <h1 className='py-8 font-serif text-3xl font-bold sm:text-5xl'>
-          {partnersPage?.heading}
-        </h1>
-      </div>
-    </main>
+    <>
+      <PageIntro eyebrow='Learn with us' title='Learning'>
+        <p>This is where you can learn loads!</p>
+      </PageIntro>
+    </>
   )
 }

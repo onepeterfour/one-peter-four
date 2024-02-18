@@ -1,10 +1,9 @@
-import { Metadata } from 'next'
-
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { client } from '@/sanity/lib/client'
 import { HOMEPAGE_QUERY } from '@/sanity/lib/queries'
 import { BasePage } from '@/types'
+import { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 
 const homepage = await client.fetch<SanityDocument<BasePage>>(HOMEPAGE_QUERY)

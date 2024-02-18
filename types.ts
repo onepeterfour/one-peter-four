@@ -41,7 +41,7 @@ export interface Article {
   }
 }
 
-export interface CaseStudy {
+export interface Partner {
   date: string
   client: string
   title: string

@@ -1,4 +1,16 @@
-import { CaseStudy, FooterData, NavData, WithHrefMetadata } from './types'
+import imageAngelaFisher from '@/public/images/team/angela-fisher.jpg'
+import imageBenjaminRussel from '@/public/images/team/benjamin-russel.jpg'
+import imageBlakeReid from '@/public/images/team/blake-reid.jpg'
+import imageChelseaHagon from '@/public/images/team/chelsea-hagon.jpg'
+import imageDriesVincent from '@/public/images/team/dries-vincent.jpg'
+import imageEmmaDorsey from '@/public/images/team/emma-dorsey.jpg'
+import imageJeffreyWebb from '@/public/images/team/jeffrey-webb.jpg'
+import imageKathrynMurphy from '@/public/images/team/kathryn-murphy.jpg'
+import imageLeonardKrasner from '@/public/images/team/leonard-krasner.jpg'
+import imageLeslieAlexander from '@/public/images/team/leslie-alexander.jpg'
+import imageMichaelFoster from '@/public/images/team/michael-foster.jpg'
+import imageWhitneyFrancis from '@/public/images/team/whitney-francis.jpg'
+import { FooterData, NavData, Partner, WithHrefMetadata } from './types'
 
 export const navData: NavData = [
   { href: '/', label: 'Home' },
@@ -23,7 +35,7 @@ export const footerData: FooterData = [
   ]
 ]
 
-export const caseStudies: Array<WithHrefMetadata<CaseStudy>> = [
+export const partners: Array<WithHrefMetadata<Partner>> = [
   {
     client: 'FamilyFund',
     title: 'Skip the bank, borrow from those you trust',
@@ -254,5 +266,78 @@ export const caseStudies: Array<WithHrefMetadata<CaseStudy>> = [
       }
     },
     href: '/partners/phobia'
+  }
+]
+
+export const team = [
+  {
+    title: 'Leadership',
+    people: [
+      {
+        name: 'Leslie Alexander',
+        role: 'Co-Founder / CEO',
+        image: { src: imageLeslieAlexander }
+      },
+      {
+        name: 'Michael Foster',
+        role: 'Co-Founder / CTO',
+        image: { src: imageMichaelFoster }
+      },
+      {
+        name: 'Dries Vincent',
+        role: 'Partner & Business Relations',
+        image: { src: imageDriesVincent }
+      }
+    ]
+  },
+  {
+    title: 'Team',
+    people: [
+      {
+        name: 'Chelsea Hagon',
+        role: 'Senior Developer',
+        image: { src: imageChelseaHagon }
+      },
+      {
+        name: 'Emma Dorsey',
+        role: 'Senior Designer',
+        image: { src: imageEmmaDorsey }
+      },
+      {
+        name: 'Leonard Krasner',
+        role: 'VP, User Experience',
+        image: { src: imageLeonardKrasner }
+      },
+      {
+        name: 'Blake Reid',
+        role: 'Junior Copywriter',
+        image: { src: imageBlakeReid }
+      },
+      {
+        name: 'Kathryn Murphy',
+        role: 'VP, Human Resources',
+        image: { src: imageKathrynMurphy }
+      },
+      {
+        name: 'Whitney Francis',
+        role: 'Content Specialist',
+        image: { src: imageWhitneyFrancis }
+      },
+      {
+        name: 'Jeffrey Webb',
+        role: 'Account Coordinator',
+        image: { src: imageJeffreyWebb }
+      },
+      {
+        name: 'Benjamin Russel',
+        role: 'Senior Developer',
+        image: { src: imageBenjaminRussel }
+      },
+      {
+        name: 'Angela Fisher',
+        role: 'Front-end Developer',
+        image: { src: imageAngelaFisher }
+      }
+    ]
   }
 ]
