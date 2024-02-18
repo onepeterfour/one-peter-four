@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { MotionConfig, motion, useReducedMotion } from 'framer-motion'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import {
+import React, {
   createContext,
   useContext,
   useEffect,
@@ -71,12 +71,12 @@ function Header({
         >
           <Logomark
             className='sm:hidden'
-            invert={invert}
+            // invert={invert}
             filled={logoHovered}
           />
           <Logo
             className='hidden sm:block'
-            invert={invert}
+            // invert={invert}
             filled={logoHovered}
           />
         </Link>

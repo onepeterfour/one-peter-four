@@ -1,3 +1,4 @@
+import { type NavData } from '@/types'
 import Link from 'next/link'
 
 type NavigationProps = {

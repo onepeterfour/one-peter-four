@@ -1,15 +1,15 @@
 import Image from 'next/image'
-import { useId } from 'react'
+import React from 'react'
 
 export function Logomark({
-  invert = false,
-  filled = false,
+  // invert = false,
+  // filled = false,
   ...props
 }: React.ComponentPropsWithoutRef<'svg'> & {
   invert?: boolean
   filled?: boolean
 }) {
-  let id = useId()
+  // let id = useId()
   return (
     <svg
       xmlns='http://www.w3.org/2000/svg'
@@ -42,11 +42,11 @@ export function Logomark({
 }
 
 export function Logo({
-  className,
-  invert = false,
-  filled = false,
-  fillOnHover = false,
-  ...props
+  className
+  // invert = false,
+  // filled = false,
+  // fillOnHover = false,
+  // ...props
 }: React.ComponentPropsWithoutRef<'svg'> & {
   invert?: boolean
   filled?: boolean

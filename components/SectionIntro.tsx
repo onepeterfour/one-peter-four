@@ -1,7 +1,7 @@
-import clsx from 'clsx'
-
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import clsx from 'clsx'
+import React from 'react'
 
 export function SectionIntro({
   title,

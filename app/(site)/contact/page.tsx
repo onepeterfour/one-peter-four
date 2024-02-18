@@ -7,10 +7,11 @@ import { PageIntro } from '@/components/PageIntro'
 import { SocialMedia } from '@/components/SocialMedia'
 import { client } from '@/sanity/lib/client'
 import { CONTACTPAGE_QUERY } from '@/sanity/lib/queries'
+import { BasePage } from '@/types'
 import { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 import Link from 'next/link'
-import { useId } from 'react'
+import React, { useId } from 'react'
 
 // sanity page query
 const contactPage =
@@ -153,8 +154,8 @@ function ContactDetails() {
 }
 
 export default async function Contact() {
-  const contactPage =
-    await client.fetch<SanityDocument<BasePage>>(CONTACTPAGE_QUERY)
+  // const contactPage =
+  //   await client.fetch<SanityDocument<BasePage>>(CONTACTPAGE_QUERY)
 
   return (
     <>

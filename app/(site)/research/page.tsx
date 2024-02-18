@@ -1,5 +1,6 @@
 import { client } from '@/sanity/lib/client'
 import { RESEARCHPAGE_QUERY } from '@/sanity/lib/queries'
+import { BasePage } from '@/types'
 import { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 

@@ -1,3 +1,5 @@
+import { FooterData, NavData } from './types'
+
 export const navData: NavData = [
   { href: '/', label: 'Home' },
   { href: '/team', label: 'Team' },

@@ -1,12 +1,12 @@
 type SiteLink = { href: string; label: string }
 
-type NavData = SiteLink[]
+export type NavData = SiteLink[]
 
-type FooterData = Array<SiteLink[]>
+export type FooterData = Array<SiteLink[]>
 
 // Sanity Object Types
 
-type QueryResult<T> = {
+export type QueryResult<T> = {
   query: string
   result: Array<
     {
@@ -20,7 +20,7 @@ type QueryResult<T> = {
   ms: number
 }
 
-type BasePage = {
+export type BasePage = {
   title: string
   heading: string
   description: string

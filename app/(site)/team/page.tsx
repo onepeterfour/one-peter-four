@@ -20,6 +20,7 @@ import imageMichaelFoster from '@/public/images/team/michael-foster.jpg'
 import imageWhitneyFrancis from '@/public/images/team/whitney-francis.jpg'
 import { client } from '@/sanity/lib/client'
 import { TEAMPAGE_QUERY } from '@/sanity/lib/queries'
+import { BasePage } from '@/types'
 import { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 import Image from 'next/image'
@@ -190,7 +191,7 @@ function Team() {
 }
 
 export default async function TeamPage() {
-  const teamPage = await client.fetch<SanityDocument<BasePage>>(TEAMPAGE_QUERY)
+  // const teamPage = await client.fetch<SanityDocument<BasePage>>(TEAMPAGE_QUERY)
 
   return (
     <>

@@ -1,8 +1,10 @@
 import { client } from '@/sanity/lib/client'
 import { SERVICESPAGE_QUERY } from '@/sanity/lib/queries'
+import { BasePage } from '@/types'
 import { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 
+// this would be the our process page in the template
 const servicesPage =
   await client.fetch<SanityDocument<BasePage>>(SERVICESPAGE_QUERY)
 

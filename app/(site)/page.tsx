@@ -3,8 +3,8 @@ import { Metadata } from 'next'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { client } from '@/sanity/lib/client'
-import { HOMEPAGE_QUERY, POSTS_QUERY } from '@/sanity/lib/queries'
-import { loadQuery } from '@/sanity/lib/store'
+import { HOMEPAGE_QUERY } from '@/sanity/lib/queries'
+import { BasePage } from '@/types'
 import { SanityDocument } from 'next-sanity'
 
 const homepage = await client.fetch<SanityDocument<BasePage>>(HOMEPAGE_QUERY)
@@ -15,8 +15,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY)
-  const homePage = await client.fetch<SanityDocument<BasePage>>(HOMEPAGE_QUERY)
+  // const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY)
+  // const homePage = await client.fetch<SanityDocument<BasePage>>(HOMEPAGE_QUERY)
   return (
     <>
       <Container className='mt-24 sm:mt-32 md:mt-56'>
