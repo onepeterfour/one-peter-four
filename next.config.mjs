@@ -14,6 +14,7 @@ import { unifiedConditional } from 'unified-conditional'
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+  output: 'standalone',
   images: {
     remotePatterns: [
       {
