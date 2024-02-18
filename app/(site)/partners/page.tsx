@@ -7,18 +7,21 @@ import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { PageIntro } from '@/components/PageIntro'
 import { Testimonial } from '@/components/Testimonial'
 import { formatDate } from '@/lib/formatDate'
-import { loadCaseStudies, type CaseStudy, type MDXEntry } from '@/lib/mdx'
+import { caseStudies } from '@/mockedCMSData'
 import logoBrightPath from '@/public/images/clients/bright-path/logo-dark.svg'
 import logoFamilyFund from '@/public/images/clients/family-fund/logo-dark.svg'
+import logoMarkFamilyFund from '@/public/images/clients/family-fund/logomark-dark.svg'
 import logoGreenLife from '@/public/images/clients/green-life/logo-dark.svg'
 import logoHomeWork from '@/public/images/clients/home-work/logo-dark.svg'
 import logoMailSmirk from '@/public/images/clients/mail-smirk/logo-dark.svg'
 import logoNorthAdventures from '@/public/images/clients/north-adventures/logo-dark.svg'
 import logoPhobia from '@/public/images/clients/phobia/logo-dark.svg'
+import logoMarkPhobia from '@/public/images/clients/phobia/logomark-dark.svg'
 import logoUnseal from '@/public/images/clients/unseal/logo-dark.svg'
+import logoMarkUnseal from '@/public/images/clients/unseal/logomark-dark.svg'
 import { client } from '@/sanity/lib/client'
 import { PARTNERSPAGE_QUERY } from '@/sanity/lib/queries'
-import { BasePage } from '@/types'
+import { BasePage, CaseStudy, WithHrefMetadata } from '@/types'
 import { Metadata } from 'next'
 import { SanityDocument } from 'next-sanity'
 import Image from 'next/image'
@@ -36,11 +39,17 @@ export const metadata: Metadata = {
   description: partnersPage?.description
 }
 
+const caseStudyIconDictionary: Record<string, any> = {
+  FamilyFund: logoMarkFamilyFund,
+  Unseal: logoMarkUnseal,
+  Phobia: logoMarkPhobia
+}
+
 // internal components
 function CaseStudies({
   caseStudies
 }: {
-  caseStudies: Array<MDXEntry<CaseStudy>>
+  caseStudies: Array<WithHrefMetadata<CaseStudy>>
 }) {
   return (
     <Container className='mt-40'>
@@ -57,7 +66,7 @@ function CaseStudies({
                 <div className='col-span-full sm:flex sm:items-center sm:justify-between sm:gap-x-8 lg:col-span-1 lg:block'>
                   <div className='sm:flex sm:items-center sm:gap-x-6 lg:block'>
                     <Image
-                      src={caseStudy.logo}
+                      src={caseStudyIconDictionary[caseStudy.client]}
                       alt=''
                       className='h-16 w-16 flex-none'
                       unoptimized
@@ -156,8 +165,6 @@ export default async function Partners() {
   // const partnersPage =
   //   await client.fetch<SanityDocument<BasePage>>(PARTNERSPAGE_QUERY)
 
-  let caseStudies = await loadCaseStudies()
-
   return (
     <>
       <PageIntro
@@ -186,14 +193,4 @@ export default async function Partners() {
       <ContactSection />
     </>
   )
-
-  // return (
-  //   <main className='flex flex-col items-center justify-center p-24'>
-  //     <div className='text-center'>
-  //       <h1 className='py-8 font-serif text-3xl font-bold sm:text-5xl'>
-  //         {partnersPage?.heading}
-  //       </h1>
-  //     </div>
-  //   </main>
-  // )
 }
