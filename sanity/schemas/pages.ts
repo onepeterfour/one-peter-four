@@ -57,6 +57,10 @@ const teamPage = defineType({
           type: 'callToAction'
         }),
         defineArrayMember({
+          name: 'cultureType',
+          type: 'cultureType'
+        }),
+        defineArrayMember({
           name: 'heroWithoutImageType',
           type: 'heroWithoutImageType'
         }),

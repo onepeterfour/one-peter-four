@@ -20,6 +20,7 @@ export type PageSectionName =
   | 'heroWithoutImageType'
   | 'pageIntroType'
   | 'statlistType'
+  | 'cultureType'
 
 export type HeroWithoutImageType = {
   _type: PageSectionName
@@ -47,7 +48,25 @@ export type StatListType = {
   stat_3: Stat
 }
 
-type PageSection = HeroWithoutImageType | PageIntroType | StatListType
+export type CultureType = {
+  _type: PageSectionName
+  _key: string
+  eyebrow?: string
+  title?: string
+  subtitle?: string
+  cultureList?: Array<{
+    title?: string
+    text?: string
+    _key: string
+    _type: string
+  }>
+}
+
+type PageSection =
+  | HeroWithoutImageType
+  | PageIntroType
+  | StatListType
+  | CultureType
 
 type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }
 

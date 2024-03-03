@@ -1,6 +1,5 @@
 import { ContactSection } from '@/components/ContactSection'
 import { PageSections } from '@/components/PageSections'
-import { Culture } from '@/components/pageSpecific/team/Culture'
 import { Team } from '@/components/pageSpecific/team/Team'
 import { client } from '@/sanity/lib/client'
 import { TEAMPAGE_QUERY } from '@/sanity/lib/queries'
@@ -24,7 +23,6 @@ export default async function TeamPage() {
   return (
     <>
       <PageSections pageSections={teamPage?.pageSections} />
-      <Culture />
       <Team />
       <ContactSection />
     </>

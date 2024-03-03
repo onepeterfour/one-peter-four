@@ -124,36 +124,55 @@ const pageIntroType = defineType({
   ]
 })
 
-/**
- * CALL_TO_ACTION BLOCK
- */
-const callToAction = defineType({
-  name: 'callToAction',
+const cultureType = defineType({
+  name: 'cultureType',
   type: 'object',
-  title: 'Call to Action',
+  title: 'Culture',
+  icon: BlockElementIcon,
+  preview: {
+    select: {
+      subtitle: 'eyebrow'
+    },
+    prepare({ subtitle }) {
+      return {
+        title: 'Culture',
+        subtitle,
+        media: BlockElementIcon
+      }
+    }
+  },
   fields: [
+    defineField({
+      name: 'eyebrow',
+      type: 'string'
+    }),
     defineField({
       name: 'title',
       type: 'string'
     }),
     defineField({
-      name: 'link',
-      type: 'url'
+      name: 'subtitle',
+      type: 'text',
+      rows: 2
+    }),
+    defineField({
+      name: 'cultureList',
+      title: 'Culture List',
+      type: 'array',
+      validation: (rule) => rule.length(3),
+      of: [
+        {
+          type: 'object',
+          name: 'cultureListItem',
+          title: 'Culture List Item',
+          fields: [
+            defineField({ name: 'title', type: 'string' }),
+            defineField({ name: 'text', type: 'text', rows: 3 })
+          ]
+        }
+      ]
     })
-  ],
-  icon: LinkIcon,
-  preview: {
-    select: {
-      title: 'title'
-    },
-    prepare({ title }) {
-      return {
-        title: 'Call to Action',
-        subtitle: title || 'untitled',
-        media: LinkIcon
-      }
-    }
-  }
+  ]
 })
 
 const statlistType = defineType({
@@ -188,10 +207,43 @@ const statlistType = defineType({
   ]
 })
 
+/**
+ * CALL_TO_ACTION BLOCK
+ */
+const callToAction = defineType({
+  name: 'callToAction',
+  type: 'object',
+  title: 'Call to Action',
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string'
+    }),
+    defineField({
+      name: 'link',
+      type: 'url'
+    })
+  ],
+  icon: LinkIcon,
+  preview: {
+    select: {
+      title: 'title'
+    },
+    prepare({ title }) {
+      return {
+        title: 'Call to Action',
+        subtitle: title || 'untitled',
+        media: LinkIcon
+      }
+    }
+  }
+})
+
 export const pageSections = [
   heroType,
   pageIntroType,
   heroWithoutImageType,
   callToAction,
-  statlistType
+  statlistType,
+  cultureType
 ]
