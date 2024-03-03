@@ -1,19 +1,20 @@
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { PageIntroType } from '@/types'
 import clsx from 'clsx'
-import React from 'react'
+import { PortableText } from '../PortableText'
+
+type PageIntroProps = PageIntroType & {
+  centered?: boolean
+}
 
 export function PageIntro({
   eyebrow,
   title,
-  children,
-  centered = false
-}: {
-  eyebrow: string
-  title: string
-  children: React.ReactNode
-  centered?: boolean
-}) {
+  centered = false,
+  subtitle,
+  body
+}: PageIntroProps) {
   return (
     <Container
       className={clsx('mt-24 sm:mt-32 lg:mt-40', centered && 'text-center')}
@@ -39,7 +40,10 @@ export function PageIntro({
             centered && 'mx-auto'
           )}
         >
-          {children}
+          <p>{subtitle || 'No subtitle provided'}</p>
+          <div className='mt-10 max-w-2xl space-y-6 text-base'>
+            {body && <PortableText value={body} />}
+          </div>
         </div>
       </FadeIn>
     </Container>

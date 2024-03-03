@@ -1,4 +1,6 @@
+import { SanityDocument } from 'next-sanity'
 import { type ImageProps } from 'next/image'
+import { TypedObject } from 'sanity'
 
 type SiteLink = { href: string; label: string }
 
@@ -8,25 +10,31 @@ export type FooterData = Array<SiteLink[]>
 
 // Sanity Object Types
 
-export type QueryResult<T> = {
-  query: string
-  result: Array<
-    {
-      _id: string
-      _updatedAt: string
-      _createdAt: string
-      _rev: string
-      _type: string
-    } & T
-  >
-  ms: number
-}
-
-export type BasePage = {
+type MetaData = {
   title: string
-  heading: string
   description: string
 }
+
+// Sanity Page Sections
+export type PageSectionName = 'heroWithoutImageType' | 'pageIntroType'
+
+export type HeroWithoutImageType = {
+  _type: PageSectionName
+  _key: string
+  heading?: string
+  subheading?: string
+}
+
+export type PageIntroType = {
+  _type: PageSectionName
+  _key: string
+  eyebrow?: string
+  subtitle?: string
+  title?: string
+  body?: TypedObject[]
+}
+
+type PageSection = HeroWithoutImageType | PageIntroType
 
 type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }
 
@@ -59,3 +67,9 @@ export interface Partner {
   }
 }
 export type WithHrefMetadata<T> = T & { href: string; metadata: T }
+
+export type BasePage = { metaData: MetaData; pageSections?: PageSection[] }
+
+export type HomePage = SanityDocument<{}> & BasePage
+export type TeamPage = SanityDocument<{}> & BasePage
+export type ContactPage = SanityDocument<{}> & BasePage

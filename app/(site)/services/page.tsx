@@ -1,5 +1,5 @@
 import { ContactSection } from '@/components/ContactSection'
-import { PageIntro } from '@/components/PageIntro'
+import { PageSections } from '@/components/PageSections'
 import { Build } from '@/components/pageSpecific/services/Build'
 import { Deliver } from '@/components/pageSpecific/services/Deliver'
 import { Discover } from '@/components/pageSpecific/services/Discover'
@@ -15,23 +15,18 @@ const servicesPage =
   await client.fetch<SanityDocument<BasePage>>(SERVICESPAGE_QUERY)
 
 export const metadata: Metadata = {
-  title: `1P4: ${servicesPage?.title}`,
-  description: servicesPage?.description
+  title: `1P4: ${servicesPage?.metaData?.title}`,
+  description: servicesPage?.metaData?.description
 }
 
 export default async function Services() {
-  // const servicesPage =
-  //   await client.fetch<SanityDocument<BasePage>>(SERVICESPAGE_QUERY)
+  const servicesPage =
+    await client.fetch<SanityDocument<BasePage>>(SERVICESPAGE_QUERY)
+  console.log({ servicesPage })
 
   return (
     <>
-      <PageIntro eyebrow='Our process' title='How we work'>
-        <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
-        </p>
-      </PageIntro>
+      <PageSections pageSections={servicesPage?.pageSections} />
       <div className='mt-24 space-y-24 [counter-reset:section] sm:mt-32 sm:space-y-32 lg:mt-40 lg:space-y-40'>
         <Discover />
         <Build />

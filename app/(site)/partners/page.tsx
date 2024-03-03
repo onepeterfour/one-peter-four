@@ -1,6 +1,6 @@
 import { Clients } from '@/components/Clients'
 import { ContactSection } from '@/components/ContactSection'
-import { PageIntro } from '@/components/PageIntro'
+import { PageSections } from '@/components/PageSections'
 import { Partners } from '@/components/pageSpecific/partners/Partners'
 import { Testimonial } from '@/components/pageSpecific/partners/Testimonial'
 import { partners } from '@/mockedCMSData'
@@ -19,26 +19,18 @@ const partnersPage =
 
 // nextJS api
 export const metadata: Metadata = {
-  title: `1P4: ${partnersPage?.title}`,
-  description: partnersPage?.description
+  title: `1P4: ${partnersPage?.metaData?.title}`,
+  description: partnersPage?.metaData?.description
 }
 
 export default async function PartnersPage() {
-  // const partnersPage =
-  //   await client.fetch<SanityDocument<BasePage>>(PARTNERSPAGE_QUERY)
+  const partnersPage =
+    await client.fetch<SanityDocument<BasePage>>(PARTNERSPAGE_QUERY)
+  console.log({ partnersPage })
 
   return (
     <>
-      <PageIntro
-        eyebrow='Our work'
-        title='Proven solutions for real-world problems.'
-      >
-        <p>
-          We believe in efficiency and maximizing our resources to provide the
-          best value to our clients. The primary way we do that is by re-using
-          the same five projects we’ve been developing for the past decade.
-        </p>
-      </PageIntro>
+      <PageSections pageSections={partnersPage?.pageSections} />
       <Partners partners={partners} />
       <Testimonial
         className='mt-24 sm:mt-32 lg:mt-40'

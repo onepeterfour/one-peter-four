@@ -16,6 +16,7 @@ import {
 } from '@sanity/icons'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { DeskToolOptions, deskTool } from 'sanity/desk'
 import { presentationTool } from 'sanity/presentation'
 import { apiVersion, dataset, projectId } from './sanity/env'
@@ -139,6 +140,7 @@ export default defineConfig({
           enable: '/api/draft'
         }
       }
-    })
+    }),
+    unsplashImageAsset()
   ]
 })
