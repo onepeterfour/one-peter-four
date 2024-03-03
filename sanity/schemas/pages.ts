@@ -53,16 +53,20 @@ const teamPage = defineType({
       description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
       of: [
         defineArrayMember({
+          name: 'callToAction',
+          type: 'callToAction'
+        }),
+        defineArrayMember({
           name: 'heroWithoutImageType',
           type: 'heroWithoutImageType'
         }),
         defineArrayMember({
-          name: 'pageIntroType',
-          type: 'pageIntroType'
+          name: 'statlistType',
+          type: 'statlistType'
         }),
         defineArrayMember({
-          name: 'callToAction',
-          type: 'callToAction'
+          name: 'pageIntroType',
+          type: 'pageIntroType'
         })
       ]
     }),

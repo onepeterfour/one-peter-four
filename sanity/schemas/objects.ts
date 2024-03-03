@@ -19,4 +19,20 @@ const metaDataType = defineType({
   ]
 })
 
-export const objects = [metaDataType]
+const statlistObject = defineType({
+  name: 'statlistObject',
+  type: 'object',
+  title: 'Stat',
+  fields: [
+    defineField({
+      name: 'title',
+      type: 'string'
+    }),
+    defineField({
+      name: 'value',
+      type: 'string'
+    })
+  ]
+})
+
+export const objects = [metaDataType, statlistObject]

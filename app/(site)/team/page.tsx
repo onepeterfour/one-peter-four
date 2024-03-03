@@ -1,7 +1,5 @@
 import { ContactSection } from '@/components/ContactSection'
-import { Container } from '@/components/Container'
 import { PageSections } from '@/components/PageSections'
-import { StatList, StatListItem } from '@/components/StatList'
 import { Culture } from '@/components/pageSpecific/team/Culture'
 import { Team } from '@/components/pageSpecific/team/Team'
 import { client } from '@/sanity/lib/client'
@@ -26,13 +24,6 @@ export default async function TeamPage() {
   return (
     <>
       <PageSections pageSections={teamPage?.pageSections} />
-      <Container className='mt-16'>
-        <StatList>
-          <StatListItem value='35' label='Underpaid employees' />
-          <StatListItem value='52' label='Placated clients' />
-          <StatListItem value='$25M' label='Invoices billed' />
-        </StatList>
-      </Container>
       <Culture />
       <Team />
       <ContactSection />

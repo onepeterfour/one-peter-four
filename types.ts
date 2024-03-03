@@ -16,7 +16,10 @@ type MetaData = {
 }
 
 // Sanity Page Sections
-export type PageSectionName = 'heroWithoutImageType' | 'pageIntroType'
+export type PageSectionName =
+  | 'heroWithoutImageType'
+  | 'pageIntroType'
+  | 'statlistType'
 
 export type HeroWithoutImageType = {
   _type: PageSectionName
@@ -34,7 +37,17 @@ export type PageIntroType = {
   body?: TypedObject[]
 }
 
-type PageSection = HeroWithoutImageType | PageIntroType
+type Stat = { _type: string; title: string; value: string }
+
+export type StatListType = {
+  _type: PageSectionName
+  _key: string
+  stat_1: Stat
+  stat_2: Stat
+  stat_3: Stat
+}
+
+type PageSection = HeroWithoutImageType | PageIntroType | StatListType
 
 type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }
 
