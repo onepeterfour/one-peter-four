@@ -1,13 +1,13 @@
 import { FadeIn } from '@/components/FadeIn'
 import { HeroWithoutImageType } from '@/types'
 
-type HeroWithoutImageProps = HeroWithoutImageType & {}
+type HeroNoImageSectionProps = HeroWithoutImageType & {}
 
-export const HeroWithoutImage = ({
+export const HeroNoImageSection = ({
   heading,
   subheading: subHeading,
   _key
-}: HeroWithoutImageProps) => {
+}: HeroNoImageSectionProps) => {
   return (
     <FadeIn className='max-w-3xl' key={_key}>
       <h1 className='font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl'>

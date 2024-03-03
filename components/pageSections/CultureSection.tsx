@@ -3,13 +3,14 @@ import { GridList, GridListItem } from '@/components/GridList'
 import { SectionIntro } from '@/components/SectionIntro'
 import { CultureType } from '@/types'
 
-type CultureProps = CultureType & {}
-export function Culture({
+type CultureSectionProps = CultureType & {}
+
+export function CultureSection({
   eyebrow,
   subtitle,
   title,
   cultureList
-}: CultureProps) {
+}: CultureSectionProps) {
   return (
     <div className='mt-24 rounded-4xl bg-neutral-950 py-24 sm:mt-32 lg:mt-40 lg:py-32'>
       <SectionIntro

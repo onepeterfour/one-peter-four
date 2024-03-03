@@ -124,6 +124,9 @@ const pageIntroType = defineType({
   ]
 })
 
+/**
+ * CULTURE BLOCK
+ */
 const cultureType = defineType({
   name: 'cultureType',
   type: 'object',
