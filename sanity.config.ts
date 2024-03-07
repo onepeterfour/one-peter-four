@@ -20,7 +20,7 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { DeskToolOptions, deskTool } from 'sanity/desk'
 import { presentationTool } from 'sanity/presentation'
 import { apiVersion, dataset, projectId } from './sanity/env'
-import { schema } from './sanity/schema'
+import { schema } from './sanity/schemas'
 
 const deskToolOptions: DeskToolOptions = {
   structure: (S) =>
@@ -101,6 +101,15 @@ const deskToolOptions: DeskToolOptions = {
           ),
         S.divider(),
         S.listItem()
+          .title('Navigation')
+          .icon(CogIcon)
+          .child(
+            S.document()
+              .schemaType('navigation')
+              .documentId('navigation')
+              .title('Navigation')
+          ),
+        S.listItem()
           .title('Site Settings')
           .icon(CogIcon)
           .child(
@@ -110,6 +119,7 @@ const deskToolOptions: DeskToolOptions = {
           (listItem) =>
             ![
               'siteSettings',
+              'navigation',
               'homePage',
               'teamPage',
               'researchPage',
