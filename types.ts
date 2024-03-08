@@ -40,7 +40,7 @@ export type PageIntroType = {
 
 type Stat = { _type: string; title: string; value: string }
 
-export type StatListType = {
+export type StatsListType = {
   _type: PageSectionName
   _key: string
   stat_1: Stat
@@ -65,7 +65,7 @@ export type CultureType = {
 type PageSection =
   | HeroWithoutImageType
   | PageIntroType
-  | StatListType
+  | StatsListType
   | CultureType
 
 type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }

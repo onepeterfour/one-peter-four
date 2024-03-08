@@ -4,20 +4,20 @@ import { PageIntroType } from '@/types'
 import clsx from 'clsx'
 import { PortableText } from '../PortableText'
 
-type PageIntroSectionProps = PageIntroType & {
+type PageIntroProps = PageIntroType & {
   centered?: boolean
 }
 
-export function PageIntroSection({
+export function PageIntro({
   eyebrow,
   title,
   centered = false,
   subtitle,
   body
-}: PageIntroSectionProps) {
+}: PageIntroProps) {
   return (
     <Container
-      className={clsx('mt-24 sm:mt-32 lg:mt-40', centered && 'text-center')}
+      className={clsx(centered && 'text-center', 'mt-24 sm:mt-32 lg:mt-40')}
     >
       <FadeIn>
         <h1>

@@ -1,15 +1,15 @@
 import { BasePage, PageSectionName } from '@/types'
 import { ComponentType } from 'react'
-import { CultureSection } from './CultureSection'
-import { HeroNoImageSection } from './HeroNoImageSection'
-import { PageIntroSection } from './PageIntroSection'
-import { StatListSection } from './StatListSection'
+import { Culture } from './Culture'
+import { HeroWithoutImage } from './HeroWithoutImage'
+import { PageIntro } from './PageIntro'
+import { StatsList } from './StatsList'
 
 const Sections: Record<PageSectionName, ComponentType<any>> = {
-  heroWithoutImageType: HeroNoImageSection,
-  pageIntroType: PageIntroSection,
-  statlistType: StatListSection,
-  cultureType: CultureSection
+  heroWithoutImageType: HeroWithoutImage,
+  pageIntroType: PageIntro,
+  statlistType: StatsList,
+  cultureType: Culture
 }
 
 type PageSectionsProps = {
