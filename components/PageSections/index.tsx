@@ -1,5 +1,6 @@
 import { BasePage, PageSectionName } from '@/types'
 import { ComponentType } from 'react'
+import { Clients } from './Clients'
 import { Culture } from './Culture'
 import { HeroWithoutImage } from './HeroWithoutImage'
 import { PageIntro } from './PageIntro'
@@ -9,7 +10,8 @@ const Sections: Record<PageSectionName, ComponentType<any>> = {
   heroWithoutImageType: HeroWithoutImage,
   pageIntroType: PageIntro,
   statlistType: StatsList,
-  cultureType: Culture
+  cultureType: Culture,
+  clients: Clients
 }
 
 type PageSectionsProps = {

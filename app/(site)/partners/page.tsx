@@ -1,4 +1,3 @@
-import { Clients } from '@/components/Clients'
 import { ContactSection } from '@/components/ContactSection'
 import { PageSections } from '@/components/PageSections'
 import { Partners } from '@/components/pageSpecific/partners/Partners'
@@ -39,7 +38,6 @@ export default async function PartnersPage() {
         We approached <em>Studio</em> because we loved their past work. They
         delivered something remarkably similar in record time.
       </Testimonial>
-      <Clients />
       <ContactSection />
     </>
   )

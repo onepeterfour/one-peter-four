@@ -30,6 +30,10 @@ const homePage = defineType({
         defineArrayMember({
           name: 'callToAction',
           type: 'callToAction'
+        }),
+        defineArrayMember({
+          name: 'clients',
+          type: 'clients'
         })
       ]
     }),

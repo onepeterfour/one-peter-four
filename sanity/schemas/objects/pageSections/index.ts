@@ -1,4 +1,5 @@
 import callToAction from './callToAction'
+import clients from './clients'
 import culture from './culture'
 import hero from './hero'
 import heroWithoutImage from './heroWithoutImage'
@@ -11,7 +12,8 @@ const pageSections = [
   pageIntro,
   culture,
   statlist,
-  callToAction
+  callToAction,
+  clients
 ]
 
 export default pageSections

@@ -1,4 +1,3 @@
-import { Container } from '@/components/Container'
 import { PageSections } from '@/components/PageSections'
 import { client } from '@/sanity/lib/client'
 import { HOMEPAGE_QUERY } from '@/sanity/lib/queries'
@@ -18,9 +17,9 @@ export default async function Home() {
   console.log({ homePage: homePage?.pageSections })
   return (
     <>
-      <Container className='mt-24 sm:mt-32 md:mt-56'>
-        <PageSections pageSections={homePage?.pageSections} />
-      </Container>
+      {/* <Container className='mt-24 sm:mt-32 md:mt-56'> */}
+      <PageSections pageSections={homePage?.pageSections} />
+      {/* </Container> */}
     </>
   )
 }

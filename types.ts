@@ -1,3 +1,4 @@
+import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import { SanityDocument } from 'next-sanity'
 import { type ImageProps } from 'next/image'
 import { TypedObject } from 'sanity'
@@ -21,6 +22,7 @@ export type PageSectionName =
   | 'pageIntroType'
   | 'statlistType'
   | 'cultureType'
+  | 'clients'
 
 export type HeroWithoutImageType = {
   _type: PageSectionName
@@ -59,6 +61,19 @@ export type CultureType = {
     text?: string
     _key: string
     _type: string
+  }>
+}
+
+export type ClientsType = {
+  _type: 'clients'
+  _key: string
+  title: string
+  clientsList?: Array<{
+    name: string
+    _type: string
+    _key: string
+    altText: string
+    logo: SanityImageSource
   }>
 }
 
