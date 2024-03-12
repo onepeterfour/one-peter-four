@@ -1,10 +1,10 @@
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-const heroType = defineType({
-  name: 'heroType',
+export default defineType({
+  name: 'sanityPageSectionHeroWithImage',
   type: 'object',
-  title: 'Hero',
+  title: 'Hero With Image',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -27,19 +27,33 @@ const heroType = defineType({
     }),
     defineField({
       name: 'heading',
-      type: 'string'
+      type: 'string',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'tagline',
-      type: 'string'
+      type: 'string',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'imageObject',
+      type: 'object',
       title: 'Image',
-      type: 'imageObject',
-      icon: BlockElementIcon
+      icon: BlockElementIcon,
+      fields: [
+        defineField({
+          name: 'media',
+          type: 'image',
+          options: { hotspot: true },
+          validation: (Rule) => Rule.required()
+        }),
+        defineField({
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          validation: (Rule) => Rule.required()
+        })
+      ]
     })
   ]
 })
-
-export default heroType

@@ -1,9 +1,9 @@
 import { Container } from '@/components/Container'
 import { GridList, GridListItem } from '@/components/GridList'
 import { SectionIntro } from '@/components/SectionIntro'
-import { CultureType } from '@/types'
+import { type SanityPageSectionCulture } from '@/types/sanity/objects/pageSections'
 
-type CultureProps = CultureType & {}
+type CultureProps = SanityPageSectionCulture & {}
 
 export function Culture({
   eyebrow,

@@ -2,7 +2,7 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const culture = defineType({
-  name: 'cultureType',
+  name: 'sanityPageSectionCulture',
   type: 'object',
   title: 'Culture',
   icon: BlockElementIcon,
@@ -45,9 +45,13 @@ const culture = defineType({
       validation: (rule) => rule.length(3),
       of: [
         {
-          type: 'titleWithText',
+          type: 'object',
           name: 'cultureListItem',
-          title: 'Culture List Item'
+          title: 'Culture List Item',
+          fields: [
+            defineField({ name: 'title', type: 'string' }),
+            defineField({ name: 'text', type: 'text', rows: 3 })
+          ]
         }
       ]
     })

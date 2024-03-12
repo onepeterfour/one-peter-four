@@ -6,15 +6,14 @@ import { partners } from '@/mockedCMSData'
 import logoMailSmirk from '@/public/images/clients/mail-smirk/logo-dark.svg'
 import { client } from '@/sanity/lib/client'
 import { PARTNERSPAGE_QUERY } from '@/sanity/lib/queries'
-import { BasePage } from '@/types'
+import type { PartnersPageQueryResult } from '@/types/sanity/queries'
 import { Metadata } from 'next'
-import { SanityDocument } from 'next-sanity'
 
 // this would be the "our work page in the studio template"
 
 // sanity query
 const partnersPage =
-  await client.fetch<SanityDocument<BasePage>>(PARTNERSPAGE_QUERY)
+  await client.fetch<PartnersPageQueryResult>(PARTNERSPAGE_QUERY)
 
 // nextJS api
 export const metadata: Metadata = {
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
 
 export default async function PartnersPage() {
   const partnersPage =
-    await client.fetch<SanityDocument<BasePage>>(PARTNERSPAGE_QUERY)
+    await client.fetch<PartnersPageQueryResult>(PARTNERSPAGE_QUERY)
   console.log({ partnersPage })
 
   return (

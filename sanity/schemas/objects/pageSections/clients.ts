@@ -2,7 +2,7 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'clients',
+  name: 'sanityPageSectionClients',
   title: 'Clients',
   type: 'object',
   icon: BlockElementIcon,
@@ -37,9 +37,29 @@ export default defineType({
       type: 'array',
       of: [
         {
-          type: 'client',
+          type: 'object',
           name: 'client',
-          title: 'Client'
+          title: 'Client',
+          fields: [
+            defineField({
+              name: 'name',
+              title: 'Name',
+              type: 'string',
+              validation: (Rule) => Rule.required()
+            }),
+            defineField({
+              name: 'altText',
+              title: 'Alt Text',
+              type: 'string',
+              validation: (Rule) => Rule.required()
+            }),
+            defineField({
+              name: 'logo',
+              title: 'Logo',
+              type: 'image',
+              validation: (Rule) => Rule.required()
+            })
+          ]
         }
       ]
     })

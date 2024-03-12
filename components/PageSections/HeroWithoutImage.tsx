@@ -1,8 +1,8 @@
 import { FadeIn } from '@/components/FadeIn'
-import { HeroWithoutImageType } from '@/types'
+import { type SanityPageSectionHeroWithoutImage } from '@/types/sanity/objects/pageSections'
 import { Container } from '../Container'
 
-type HeroWithoutImageProps = HeroWithoutImageType & {}
+type HeroWithoutImageProps = SanityPageSectionHeroWithoutImage & {}
 
 export const HeroWithoutImage = ({
   heading,

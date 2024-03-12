@@ -12,8 +12,8 @@ const partnersPage = defineType({
       description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
       of: [
         defineArrayMember({
-          name: 'pageIntroType',
-          type: 'pageIntroType'
+          name: 'sanityPageSectionPageIntro',
+          type: 'sanityPageSectionPageIntro'
         })
       ]
     }),

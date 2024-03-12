@@ -1,12 +1,11 @@
 import { PageSections } from '@/components/PageSections'
 import { client } from '@/sanity/lib/client'
 import { LEARNINGPAGE_QUERY } from '@/sanity/lib/queries'
-import { BasePage } from '@/types'
+import type { LearningPageQueryResult } from '@/types/sanity/queries'
 import { Metadata } from 'next'
-import { SanityDocument } from 'next-sanity'
 
 const learningPage =
-  await client.fetch<SanityDocument<BasePage>>(LEARNINGPAGE_QUERY)
+  await client.fetch<LearningPageQueryResult>(LEARNINGPAGE_QUERY)
 
 export const metadata: Metadata = {
   title: `1P4: ${learningPage?.metaData?.title}`,
@@ -14,7 +13,7 @@ export const metadata: Metadata = {
 }
 export default async function Learning() {
   const learningPage =
-    await client.fetch<SanityDocument<BasePage>>(LEARNINGPAGE_QUERY)
+    await client.fetch<LearningPageQueryResult>(LEARNINGPAGE_QUERY)
   console.log({ learningPage })
 
   return (

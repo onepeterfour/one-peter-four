@@ -1,8 +1,8 @@
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-const pageIntro = defineType({
-  name: 'pageIntroType',
+export default defineType({
+  name: 'sanityPageSectionPageIntro',
   type: 'object',
   title: 'Page Intro',
   icon: BlockElementIcon,
@@ -45,5 +45,3 @@ const pageIntro = defineType({
     })
   ]
 })
-
-export default pageIntro

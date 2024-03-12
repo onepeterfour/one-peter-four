@@ -12,24 +12,24 @@ const teamPage = defineType({
       description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
       of: [
         defineArrayMember({
+          name: 'sanityPageSectionPageIntro',
+          type: 'sanityPageSectionPageIntro'
+        }),
+        defineArrayMember({
           name: 'callToAction',
           type: 'callToAction'
         }),
         defineArrayMember({
-          name: 'cultureType',
-          type: 'cultureType'
+          name: 'sanityPageSectionCulture',
+          type: 'sanityPageSectionCulture'
         }),
         defineArrayMember({
-          name: 'heroWithoutImageType',
-          type: 'heroWithoutImageType'
+          name: 'sanityPageSectionHeroWithoutImage',
+          type: 'sanityPageSectionHeroWithoutImage'
         }),
         defineArrayMember({
-          name: 'statlistType',
-          type: 'statlistType'
-        }),
-        defineArrayMember({
-          name: 'pageIntroType',
-          type: 'pageIntroType'
+          name: 'sanityPageSectionStatsList',
+          type: 'sanityPageSectionStatsList'
         })
       ]
     }),

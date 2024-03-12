@@ -1,4 +1,4 @@
-import { ArrayOfType, defineArrayMember, defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 const learningPage = defineType({
   name: 'learningPage',
@@ -12,10 +12,10 @@ const learningPage = defineType({
       description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
       of: [
         defineArrayMember({
-          name: 'pageIntroType',
-          type: 'pageIntroType'
+          name: 'sanityPageSectionPageIntro',
+          type: 'sanityPageSectionPageIntro'
         })
-      ] as unknown as ArrayOfType<'object'>[]
+      ]
     }),
     defineField({
       name: 'metaData',

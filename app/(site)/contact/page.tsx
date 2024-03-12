@@ -4,11 +4,12 @@ import { ContactDetails } from '@/components/pageSpecific/contact/ContactDetails
 import { ContactForm } from '@/components/pageSpecific/contact/ContactForm'
 import { client } from '@/sanity/lib/client'
 import { CONTACTPAGE_QUERY } from '@/sanity/lib/queries'
-import { ContactPage } from '@/types'
+import { type ContactPageQueryResult } from '@/types/sanity/queries'
 import { Metadata } from 'next'
 
 // sanity page query
-const contactPage = await client.fetch<ContactPage>(CONTACTPAGE_QUERY)
+const contactPage =
+  await client.fetch<ContactPageQueryResult>(CONTACTPAGE_QUERY)
 
 // nextJS api
 export const metadata: Metadata = {
@@ -17,7 +18,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Contact() {
-  const contactPage = await client.fetch<ContactPage>(CONTACTPAGE_QUERY)
+  const contactPage =
+    await client.fetch<ContactPageQueryResult>(CONTACTPAGE_QUERY)
 
   console.log({ contactPage })
 

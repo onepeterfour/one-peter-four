@@ -3,7 +3,7 @@ import { defineField, defineType } from 'sanity'
 
 const heroWithoutImage = defineType({
   type: 'object',
-  name: 'heroWithoutImageType',
+  name: 'sanityPageSectionHeroWithoutImage',
   title: 'Hero Without Image',
   icon: BlockElementIcon,
   preview: {

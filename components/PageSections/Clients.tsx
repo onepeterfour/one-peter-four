@@ -1,13 +1,10 @@
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
-import { dataset, projectId } from '@/sanity/env'
-import { ClientsType } from '@/types'
-import imageUrlBuilder from '@sanity/image-url'
+import { urlForImage } from '@/sanity/lib/image'
+import { type SanityPageSectionClients } from '@/types/sanity/objects/pageSections'
 import Image from 'next/image'
 
-const builder = imageUrlBuilder({ projectId, dataset })
-
-type ClientsProps = ClientsType & {}
+type ClientsProps = SanityPageSectionClients & {}
 export const Clients = ({ clientsList, title }: ClientsProps) => {
   return (
     <div className='mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56'>
@@ -30,7 +27,7 @@ export const Clients = ({ clientsList, title }: ClientsProps) => {
                     <FadeIn>
                       <Image
                         className='rounded-lg bg-white'
-                        src={builder.image(client?.logo).url()}
+                        src={urlForImage(client?.logo)}
                         alt={client?.altText}
                         unoptimized
                         width={50}

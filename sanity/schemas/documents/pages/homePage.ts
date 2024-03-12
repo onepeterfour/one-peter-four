@@ -4,14 +4,6 @@ const homePage = defineType({
   name: 'homePage',
   title: 'Home Page',
   type: 'document',
-  // fieldsets: [
-  //   {
-  //     name: 'metaData',
-  //     title: 'Metadata',
-  //     description: `This content is not visible on the page but is used by search engines and social media.`,
-  //     options: { collapsible: true, collapsed: true }
-  //   }
-  // ],
   fields: [
     defineField({
       name: 'pageSections',
@@ -20,20 +12,24 @@ const homePage = defineType({
       description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
       of: [
         defineArrayMember({
-          name: 'heroType',
-          type: 'heroType'
+          name: 'sanityPageSectionPageIntro',
+          type: 'sanityPageSectionPageIntro'
         }),
         defineArrayMember({
-          name: 'heroWithoutImageType',
-          type: 'heroWithoutImageType'
+          name: 'sanityPageSectionHeroWithImage',
+          type: 'sanityPageSectionHeroWithImage'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionHeroWithoutImage',
+          type: 'sanityPageSectionHeroWithoutImage'
         }),
         defineArrayMember({
           name: 'callToAction',
           type: 'callToAction'
         }),
         defineArrayMember({
-          name: 'clients',
-          type: 'clients'
+          name: 'sanityPageSectionClients',
+          type: 'sanityPageSectionClients'
         })
       ]
     }),

@@ -4,7 +4,7 @@ import culture from './culture'
 import hero from './hero'
 import heroWithoutImage from './heroWithoutImage'
 import pageIntro from './pageIntro'
-import statlist from './statList'
+import statlist from './statsList'
 
 const pageSections = [
   hero,
