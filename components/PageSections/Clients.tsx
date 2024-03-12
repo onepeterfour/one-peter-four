@@ -1,10 +1,10 @@
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { urlForImage } from '@/sanity/lib/image'
-import { type SanityPageSectionClients } from '@/types/sanity/objects/pageSections'
+import { type SanityClientsQueryResult } from '@/types/sanity/queries'
 import Image from 'next/image'
 
-type ClientsProps = SanityPageSectionClients & {}
+type ClientsProps = SanityClientsQueryResult & {}
 export const Clients = ({ clientsList, title }: ClientsProps) => {
   return (
     <div className='mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56'>

@@ -1,8 +1,8 @@
 import { FadeIn } from '@/components/FadeIn'
-import { type SanityPageSectionHeroWithoutImage } from '@/types/sanity/objects/pageSections'
+import { type SanityHeroWithoutImageQueryResult } from '@/types/sanity/queries'
 import { Container } from '../Container'
 
-type HeroWithoutImageProps = SanityPageSectionHeroWithoutImage & {}
+type HeroWithoutImageProps = SanityHeroWithoutImageQueryResult & {}
 
 export const HeroWithoutImage = ({
   heading,
