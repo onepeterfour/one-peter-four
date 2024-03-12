@@ -2,7 +2,7 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const callToAction = defineType({
-  name: 'callToAction',
+  name: 'sanityPageSectionCallToAction',
   type: 'object',
   title: 'Call to Action',
   fields: [

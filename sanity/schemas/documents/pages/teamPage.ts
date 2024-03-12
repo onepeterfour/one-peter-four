@@ -16,8 +16,8 @@ const teamPage = defineType({
           type: 'sanityPageSectionPageIntro'
         }),
         defineArrayMember({
-          name: 'callToAction',
-          type: 'callToAction'
+          name: 'sanityPageSectionCallToAction',
+          type: 'sanityPageSectionCallToAction'
         }),
         defineArrayMember({
           name: 'sanityPageSectionCulture',

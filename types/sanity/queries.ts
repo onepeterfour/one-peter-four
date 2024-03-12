@@ -1,4 +1,5 @@
 import type {
+  SanityPageSectionCallToAction,
   SanityPageSectionClients,
   SanityPageSectionCulture,
   SanityPageSectionHeroWithImage,
@@ -17,6 +18,7 @@ type PageSectionQueryResult =
   | SanityPageSectionStatsList
   | SanityPageSectionCulture
   | SanityPageSectionClients
+  | SanityPageSectionCallToAction
 
 export type BasePageQueryResult = {
   metaData: MetaData

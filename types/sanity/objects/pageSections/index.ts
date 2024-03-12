@@ -1,13 +1,5 @@
 import type { Image, TypedObject } from 'sanity'
 
-export type SanityPageSectionTypeNames =
-  | 'sanityPageSectionHeroWithoutImage'
-  | 'sanityPageSectionHeroWithImage'
-  | 'sanityPageSectionPageIntro'
-  | 'sanityPageSectionStatsList'
-  | 'sanityPageSectionCulture'
-  | 'sanityPageSectionClients'
-
 export type SanityPageSectionHeroWithImage = {
   _type: 'sanityPageSectionHeroWithImage'
   _key: string
@@ -80,4 +72,12 @@ export type SanityPageSectionClients = {
     altText: string
     logo: Image
   }>
+}
+
+export type SanityPageSectionCallToAction = {
+  _type: 'sanityPageSectionCallToAction'
+  _key: string
+  isShown: boolean
+  title: string
+  // link: string
 }

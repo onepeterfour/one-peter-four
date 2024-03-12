@@ -24,8 +24,8 @@ const homePage = defineType({
           type: 'sanityPageSectionHeroWithoutImage'
         }),
         defineArrayMember({
-          name: 'callToAction',
-          type: 'callToAction'
+          name: 'sanityPageSectionCallToAction',
+          type: 'sanityPageSectionCallToAction'
         }),
         defineArrayMember({
           name: 'sanityPageSectionClients',
