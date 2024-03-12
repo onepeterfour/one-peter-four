@@ -125,6 +125,42 @@ const navigationRow = defineType({
   ]
 })
 
+const titleWithText = defineType({
+  type: 'object',
+  name: 'titleWithText',
+  title: 'Title With Text',
+  fields: [
+    defineField({ name: 'title', type: 'string' }),
+    defineField({ name: 'text', type: 'text', rows: 3 })
+  ]
+})
+
+const client = defineType({
+  type: 'object',
+  name: 'client',
+  title: 'Client',
+  fields: [
+    defineField({
+      name: 'name',
+      title: 'Name',
+      type: 'string',
+      validation: (Rule) => Rule.required()
+    }),
+    defineField({
+      name: 'altText',
+      title: 'Alt Text',
+      type: 'string',
+      validation: (Rule) => Rule.required()
+    }),
+    defineField({
+      name: 'logo',
+      title: 'Logo',
+      type: 'image',
+      validation: (Rule) => Rule.required()
+    })
+  ]
+})
+
 const objects = [
   isShown,
   navigation,
@@ -133,6 +169,8 @@ const objects = [
   imageObject,
   navigationRow,
   navigationItem,
+  titleWithText,
+  client,
   ...pageSections
 ]
 

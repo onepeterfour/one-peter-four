@@ -37,29 +37,9 @@ export default defineType({
       type: 'array',
       of: [
         {
-          type: 'object',
+          type: 'client',
           name: 'client',
-          title: 'Client',
-          fields: [
-            defineField({
-              name: 'name',
-              title: 'Name',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'altText',
-              title: 'Alt Text',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'logo',
-              title: 'Logo',
-              type: 'image',
-              validation: (Rule) => Rule.required()
-            })
-          ]
+          title: 'Client'
         }
       ]
     })

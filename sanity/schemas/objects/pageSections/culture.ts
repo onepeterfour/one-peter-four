@@ -45,13 +45,9 @@ const culture = defineType({
       validation: (rule) => rule.length(3),
       of: [
         {
-          type: 'object',
+          type: 'titleWithText',
           name: 'cultureListItem',
-          title: 'Culture List Item',
-          fields: [
-            defineField({ name: 'title', type: 'string' }),
-            defineField({ name: 'text', type: 'text', rows: 3 })
-          ]
+          title: 'Culture List Item'
         }
       ]
     })
