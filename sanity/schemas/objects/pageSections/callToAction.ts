@@ -1,4 +1,4 @@
-import { LinkIcon } from '@sanity/icons'
+import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const callToAction = defineType({
@@ -6,6 +6,12 @@ const callToAction = defineType({
   type: 'object',
   title: 'Call to Action',
   fields: [
+    defineField({
+      name: 'isShown',
+      title: 'isShown',
+      type: 'isShown',
+      initialValue: false
+    }),
     defineField({
       name: 'title',
       type: 'string'
@@ -15,7 +21,7 @@ const callToAction = defineType({
       type: 'url'
     })
   ],
-  icon: LinkIcon,
+  icon: BlockElementIcon,
   preview: {
     select: {
       title: 'title'
@@ -24,7 +30,7 @@ const callToAction = defineType({
       return {
         title: 'Call to Action',
         subtitle: title || 'untitled',
-        media: LinkIcon
+        media: BlockElementIcon
       }
     }
   }

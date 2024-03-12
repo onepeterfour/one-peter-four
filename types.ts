@@ -1,5 +1,5 @@
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
-import { SanityDocument } from 'next-sanity'
+import { type SanityDocument } from 'next-sanity'
 import { type ImageProps } from 'next/image'
 import { TypedObject } from 'sanity'
 
@@ -17,6 +17,12 @@ type MetaData = {
 }
 
 // Sanity Page Sections
+
+type BasePageSection = {
+  _type: PageSectionName
+  _key: string
+  isShown: boolean
+}
 export type PageSectionName =
   | 'heroWithoutImageType'
   | 'pageIntroType'
@@ -24,16 +30,12 @@ export type PageSectionName =
   | 'cultureType'
   | 'clients'
 
-export type HeroWithoutImageType = {
-  _type: PageSectionName
-  _key: string
+export type HeroWithoutImageType = BasePageSection & {
   heading?: string
   subheading?: string
 }
 
-export type PageIntroType = {
-  _type: PageSectionName
-  _key: string
+export type PageIntroType = BasePageSection & {
   eyebrow?: string
   subtitle?: string
   title?: string
@@ -42,17 +44,13 @@ export type PageIntroType = {
 
 type Stat = { _type: string; title: string; value: string }
 
-export type StatsListType = {
-  _type: PageSectionName
-  _key: string
+export type StatsListType = BasePageSection & {
   stat_1: Stat
   stat_2: Stat
   stat_3: Stat
 }
 
-export type CultureType = {
-  _type: PageSectionName
-  _key: string
+export type CultureType = BasePageSection & {
   eyebrow?: string
   title?: string
   subtitle?: string
@@ -64,9 +62,7 @@ export type CultureType = {
   }>
 }
 
-export type ClientsType = {
-  _type: 'clients'
-  _key: string
+export type ClientsType = BasePageSection & {
   title: string
   clientsList?: Array<{
     name: string

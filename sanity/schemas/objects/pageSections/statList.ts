@@ -16,6 +16,12 @@ const statlist = defineType({
   },
   fields: [
     defineField({
+      name: 'isShown',
+      title: 'isShown',
+      type: 'isShown',
+      initialValue: false
+    }),
+    defineField({
       name: 'stat_1',
       title: 'Stat 1',
       type: 'statlistObject'

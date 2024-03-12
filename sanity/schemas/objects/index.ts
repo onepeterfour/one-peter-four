@@ -3,6 +3,13 @@ import pageSections from './pageSections'
 
 import { defineField, defineType } from 'sanity'
 
+const isShown = defineType({
+  name: 'isShown',
+  title: 'isShown',
+  type: 'boolean',
+  description: 'If checked, this section will be shown on the page'
+})
+
 const metaDataType = defineType({
   name: 'metaDataType',
   type: 'object',
@@ -119,6 +126,7 @@ const navigationRow = defineType({
 })
 
 const objects = [
+  isShown,
   navigation,
   metaDataType,
   statlistObject,

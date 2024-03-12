@@ -6,7 +6,24 @@ export default defineType({
   title: 'Clients',
   type: 'object',
   icon: BlockElementIcon,
+  preview: {
+    select: {
+      subtitle: 'title'
+    },
+    prepare({ subtitle }) {
+      return {
+        title: 'Clients',
+        subtitle,
+        media: BlockElementIcon
+      }
+    }
+  },
   fields: [
+    defineField({
+      name: 'isShown',
+      title: 'isShown',
+      type: 'isShown'
+    }),
     defineField({
       name: 'title',
       title: 'Title',

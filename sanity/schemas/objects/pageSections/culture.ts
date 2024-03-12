@@ -20,6 +20,12 @@ const culture = defineType({
   },
   fields: [
     defineField({
+      name: 'isShown',
+      title: 'isShown',
+      type: 'isShown',
+      initialValue: false
+    }),
+    defineField({
       name: 'eyebrow',
       type: 'string'
     }),

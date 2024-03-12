@@ -17,9 +17,7 @@ export default async function Home() {
   console.log({ homePage: homePage?.pageSections })
   return (
     <>
-      {/* <Container className='mt-24 sm:mt-32 md:mt-56'> */}
       <PageSections pageSections={homePage?.pageSections} />
-      {/* </Container> */}
     </>
   )
 }

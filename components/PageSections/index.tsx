@@ -22,6 +22,9 @@ export const PageSections = ({ pageSections }: PageSectionsProps) => {
   return (
     <>
       {pageSections?.map((section) => {
+        if (!section?.isShown) {
+          return null
+        }
         const SectionComponent = Sections[section?._type] || null
         return <SectionComponent key={section._key} {...section} />
       })}

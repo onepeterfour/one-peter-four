@@ -20,6 +20,12 @@ const heroWithoutImage = defineType({
   },
   fields: [
     defineField({
+      name: 'isShown',
+      title: 'isShown',
+      type: 'isShown',
+      initialValue: false
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',
