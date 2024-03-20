@@ -7,6 +7,7 @@ import heroWithoutImage from './heroWithoutImage'
 import pageIntro from './pageIntro'
 import researchCards from './researchCards'
 import statlist from './statsList'
+import team from './team'
 import testimonial from './testimonial'
 import values from './values'
 
@@ -21,7 +22,8 @@ const pageSections = [
   researchCards,
   testimonial,
   values,
-  contact
+  contact,
+  team
 ]
 
 export default pageSections

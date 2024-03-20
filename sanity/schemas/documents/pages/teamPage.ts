@@ -30,6 +30,14 @@ const teamPage = defineType({
         defineArrayMember({
           name: 'sanityPageSectionStatsList',
           type: 'sanityPageSectionStatsList'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionContact',
+          type: 'sanityPageSectionContact'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionTeam',
+          type: 'sanityPageSectionTeam'
         })
       ]
     }),

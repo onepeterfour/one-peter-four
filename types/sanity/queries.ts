@@ -134,6 +134,20 @@ export type SanityContactQueryResult = {
   buttonLabel: string
 }
 
+export type SanityTeamQueryResult = {
+  _type: 'sanityPageSectionTeam'
+  _key: string
+  isShown: boolean
+  title: string
+  teamMembers: Array<{
+    _type: 'teamMember'
+    _key: string
+    name: string
+    role: string
+    image: Image
+  }>
+}
+
 export type PageSectionQueryResult =
   | SanityHeroWithImageQueryResult
   | SanityHeroWithoutImageQueryResult
@@ -146,6 +160,7 @@ export type PageSectionQueryResult =
   | SanityTestimonialQueryResult
   | SanityValuesQueryResult
   | SanityContactQueryResult
+  | SanityTeamQueryResult
 
 export type BasePageQueryResult = {
   metaData: MetaDataQueryResult

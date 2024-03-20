@@ -12,6 +12,7 @@ import { HeroWithoutImage } from './HeroWithoutImage'
 import { PageIntro } from './PageIntro'
 import { ResearchCards } from './Research'
 import { StatsList } from './StatsList'
+import { Team } from './Team'
 import { Testimonial } from './Testimonial'
 import { Values } from './Values'
 
@@ -26,7 +27,8 @@ const Sections: Record<PageSectionQueryResult['_type'], ComponentType<any>> = {
   sanityPageSectionResearchCards: ResearchCards,
   sanityPageSectionTestimonial: Testimonial,
   sanityPageSectionValues: Values,
-  sanityPageSectionContact: Contact
+  sanityPageSectionContact: Contact,
+  sanityPageSectionTeam: Team
 }
 
 type PageSectionsProps = {

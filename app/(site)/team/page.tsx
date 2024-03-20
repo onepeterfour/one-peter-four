@@ -1,6 +1,4 @@
-import { ContactSection } from '@/components/ContactSection'
 import { PageSections } from '@/components/PageSections'
-import { Team } from '@/components/pageSpecific/team/Team'
 import { client } from '@/sanity/lib/client'
 import { TEAMPAGE_QUERY } from '@/sanity/lib/queries'
 import { TeamPageQueryResult } from '@/types/sanity/queries'
@@ -17,13 +15,11 @@ export const metadata: Metadata = {
 
 export default async function TeamPage() {
   const teamPage = await client.fetch<TeamPageQueryResult>(TEAMPAGE_QUERY)
-  // console.log({ pageSections: teamPage?.pageSections })
+  console.log({ pageSections: teamPage?.pageSections })
 
   return (
     <>
       <PageSections pageSections={teamPage?.pageSections} />
-      <Team />
-      <ContactSection />
     </>
   )
 }
