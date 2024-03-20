@@ -4,6 +4,7 @@ import culture from './culture'
 import hero from './hero'
 import heroWithoutImage from './heroWithoutImage'
 import pageIntro from './pageIntro'
+import researchCards from './researchCards'
 import statlist from './statsList'
 
 const pageSections = [
@@ -13,7 +14,8 @@ const pageSections = [
   culture,
   statlist,
   callToAction,
-  clients
+  clients,
+  researchCards
 ]
 
 export default pageSections

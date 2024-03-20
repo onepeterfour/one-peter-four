@@ -1,6 +1,10 @@
-import type { MetaData } from '@/types/sanity/objects'
 import type { SanityDocument } from 'next-sanity'
 import type { Image, TypedObject } from 'sanity'
+
+export type MetaDataQueryResult = {
+  title: string
+  description: string
+}
 
 export type SanityHeroWithImageQueryResult = {
   _type: 'sanityPageSectionHeroWithImage'
@@ -33,18 +37,16 @@ export type SanityPageIntroQueryResult = {
   body?: TypedObject[]
 }
 
-type Stat = {
-  _type: string
-  _key: string
-  title: string
-  value: string
-}
-
 export type SanityStatsListQueryResult = {
   _type: 'sanityPageSectionStatsList'
   _key: string
   isShown: boolean
-  stats?: Stat[]
+  stats?: Array<{
+    _type: string
+    _key: string
+    title: string
+    value: string
+  }>
 }
 
 export type SanityCultureQueryResult = {
@@ -83,8 +85,24 @@ export type SanityCallToActionQueryResult = {
   title: string
   // link: string
 }
+export type SanityResearchCardsQueryResult = {
+  _type: 'sanityPageSectionResearchCards'
+  _key: string
+  isShown: boolean
+  title: string
+  subtitle: string
+  researchCards: Array<{
+    _type: string
+    _key: string
+    logo: Image
+    date: string
+    title: string
+    description: string
+    href: string
+  }>
+}
 
-type PageSectionQueryResult =
+export type PageSectionQueryResult =
   | SanityHeroWithImageQueryResult
   | SanityHeroWithoutImageQueryResult
   | SanityPageIntroQueryResult
@@ -92,9 +110,10 @@ type PageSectionQueryResult =
   | SanityCultureQueryResult
   | SanityClientsQueryResult
   | SanityCallToActionQueryResult
+  | SanityResearchCardsQueryResult
 
 export type BasePageQueryResult = {
-  metaData: MetaData
+  metaData: MetaDataQueryResult
   pageSections?: PageSectionQueryResult[]
 }
 

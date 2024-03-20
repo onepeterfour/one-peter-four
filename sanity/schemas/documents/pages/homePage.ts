@@ -30,6 +30,10 @@ const homePage = defineType({
         defineArrayMember({
           name: 'sanityPageSectionClients',
           type: 'sanityPageSectionClients'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionResearchCards',
+          type: 'sanityPageSectionResearchCards'
         })
       ]
     }),
