@@ -101,6 +101,38 @@ export type SanityResearchCardsQueryResult = {
     href: string
   }>
 }
+export type SanityTestimonialQueryResult = {
+  _type: 'sanityPageSectionTestimonial'
+  _key: string
+  isShown: boolean
+  client: string
+  quote: string
+  logo: Image
+}
+
+export type SanityValuesQueryResult = {
+  _type: 'sanityPageSectionValues'
+  _key: string
+  isShown: boolean
+  eyebrow: string
+  title: string
+  subtitle: string
+  image: Image
+  valuesList: Array<{
+    _type: 'value'
+    _key: string
+    title: string
+    description: string
+  }>
+}
+
+export type SanityContactQueryResult = {
+  _type: 'sanityPageSectionContact'
+  _key: string
+  isShown: boolean
+  title: string
+  buttonLabel: string
+}
 
 export type PageSectionQueryResult =
   | SanityHeroWithImageQueryResult
@@ -111,6 +143,9 @@ export type PageSectionQueryResult =
   | SanityClientsQueryResult
   | SanityCallToActionQueryResult
   | SanityResearchCardsQueryResult
+  | SanityTestimonialQueryResult
+  | SanityValuesQueryResult
+  | SanityContactQueryResult
 
 export type BasePageQueryResult = {
   metaData: MetaDataQueryResult

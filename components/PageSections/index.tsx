@@ -5,12 +5,15 @@ import {
 import { ComponentType } from 'react'
 import { CallToAction } from './CallToAction'
 import { Clients } from './Clients'
+import { Contact } from './Contact'
 import { Culture } from './Culture'
 import { Hero } from './Hero'
 import { HeroWithoutImage } from './HeroWithoutImage'
 import { PageIntro } from './PageIntro'
 import { ResearchCards } from './Research'
 import { StatsList } from './StatsList'
+import { Testimonial } from './Testimonial'
+import { Values } from './Values'
 
 const Sections: Record<PageSectionQueryResult['_type'], ComponentType<any>> = {
   sanityPageSectionHeroWithoutImage: HeroWithoutImage,
@@ -20,7 +23,10 @@ const Sections: Record<PageSectionQueryResult['_type'], ComponentType<any>> = {
   sanityPageSectionClients: Clients,
   sanityPageSectionHeroWithImage: Hero,
   sanityPageSectionCallToAction: CallToAction,
-  sanityPageSectionResearchCards: ResearchCards
+  sanityPageSectionResearchCards: ResearchCards,
+  sanityPageSectionTestimonial: Testimonial,
+  sanityPageSectionValues: Values,
+  sanityPageSectionContact: Contact
 }
 
 type PageSectionsProps = {

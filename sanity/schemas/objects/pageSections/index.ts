@@ -1,11 +1,14 @@
 import callToAction from './callToAction'
 import clients from './clients'
+import contact from './contact'
 import culture from './culture'
 import hero from './hero'
 import heroWithoutImage from './heroWithoutImage'
 import pageIntro from './pageIntro'
 import researchCards from './researchCards'
 import statlist from './statsList'
+import testimonial from './testimonial'
+import values from './values'
 
 const pageSections = [
   hero,
@@ -15,7 +18,10 @@ const pageSections = [
   statlist,
   callToAction,
   clients,
-  researchCards
+  researchCards,
+  testimonial,
+  values,
+  contact
 ]
 
 export default pageSections
