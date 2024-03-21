@@ -1,4 +1,5 @@
 import { Container } from '@/components/Container'
+import { HeaderNavigationQueryResult } from '@/types/sanity/queries'
 import Link from 'next/link'
 import React from 'react'
 
@@ -30,21 +31,24 @@ function NavigationItem({
   )
 }
 
-export function Navigation() {
+type NavigationProps = {
+  headerNavigation: HeaderNavigationQueryResult
+}
+export function Navigation({ headerNavigation }: NavigationProps) {
   return (
     <nav className='mt-px font-display text-5xl font-medium tracking-tight text-white'>
-      <NavigationRow>
-        <NavigationItem href='/team'>Our Team</NavigationItem>
-        <NavigationItem href='/partners'>Partners</NavigationItem>
-      </NavigationRow>
-      <NavigationRow>
-        <NavigationItem href='/services'>Services</NavigationItem>
-        <NavigationItem href='/research'>Research</NavigationItem>
-      </NavigationRow>
-      <NavigationRow>
-        <NavigationItem href='/learning'>Learning</NavigationItem>
-        <NavigationItem href='/contact'>Contact</NavigationItem>
-      </NavigationRow>
+      {headerNavigation &&
+        headerNavigation.rows.map((row) => {
+          return (
+            <NavigationRow key={row?._key}>
+              {row?.items.map((item) => (
+                <NavigationItem key={item?._key} href={item?.path}>
+                  {item?.label}
+                </NavigationItem>
+              ))}
+            </NavigationRow>
+          )
+        })}
     </nav>
   )
 }

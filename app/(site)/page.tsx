@@ -12,9 +12,8 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  // const initial = await loadQuery<SanityDocument[]>(POSTS_QUERY)
   const homePage = await client.fetch<HomePageQueryResult>(HOMEPAGE_QUERY)
-  console.log({ homePage: homePage?.pageSections })
+
   return (
     <>
       <PageSections pageSections={homePage?.pageSections} />

@@ -167,6 +167,19 @@ export type BasePageQueryResult = {
   pageSections?: PageSectionQueryResult[]
 }
 
+type NavigationItem = {
+  _key: string
+  _type: 'navigationItem'
+  label: string
+  path: string
+}
+type NavigationRow = {
+  _type: 'navigationRow'
+  _key: string
+  order: number
+  items: NavigationItem[]
+}
+
 export type HomePageQueryResult = SanityDocument<{}> & BasePageQueryResult
 export type TeamPageQueryResult = SanityDocument<{}> & BasePageQueryResult
 export type ContactPageQueryResult = SanityDocument<{}> & BasePageQueryResult
@@ -174,3 +187,9 @@ export type LearningPageQueryResult = SanityDocument<{}> & BasePageQueryResult
 export type PartnersPageQueryResult = SanityDocument<{}> & BasePageQueryResult
 export type ResearchPageQueryResult = SanityDocument<{}> & BasePageQueryResult
 export type ServicesPageQueryResult = SanityDocument<{}> & BasePageQueryResult
+export type HeaderNavigationQueryResult = SanityDocument<{
+  _createdAt: string
+  _id: 'navigation'
+  _type: 'navigation'
+  rows: NavigationRow[]
+}>

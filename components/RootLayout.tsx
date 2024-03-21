@@ -8,11 +8,24 @@ import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
 import { MenuIcon } from '@/components/icons/MenuIcon'
 import { XIcon } from '@/components/icons/XIcon'
+import { HeaderNavigationQueryResult } from '@/types/sanity/queries'
 import { MotionConfig, motion, useReducedMotion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
-import React, { useEffect, useId, useRef, useState } from 'react'
+import React, {
+  PropsWithChildren,
+  useEffect,
+  useId,
+  useRef,
+  useState
+} from 'react'
 
-function RootLayoutInner({ children }: { children: React.ReactNode }) {
+type RootLayoutInnerProps = PropsWithChildren<{
+  headerNavigation: HeaderNavigationQueryResult
+}>
+const RootLayoutInner = ({
+  children,
+  headerNavigation
+}: RootLayoutInnerProps) => {
   let panelId = useId()
   let [expanded, setExpanded] = useState(false)
   let openRef = useRef<React.ElementRef<'button'>>(null)
@@ -85,7 +98,7 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
                 }}
               />
             </div>
-            <Navigation />
+            <Navigation headerNavigation={headerNavigation} />
             <div className='relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800'>
               <Container>
                 <div className='grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16'>
@@ -128,8 +141,15 @@ function RootLayoutInner({ children }: { children: React.ReactNode }) {
   )
 }
 
-export function RootLayout({ children }: { children: React.ReactNode }) {
+type RootLayoutProps = PropsWithChildren<{
+  headerNavigation: HeaderNavigationQueryResult
+}>
+export function RootLayout({ children, headerNavigation }: RootLayoutProps) {
   let pathname = usePathname()
 
-  return <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
+  return (
+    <RootLayoutInner headerNavigation={headerNavigation} key={pathname}>
+      {children}
+    </RootLayoutInner>
+  )
 }
