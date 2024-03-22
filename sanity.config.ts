@@ -98,7 +98,11 @@ const deskToolOptions: DeskToolOptions = {
                   )
               ])
           ),
-        S.divider()
+        S.divider(),
+        S.listItem()
+          .title('Team Members')
+          .icon(UsersIcon)
+          .child(S.documentTypeList('teamMemberDocument').title('Team Members'))
       ])
 }
 
