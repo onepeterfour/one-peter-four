@@ -98,19 +98,7 @@ const deskToolOptions: DeskToolOptions = {
                   )
               ])
           ),
-        S.divider(),
-        ...S.documentTypeListItems().filter(
-          (listItem) =>
-            ![
-              'homePage',
-              'teamPage',
-              'researchPage',
-              'servicesPage',
-              'learningPage',
-              'partnersPage',
-              'contactPage'
-            ].includes(listItem?.getId() as string)
-        )
+        S.divider()
       ])
 }
 
