@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container'
-import { HeaderNavigationQueryResult } from '@/types/sanity/queries'
+import { headerNavigation } from '@/mockedCMSData'
 import Link from 'next/link'
 import React from 'react'
 
@@ -31,10 +31,7 @@ function NavigationItem({
   )
 }
 
-type NavigationProps = {
-  headerNavigation: HeaderNavigationQueryResult
-}
-export function Navigation({ headerNavigation }: NavigationProps) {
+export function Navigation() {
   return (
     <nav className='mt-px font-display text-5xl font-medium tracking-tight text-white'>
       {headerNavigation &&

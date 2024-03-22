@@ -10,17 +10,75 @@ import imageLeonardKrasner from '@/public/images/team/leonard-krasner.jpg'
 import imageLeslieAlexander from '@/public/images/team/leslie-alexander.jpg'
 import imageMichaelFoster from '@/public/images/team/michael-foster.jpg'
 import imageWhitneyFrancis from '@/public/images/team/whitney-francis.jpg'
-import { FooterData, NavData, Partner, WithHrefMetadata } from './types'
+import { FooterData, Partner, WithHrefMetadata } from './types'
+import { HeaderNavigationQueryResult } from './types/sanity/queries'
 
-export const navData: NavData = [
-  { href: '/', label: 'Home' },
-  { href: '/team', label: 'Team' },
-  { href: '/research', label: 'Research' },
-  { href: '/services', label: 'Services' },
-  { href: '/learning', label: 'Learning' },
-  { href: '/partners', label: 'Partners' },
-  { href: '/contact', label: 'Contact' }
-]
+export const headerNavigation: HeaderNavigationQueryResult = {
+  _createdAt: '2024-03-05T19:53:39Z',
+  _rev: 'wud1i9YDLmNsV9RQhqkCNh',
+  _type: 'navigation',
+  _id: 'navigation',
+  rows: [
+    {
+      _type: 'navigationRow',
+      _key: 'a0862f5c3e81',
+      items: [
+        {
+          path: '/team',
+          _type: 'navigationItem',
+          label: 'Our Team',
+          _key: 'a0134e9db4be'
+        },
+        {
+          path: '/partners',
+          _type: 'navigationItem',
+          label: 'Partners',
+          _key: 'edef7324e11b'
+        }
+      ],
+      order: 1
+    },
+    {
+      _type: 'navigationRow',
+      _key: '166ab848cb24',
+      items: [
+        {
+          _type: 'navigationItem',
+          label: 'Services',
+          _key: '216e22c203a2',
+          path: '/services'
+        },
+        {
+          path: '/research',
+          _type: 'navigationItem',
+          label: 'Research',
+          _key: '2882ae3d1148'
+        }
+      ],
+      order: 2
+    },
+    {
+      order: 3,
+      _type: 'navigationRow',
+      _key: 'e1240dc28c7c',
+      items: [
+        {
+          path: '/learning',
+          _type: 'navigationItem',
+          label: 'Learning',
+          _key: 'd5dc08f76cd4'
+        },
+        {
+          _type: 'navigationItem',
+          label: 'Contact',
+          _key: 'd28c580f4a71',
+          path: '/contact'
+        }
+      ]
+    }
+  ],
+  _updatedAt: '2024-03-21T07:19:45Z'
+}
 
 export const footerData: FooterData = [
   [

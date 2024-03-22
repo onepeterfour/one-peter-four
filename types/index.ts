@@ -2,8 +2,6 @@ import { type ImageProps } from 'next/image'
 
 type SiteLink = { href: string; label: string }
 
-export type NavData = SiteLink[]
-
 export type FooterData = Array<SiteLink[]>
 
 type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }

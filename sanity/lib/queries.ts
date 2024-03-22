@@ -12,4 +12,3 @@ export const SERVICESPAGE_QUERY = groq`*[_type == "servicesPage"][0]`
 export const LEARNINGPAGE_QUERY = groq`*[_type == "learningPage"][0]`
 export const PARTNERSPAGE_QUERY = groq`*[_type == "partnersPage"][0]`
 export const CONTACTPAGE_QUERY = groq`*[_type == "contactPage"][0]`
-export const HEADER_NAVIGATION_QUERY = groq`*[_type == "navigation"][0]`

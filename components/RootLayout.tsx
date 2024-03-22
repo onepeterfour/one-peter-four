@@ -8,7 +8,6 @@ import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
 import { MenuIcon } from '@/components/icons/MenuIcon'
 import { XIcon } from '@/components/icons/XIcon'
-import { HeaderNavigationQueryResult } from '@/types/sanity/queries'
 import { MotionConfig, motion, useReducedMotion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import React, {
@@ -19,13 +18,9 @@ import React, {
   useState
 } from 'react'
 
-type RootLayoutInnerProps = PropsWithChildren<{
-  headerNavigation: HeaderNavigationQueryResult
-}>
-const RootLayoutInner = ({
-  children,
-  headerNavigation
-}: RootLayoutInnerProps) => {
+type RootLayoutInnerProps = PropsWithChildren<{}>
+
+const RootLayoutInner = ({ children }: RootLayoutInnerProps) => {
   let panelId = useId()
   let [expanded, setExpanded] = useState(false)
   let openRef = useRef<React.ElementRef<'button'>>(null)
@@ -98,7 +93,7 @@ const RootLayoutInner = ({
                 }}
               />
             </div>
-            <Navigation headerNavigation={headerNavigation} />
+            <Navigation />
             <div className='relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800'>
               <Container>
                 <div className='grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16'>
@@ -141,15 +136,10 @@ const RootLayoutInner = ({
   )
 }
 
-type RootLayoutProps = PropsWithChildren<{
-  headerNavigation: HeaderNavigationQueryResult
-}>
-export function RootLayout({ children, headerNavigation }: RootLayoutProps) {
+type RootLayoutProps = PropsWithChildren<{}>
+
+export function RootLayout({ children }: RootLayoutProps) {
   let pathname = usePathname()
 
-  return (
-    <RootLayoutInner headerNavigation={headerNavigation} key={pathname}>
-      {children}
-    </RootLayoutInner>
-  )
+  return <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
 }
