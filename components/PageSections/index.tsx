@@ -38,8 +38,8 @@ type PageSectionsProps = {
 export const PageSections = ({ pageSections }: PageSectionsProps) => {
   return (
     <>
-      {pageSections?.map((section) => {
-        if (!section?.isShown) {
+      {pageSections?.map(({ isShown, ...section }) => {
+        if (!isShown) {
           return null
         }
         const SectionComponent = Sections[section?._type] || null

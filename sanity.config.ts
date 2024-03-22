@@ -5,7 +5,6 @@
 import { locate } from '@/sanity/presentation/locate'
 import {
   BookIcon,
-  CogIcon,
   DocumentsIcon,
   EnvelopeIcon,
   HomeIcon,
@@ -100,17 +99,9 @@ const deskToolOptions: DeskToolOptions = {
               ])
           ),
         S.divider(),
-        S.listItem()
-          .title('Site Settings')
-          .icon(CogIcon)
-          .child(
-            S.document().schemaType('siteSettings').documentId('siteSettings')
-          ),
         ...S.documentTypeListItems().filter(
           (listItem) =>
             ![
-              'siteSettings',
-              'navigation',
               'homePage',
               'teamPage',
               'researchPage',

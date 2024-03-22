@@ -24,7 +24,6 @@ export function Culture({
         <Container className='mt-16'>
           <GridList>
             {cultureList.map((item) => {
-              console.log(item)
               return (
                 <GridListItem
                   key={item?._key}
