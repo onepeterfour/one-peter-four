@@ -1,4 +1,3 @@
-import navigation from './navigation'
 import pageSections from './pageSections'
 
 import { defineField, defineType } from 'sanity'
@@ -29,6 +28,6 @@ const metaDataType = defineType({
   ]
 })
 
-const objects = [isShown, navigation, metaDataType, ...pageSections]
+const objects = [isShown, metaDataType, ...pageSections]
 
 export default objects

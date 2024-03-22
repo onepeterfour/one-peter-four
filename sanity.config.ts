@@ -101,15 +101,6 @@ const deskToolOptions: DeskToolOptions = {
           ),
         S.divider(),
         S.listItem()
-          .title('Navigation')
-          .icon(CogIcon)
-          .child(
-            S.document()
-              .schemaType('navigation')
-              .documentId('navigation')
-              .title('Navigation')
-          ),
-        S.listItem()
           .title('Site Settings')
           .icon(CogIcon)
           .child(
