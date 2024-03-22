@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 export default async function TeamPage() {
   const teamPage = await client.fetch<TeamPageQueryResult>(TEAMPAGE_QUERY)
-  // console.log({ pageSections: teamPage?.pageSections })
+  console.log({ pageSections: teamPage?.pageSections })
 
   return (
     <>

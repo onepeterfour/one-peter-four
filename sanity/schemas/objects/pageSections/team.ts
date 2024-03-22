@@ -27,36 +27,16 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'teamMembers',
+      name: 'teamMembersList',
       title: 'Team Members',
       type: 'array',
-      validation: (Rule) => Rule.required(),
       of: [
-        {
-          type: 'object',
+        defineField({
           name: 'teamMember',
           title: 'Team Member',
-          fields: [
-            defineField({
-              name: 'name',
-              title: 'Name',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'role',
-              title: 'Role',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'image',
-              title: 'Image',
-              type: 'image',
-              validation: (Rule) => Rule.required()
-            })
-          ]
-        }
+          type: 'reference',
+          to: [{ type: 'teamMemberDocument' }]
+        })
       ]
     })
   ]

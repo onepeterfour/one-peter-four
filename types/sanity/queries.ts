@@ -139,12 +139,15 @@ export type SanityTeamQueryResult = {
   _key: string
   isShown: boolean
   title: string
-  teamMembers: Array<{
-    _type: 'teamMember'
-    _key: string
+  teamMembersList: Array<{
+    _type: 'teamMemberDocument'
+    _id: string
     name: string
     role: string
     image: Image
+    bio: string
+    email?: string
+    linkedIn?: string
   }>
 }
 

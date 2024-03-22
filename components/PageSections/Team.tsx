@@ -6,7 +6,7 @@ import { SanityTeamQueryResult } from '@/types/sanity/queries'
 import Image from 'next/image'
 
 type TeamProps = SanityTeamQueryResult & {}
-export const Team = ({ teamMembers, title, _key }: TeamProps) => {
+export const Team = ({ title, _key, teamMembersList }: TeamProps) => {
   return (
     <Container className='mt-24 sm:mt-32 lg:mt-40'>
       <div className='space-y-24'>
@@ -23,10 +23,10 @@ export const Team = ({ teamMembers, title, _key }: TeamProps) => {
                 role='list'
                 className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8'
               >
-                {teamMembers.length > 0 &&
-                  teamMembers.map((teamMember) => {
+                {teamMembersList.length > 0 &&
+                  teamMembersList.map((teamMember) => {
                     return (
-                      <li key={teamMember?._key}>
+                      <li key={teamMember?._id}>
                         <FadeIn>
                           <div className='group relative overflow-hidden rounded-3xl bg-neutral-100'>
                             <Image

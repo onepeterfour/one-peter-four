@@ -8,22 +8,26 @@ const teamMember = defineType({
     defineField({
       name: 'name',
       title: 'Name',
-      type: 'string'
+      type: 'string',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'role',
       title: 'Role',
-      type: 'string'
+      type: 'string',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image'
+      type: 'image',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'bio',
       title: 'Bio',
-      type: 'text'
+      type: 'text',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'email',
