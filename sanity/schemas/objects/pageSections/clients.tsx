@@ -8,21 +8,24 @@ export default defineType({
   icon: BlockElementIcon,
   preview: {
     select: {
-      subtitle: 'title'
+      subtitle: 'title',
+      isEnabled: 'isEnabled'
     },
-    prepare({ subtitle }) {
+    prepare({ subtitle, isEnabled }) {
       return {
         title: 'Clients',
         subtitle,
-        media: BlockElementIcon
+        media: (
+          <span style={{ fontSize: '1rem' }}>{isEnabled ? '🟢' : '🔴'}</span>
+        )
       }
     }
   },
   fields: [
     defineField({
-      name: 'isShown',
-      title: 'isShown',
-      type: 'isShown'
+      name: 'isEnabled',
+      type: 'enabled',
+      initialValue: false
     }),
     defineField({
       name: 'title',

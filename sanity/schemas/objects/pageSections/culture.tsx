@@ -8,21 +8,23 @@ const culture = defineType({
   icon: BlockElementIcon,
   preview: {
     select: {
-      subtitle: 'eyebrow'
+      subtitle: 'eyebrow',
+      isEnabled: 'isEnabled'
     },
-    prepare({ subtitle }) {
+    prepare({ subtitle, isEnabled }) {
       return {
         title: 'Culture',
         subtitle,
-        media: BlockElementIcon
+        media: (
+          <span style={{ fontSize: '1rem' }}>{isEnabled ? '🟢' : '🔴'}</span>
+        )
       }
     }
   },
   fields: [
     defineField({
-      name: 'isShown',
-      title: 'isShown',
-      type: 'isShown',
+      name: 'isEnabled',
+      type: 'enabled',
       initialValue: false
     }),
     defineField({

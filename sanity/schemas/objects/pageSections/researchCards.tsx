@@ -7,18 +7,22 @@ export default defineType({
   title: 'Research Cards',
   icon: BlockElementIcon,
   preview: {
-    prepare() {
+    select: {
+      isEnabled: 'isEnabled'
+    },
+    prepare({ isEnabled }) {
       return {
         title: 'Research Cards',
-        media: BlockElementIcon
+        media: (
+          <span style={{ fontSize: '1rem' }}>{isEnabled ? '🟢' : '🔴'}</span>
+        )
       }
     }
   },
   fields: [
     defineField({
-      name: 'isShown',
-      title: 'isShown',
-      type: 'isShown',
+      name: 'isEnabled',
+      type: 'enabled',
       initialValue: false
     }),
     defineField({

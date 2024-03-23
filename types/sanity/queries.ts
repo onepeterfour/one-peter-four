@@ -8,7 +8,7 @@ export type MetaDataQueryResult = {
 
 type BasePageSection<T> = {
   _key: string
-  isShown: boolean
+  isEnabled: boolean
 } & T
 
 export type SanityHeroWithImageQueryResult = BasePageSection<{
@@ -91,14 +91,12 @@ export type SanityResearchCardsQueryResult = BasePageSection<{
   }>
 }>
 
-export type SanityTestimonialQueryResult = {
+export type SanityTestimonialQueryResult = BasePageSection<{
   _type: 'sanityPageSectionTestimonial'
-  _key: string
-  isShown: boolean
   client: string
   quote: string
   logo: Image
-}
+}>
 
 export type SanityValuesQueryResult = BasePageSection<{
   _type: 'sanityPageSectionValues'
@@ -135,13 +133,11 @@ export type TeamMember = {
   linkedIn?: string
 }
 
-export type SanityTeamQueryResult = {
+export type SanityTeamQueryResult = BasePageSection<{
   _type: 'sanityPageSectionTeam'
-  _key: string
-  isShown: boolean
   title: string
   teamMembersList: TeamMember[]
-}
+}>
 
 export type PageSectionQueryResult =
   | SanityHeroWithImageQueryResult

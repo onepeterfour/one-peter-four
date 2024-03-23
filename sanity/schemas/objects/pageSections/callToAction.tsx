@@ -5,11 +5,25 @@ const callToAction = defineType({
   name: 'sanityPageSectionCallToAction',
   type: 'object',
   title: 'Call to Action',
+  preview: {
+    select: {
+      title: 'title',
+      isEnabled: 'isEnabled'
+    },
+    prepare({ title, isEnabled }) {
+      return {
+        title: 'Call to Action',
+        subtitle: title || 'untitled',
+        media: (
+          <span style={{ fontSize: '1rem' }}>{isEnabled ? '🟢' : '🔴'}</span>
+        )
+      }
+    }
+  },
   fields: [
     defineField({
-      name: 'isShown',
-      title: 'isShown',
-      type: 'isShown',
+      name: 'isEnabled',
+      type: 'enabled',
       initialValue: false
     }),
     defineField({
@@ -21,19 +35,7 @@ const callToAction = defineType({
       type: 'url'
     })
   ],
-  icon: BlockElementIcon,
-  preview: {
-    select: {
-      title: 'title'
-    },
-    prepare({ title }) {
-      return {
-        title: 'Call to Action',
-        subtitle: title || 'untitled',
-        media: BlockElementIcon
-      }
-    }
-  }
+  icon: BlockElementIcon
 })
 
 export default callToAction

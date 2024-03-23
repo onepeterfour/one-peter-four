@@ -2,9 +2,8 @@ import pageSections from './pageSections'
 
 import { defineField, defineType } from 'sanity'
 
-const isShown = defineType({
-  name: 'isShown',
-  title: 'isShown',
+const enabled = defineType({
+  name: 'enabled',
   type: 'boolean',
   description: 'If checked, this section will be shown on the page'
 })
@@ -28,6 +27,6 @@ const metaDataType = defineType({
   ]
 })
 
-const objects = [isShown, metaDataType, ...pageSections]
+const objects = [enabled, metaDataType, ...pageSections]
 
 export default objects
