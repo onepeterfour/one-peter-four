@@ -153,10 +153,20 @@ export type PageSectionQueryResult =
   | SanityContactQueryResult
   | SanityTeamQueryResult
 
-export type BasePageQueryResult = {
+type MandatoryPageComponents = {
   metaData: MetaDataQueryResult
-  pageSections?: PageSectionQueryResult[]
+  pageSections: PageSectionQueryResult[]
 }
+
+/**
+ * This is the type which describes the result of sanity api queries for each main page.
+ * It takes an optional generic for pages that contain additional data to what's described
+ * in MandatoryPageComponents.
+ */
+export type PageQuery<T extends Record<string, any> = {}> = Omit<
+  SanityDocument<MandatoryPageComponents & T>,
+  '_originalId'
+>
 
 type NavigationItem = {
   _key: string
@@ -171,13 +181,6 @@ type NavigationRow = {
   items: NavigationItem[]
 }
 
-export type HomePageQueryResult = SanityDocument<{}> & BasePageQueryResult
-export type TeamPageQueryResult = SanityDocument<{}> & BasePageQueryResult
-export type ContactPageQueryResult = SanityDocument<{}> & BasePageQueryResult
-export type LearningPageQueryResult = SanityDocument<{}> & BasePageQueryResult
-export type PartnersPageQueryResult = SanityDocument<{}> & BasePageQueryResult
-export type ResearchPageQueryResult = SanityDocument<{}> & BasePageQueryResult
-export type ServicesPageQueryResult = SanityDocument<{}> & BasePageQueryResult
 export type HeaderNavigationQueryResult = SanityDocument<{
   _createdAt: string
   _id: 'navigation'

@@ -1,7 +1,4 @@
-import {
-  PageSectionQueryResult,
-  type BasePageQueryResult
-} from '@/types/sanity/queries'
+import { PageQuery, PageSectionQueryResult } from '@/types/sanity/queries'
 import { ComponentType } from 'react'
 import { CallToAction } from './CallToAction'
 import { Clients } from './Clients'
@@ -32,7 +29,7 @@ const Sections: Record<PageSectionQueryResult['_type'], ComponentType<any>> = {
 }
 
 type PageSectionsProps = {
-  pageSections?: BasePageQueryResult['pageSections']
+  pageSections?: PageQuery['pageSections']
 }
 
 export const PageSections = ({ pageSections }: PageSectionsProps) => {

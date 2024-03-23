@@ -1,11 +1,9 @@
 import { PageSections } from '@/components/PageSections'
-import { client } from '@/sanity/lib/client'
-import { TEAMPAGE_QUERY } from '@/sanity/lib/queries'
-import { TeamPageQueryResult } from '@/types/sanity/queries'
+import { fetchTeamPage } from '@/sanity/lib/queries'
 import { Metadata } from 'next'
 
 // sanity page query
-const teamPage = await client.fetch<TeamPageQueryResult>(TEAMPAGE_QUERY)
+const teamPage = await fetchTeamPage()
 
 // nextJS api
 export const metadata: Metadata = {
@@ -14,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 export default async function TeamPage() {
-  const teamPage = await client.fetch<TeamPageQueryResult>(TEAMPAGE_QUERY)
+  const teamPage = await fetchTeamPage()
   // console.log({ pageSections: teamPage?.pageSections })
 
   return (

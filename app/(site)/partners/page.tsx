@@ -4,16 +4,13 @@ import { Partners } from '@/components/pageSpecific/partners/Partners'
 import { Testimonial } from '@/components/pageSpecific/partners/Testimonial'
 import { partners } from '@/mockedCMSData'
 import logoMailSmirk from '@/public/images/clients/mail-smirk/logo-dark.svg'
-import { client } from '@/sanity/lib/client'
-import { PARTNERSPAGE_QUERY } from '@/sanity/lib/queries'
-import type { PartnersPageQueryResult } from '@/types/sanity/queries'
+import { fetchPartnersPage } from '@/sanity/lib/queries'
 import { Metadata } from 'next'
 
 // this would be the "our work page in the studio template"
 
 // sanity query
-const partnersPage =
-  await client.fetch<PartnersPageQueryResult>(PARTNERSPAGE_QUERY)
+const partnersPage = await fetchPartnersPage()
 
 // nextJS api
 export const metadata: Metadata = {
@@ -22,8 +19,7 @@ export const metadata: Metadata = {
 }
 
 export default async function PartnersPage() {
-  const partnersPage =
-    await client.fetch<PartnersPageQueryResult>(PARTNERSPAGE_QUERY)
+  const partnersPage = await fetchPartnersPage()
   console.log({ partnersPage })
 
   return (

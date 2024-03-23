@@ -4,14 +4,11 @@ import { Build } from '@/components/pageSpecific/services/Build'
 import { Deliver } from '@/components/pageSpecific/services/Deliver'
 import { Discover } from '@/components/pageSpecific/services/Discover'
 import { Values } from '@/components/pageSpecific/services/Values'
-import { client } from '@/sanity/lib/client'
-import { SERVICESPAGE_QUERY } from '@/sanity/lib/queries'
-import type { ServicesPageQueryResult } from '@/types/sanity/queries'
+import { fetchServicesPage } from '@/sanity/lib/queries'
 import { Metadata } from 'next'
 
 // this would be the our process page in the template
-const servicesPage =
-  await client.fetch<ServicesPageQueryResult>(SERVICESPAGE_QUERY)
+const servicesPage = await fetchServicesPage()
 
 export const metadata: Metadata = {
   title: `1P4: ${servicesPage?.metaData?.title}`,
@@ -19,8 +16,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Services() {
-  const servicesPage =
-    await client.fetch<ServicesPageQueryResult>(SERVICESPAGE_QUERY)
+  const servicesPage = await fetchServicesPage()
   console.log({ servicesPage })
 
   return (

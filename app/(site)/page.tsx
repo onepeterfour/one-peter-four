@@ -1,10 +1,8 @@
 import { PageSections } from '@/components/PageSections'
-import { client } from '@/sanity/lib/client'
-import { HOMEPAGE_QUERY } from '@/sanity/lib/queries'
-import type { HomePageQueryResult } from '@/types/sanity/queries'
+import { fetchHomePage } from '@/sanity/lib/queries'
 import { Metadata } from 'next'
 
-const homepage = await client.fetch<HomePageQueryResult>(HOMEPAGE_QUERY)
+const homepage = await fetchHomePage()
 
 export const metadata: Metadata = {
   title: `1P4: ${homepage?.metaData?.title}`,
@@ -12,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const homePage = await client.fetch<HomePageQueryResult>(HOMEPAGE_QUERY)
+  const homePage = await fetchHomePage()
 
   return (
     <>

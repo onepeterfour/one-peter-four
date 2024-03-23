@@ -1,35 +1,74 @@
-import { TeamMember } from '@/types/sanity/queries'
+import { PageQuery, TeamMember } from '@/types/sanity/queries'
 import { groq } from 'next-sanity'
 import { client } from './client'
 
-export const POSTS_QUERY = groq`*[_type == "post" && defined(slug)]`
-export const POST_QUERY = groq`*[_type == "post" && slug.current == $slug][0]`
-export const HOMEPAGE_QUERY = groq`*[_type == "homePage"][0]`
-export const TEAMPAGE_QUERY = groq`*[_type == "teamPage"]{
-  metaData,
-  pageSections[]{
-    ...,
-    _type == "sanityPageSectionTeam" => {
-    ...,
-    teamMembersList[] -> {
-        _type,
-        _id,
-        name,
-        slug,
-        role,
-        image,
-        bio,
-        email,
-        linkedIn
+/**
+ * Fetches data for the home page
+ */
+export const fetchHomePage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "homePage"][0]`)
+}
+
+/**
+ * Fetches data for the /contact page
+ */
+export const fetchContactPage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "contactPage"][0]`)
+}
+
+/**
+ * Fetches data for the /learning page
+ */
+export const fetchLearningPage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "learningPage"][0]`)
+}
+
+/**
+ * Fetches data for the /partners page
+ */
+export const fetchPartnersPage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "partnersPage"][0]`)
+}
+
+/**
+ * Fetches data for the /research page
+ */
+export const fetchResearchPage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "researchPage"][0]`)
+}
+
+/**
+ * Fetches data for the /services page
+ */
+export const fetchServicesPage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "servicesPage"][0]`)
+}
+
+/**
+ * Fetches data for the /team page
+ */
+export const fetchTeamPage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "teamPage"]{
+    metaData,
+    pageSections[]{
+      ...,
+      _type == "sanityPageSectionTeam" => {
+      ...,
+      teamMembersList[] -> {
+          _type,
+          _id,
+          name,
+          slug,
+          role,
+          image,
+          bio,
+          email,
+          linkedIn
+        }
       }
     }
-  }
-}[0]`
-export const RESEARCHPAGE_QUERY = groq`*[_type == "researchPage"][0]`
-export const SERVICESPAGE_QUERY = groq`*[_type == "servicesPage"][0]`
-export const LEARNINGPAGE_QUERY = groq`*[_type == "learningPage"][0]`
-export const PARTNERSPAGE_QUERY = groq`*[_type == "partnersPage"][0]`
-export const CONTACTPAGE_QUERY = groq`*[_type == "contactPage"][0]`
+  }[0]`)
+}
 
 /**
  * Fetches all team members for the /team/[slug] page. This query
