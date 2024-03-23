@@ -6,10 +6,13 @@ export type MetaDataQueryResult = {
   description: string
 }
 
-export type SanityHeroWithImageQueryResult = {
-  _type: 'sanityPageSectionHeroWithImage'
+type BasePageSection<T> = {
   _key: string
   isShown: boolean
+} & T
+
+export type SanityHeroWithImageQueryResult = BasePageSection<{
+  _type: 'sanityPageSectionHeroWithImage'
   heading: string
   tagline: string
   imageObject: {
@@ -17,42 +20,34 @@ export type SanityHeroWithImageQueryResult = {
     alt: string
     media: Image
   }
-}
+}>
 
-export type SanityHeroWithoutImageQueryResult = {
+export type SanityHeroWithoutImageQueryResult = BasePageSection<{
   _type: 'sanityPageSectionHeroWithoutImage'
-  _key: string
-  isShown: boolean
   heading?: string
   subheading?: string
-}
+}>
 
-export type SanityPageIntroQueryResult = {
+export type SanityPageIntroQueryResult = BasePageSection<{
   _type: 'sanityPageSectionPageIntro'
-  _key: string
-  isShown: boolean
   eyebrow?: string
   subtitle?: string
   title?: string
   body?: TypedObject[]
-}
+}>
 
-export type SanityStatsListQueryResult = {
+export type SanityStatsListQueryResult = BasePageSection<{
   _type: 'sanityPageSectionStatsList'
-  _key: string
-  isShown: boolean
   stats?: Array<{
     _type: string
     _key: string
     title: string
     value: string
   }>
-}
+}>
 
-export type SanityCultureQueryResult = {
+export type SanityCultureQueryResult = BasePageSection<{
   _type: 'sanityPageSectionCulture'
-  _key: string
-  isShown: boolean
   eyebrow?: string
   title?: string
   subtitle?: string
@@ -62,12 +57,10 @@ export type SanityCultureQueryResult = {
     _key: string
     _type: string
   }>
-}
+}>
 
-export type SanityClientsQueryResult = {
+export type SanityClientsQueryResult = BasePageSection<{
   _type: 'sanityPageSectionClients'
-  _key: string
-  isShown: boolean
   title: string
   clientsList?: Array<{
     name: string
@@ -76,19 +69,15 @@ export type SanityClientsQueryResult = {
     altText: string
     logo: Image
   }>
-}
+}>
 
-export type SanityCallToActionQueryResult = {
+export type SanityCallToActionQueryResult = BasePageSection<{
   _type: 'sanityPageSectionCallToAction'
-  _key: string
-  isShown: boolean
   title: string
-  // link: string
-}
-export type SanityResearchCardsQueryResult = {
+}>
+
+export type SanityResearchCardsQueryResult = BasePageSection<{
   _type: 'sanityPageSectionResearchCards'
-  _key: string
-  isShown: boolean
   title: string
   subtitle: string
   researchCards: Array<{
@@ -100,7 +89,8 @@ export type SanityResearchCardsQueryResult = {
     description: string
     href: string
   }>
-}
+}>
+
 export type SanityTestimonialQueryResult = {
   _type: 'sanityPageSectionTestimonial'
   _key: string
@@ -110,10 +100,8 @@ export type SanityTestimonialQueryResult = {
   logo: Image
 }
 
-export type SanityValuesQueryResult = {
+export type SanityValuesQueryResult = BasePageSection<{
   _type: 'sanityPageSectionValues'
-  _key: string
-  isShown: boolean
   eyebrow: string
   title: string
   subtitle: string
@@ -124,14 +112,27 @@ export type SanityValuesQueryResult = {
     title: string
     description: string
   }>
-}
+}>
 
-export type SanityContactQueryResult = {
+export type SanityContactQueryResult = BasePageSection<{
   _type: 'sanityPageSectionContact'
-  _key: string
-  isShown: boolean
   title: string
   buttonLabel: string
+}>
+
+export type TeamMember = {
+  _type: 'teamMemberDocument'
+  _id: string
+  _rev: string
+  _createdAt: string
+  _updatedAt: string
+  name: string
+  slug: { current: string; _type: 'slug' }
+  role: string
+  image: Image
+  bio: string
+  email?: string
+  linkedIn?: string
 }
 
 export type SanityTeamQueryResult = {
@@ -139,16 +140,7 @@ export type SanityTeamQueryResult = {
   _key: string
   isShown: boolean
   title: string
-  teamMembersList: Array<{
-    _type: 'teamMemberDocument'
-    _id: string
-    name: string
-    role: string
-    image: Image
-    bio: string
-    email?: string
-    linkedIn?: string
-  }>
+  teamMembersList: TeamMember[]
 }
 
 export type PageSectionQueryResult =

@@ -12,6 +12,16 @@ const teamMember = defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'name'
+      },
+      description: 'This will be used to generate the URL for this team member',
+      validation: (Rule) => Rule.required()
+    }),
+    defineField({
       name: 'role',
       title: 'Role',
       type: 'string',
