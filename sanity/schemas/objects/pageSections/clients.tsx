@@ -39,10 +39,16 @@ export default defineType({
       validation: (Rule) => Rule.required(),
       type: 'array',
       of: [
-        {
+        defineField({
           type: 'object',
           name: 'client',
           title: 'Client',
+          preview: {
+            select: {
+              media: 'logo',
+              title: 'name'
+            }
+          },
           fields: [
             defineField({
               name: 'name',
@@ -51,19 +57,12 @@ export default defineType({
               validation: (Rule) => Rule.required()
             }),
             defineField({
-              name: 'altText',
-              title: 'Alt Text',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
               name: 'logo',
               title: 'Logo',
-              type: 'image',
-              validation: (Rule) => Rule.required()
+              type: 'imageWithMetadata'
             })
           ]
-        }
+        })
       ]
     })
   ]

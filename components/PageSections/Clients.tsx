@@ -28,7 +28,7 @@ export const Clients = ({ clientsList, title }: ClientsProps) => {
                       <Image
                         className='rounded-lg bg-white'
                         src={urlForImage(client?.logo)}
-                        alt={client?.altText}
+                        alt={client?.logo?.alt}
                         unoptimized
                         width={50}
                         height={50}

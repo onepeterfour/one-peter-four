@@ -48,12 +48,17 @@ export default defineType({
           name: 'researchCardObject',
           type: 'object',
           title: 'Research Card',
+          preview: {
+            select: {
+              media: 'logo',
+              title: 'title'
+            }
+          },
           fields: [
             defineField({
               name: 'logo',
               title: 'Logo',
-              type: 'image',
-              validation: (Rule) => Rule.required()
+              type: 'imageWithMetadata'
             }),
             defineField({
               name: 'date',

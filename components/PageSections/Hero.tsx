@@ -4,7 +4,7 @@ import Image from 'next/image'
 
 type HeroProps = SanityHeroWithImageQueryResult & {}
 
-export const Hero = ({ heading, imageObject, tagline }: HeroProps) => {
+export const Hero = ({ heading, image, tagline }: HeroProps) => {
   return (
     <div className='mt-24 py-20 sm:mt-32 sm:py-32 lg:mt-56'>
       <div className='container'>
@@ -16,8 +16,8 @@ export const Hero = ({ heading, imageObject, tagline }: HeroProps) => {
           <div className='w-1/2 overflow-hidden rounded-lg bg-white'>
             <Image
               className='rounded-lg bg-white'
-              src={urlForImage(imageObject.media)}
-              alt={imageObject.alt}
+              src={urlForImage(image)}
+              alt={image?.alt}
               unoptimized
               width={50}
               height={50}

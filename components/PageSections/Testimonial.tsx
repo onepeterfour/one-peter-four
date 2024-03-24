@@ -6,7 +6,7 @@ import { SanityTestimonialQueryResult } from '@/types/sanity/queries'
 import Image from 'next/image'
 
 type TestimonialProps = SanityTestimonialQueryResult & {}
-export function Testimonial({ quote, logo, client }: TestimonialProps) {
+export function Testimonial({ quote, logo }: TestimonialProps) {
   return (
     <div className='relative isolate mt-24 bg-neutral-50 py-16 sm:mt-32 sm:py-28 md:py-32 lg:mt-40'>
       <GridPattern
@@ -24,7 +24,7 @@ export function Testimonial({ quote, logo, client }: TestimonialProps) {
             <figcaption className='mt-10'>
               <Image
                 src={urlForImage(logo)}
-                alt={`${client} logo`}
+                alt={logo?.alt}
                 unoptimized
                 width={50}
                 height={50}

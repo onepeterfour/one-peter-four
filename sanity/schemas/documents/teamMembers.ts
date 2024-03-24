@@ -4,6 +4,12 @@ const teamMember = defineType({
   name: 'teamMemberDocument',
   title: 'Team Member',
   type: 'document',
+  preview: {
+    select: {
+      media: 'image',
+      title: 'name'
+    }
+  },
   fields: [
     defineField({
       name: 'name',
@@ -30,7 +36,7 @@ const teamMember = defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'image',
+      type: 'imageWithMetadata',
       validation: (Rule) => Rule.required()
     }),
     defineField({

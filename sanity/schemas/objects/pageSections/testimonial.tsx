@@ -42,7 +42,7 @@ export default defineType({
     defineField({
       name: 'logo',
       title: 'Logo',
-      type: 'image',
+      type: 'imageWithMetadata',
       validation: (Rule) => Rule.required()
     })
   ]

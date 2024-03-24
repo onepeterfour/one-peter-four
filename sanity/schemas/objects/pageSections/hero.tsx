@@ -38,24 +38,8 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'imageObject',
-      type: 'object',
-      title: 'Image',
-      icon: BlockElementIcon,
-      fields: [
-        defineField({
-          name: 'media',
-          type: 'image',
-          options: { hotspot: true },
-          validation: (Rule) => Rule.required()
-        }),
-        defineField({
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          validation: (Rule) => Rule.required()
-        })
-      ]
+      name: 'image',
+      type: 'imageWithMetadata'
     })
   ]
 })

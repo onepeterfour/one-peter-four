@@ -33,6 +33,7 @@ export const Values = ({
                 className='justify-center lg:justify-end'
                 width={50}
                 height={50}
+                alt={image?.alt}
               />
             </FadeIn>
           </div>

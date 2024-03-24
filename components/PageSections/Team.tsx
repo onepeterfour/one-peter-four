@@ -32,7 +32,7 @@ export const Team = ({ title, _key, teamMembersList }: TeamProps) => {
                           <FadeIn>
                             <div className='group relative overflow-hidden rounded-3xl bg-neutral-100'>
                               <Image
-                                alt={`${teamMember.name} image`}
+                                alt={teamMember?.image?.alt}
                                 width={200}
                                 height={200}
                                 src={urlForImage(teamMember?.image)}

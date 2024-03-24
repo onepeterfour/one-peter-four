@@ -27,7 +27,7 @@ export const ResearchCards = ({
                     <span className='absolute inset-0 rounded-3xl' />
                     <Image
                       src={urlForImage(card?.logo)}
-                      alt={`image alt`}
+                      alt={card?.logo?.alt}
                       className='h-16 w-16'
                       width={50}
                       height={50}

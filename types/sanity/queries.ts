@@ -6,6 +6,8 @@ export type MetaDataQueryResult = {
   description: string
 }
 
+type ImageWithMetadata = Image & { alt: string }
+
 type BasePageSection<T> = {
   _key: string
   isEnabled: boolean
@@ -15,11 +17,7 @@ export type SanityHeroWithImageQueryResult = BasePageSection<{
   _type: 'sanityPageSectionHeroWithImage'
   heading: string
   tagline: string
-  imageObject: {
-    _type: 'imageObject'
-    alt: string
-    media: Image
-  }
+  image: ImageWithMetadata
 }>
 
 export type SanityHeroWithoutImageQueryResult = BasePageSection<{
@@ -67,7 +65,7 @@ export type SanityClientsQueryResult = BasePageSection<{
     _type: string
     _key: string
     altText: string
-    logo: Image
+    logo: ImageWithMetadata
   }>
 }>
 
@@ -83,7 +81,7 @@ export type SanityResearchCardsQueryResult = BasePageSection<{
   researchCards: Array<{
     _type: string
     _key: string
-    logo: Image
+    logo: ImageWithMetadata
     date: string
     title: string
     description: string
@@ -95,7 +93,7 @@ export type SanityTestimonialQueryResult = BasePageSection<{
   _type: 'sanityPageSectionTestimonial'
   client: string
   quote: string
-  logo: Image
+  logo: ImageWithMetadata
 }>
 
 export type SanityValuesQueryResult = BasePageSection<{
@@ -103,7 +101,7 @@ export type SanityValuesQueryResult = BasePageSection<{
   eyebrow: string
   title: string
   subtitle: string
-  image: Image
+  image: ImageWithMetadata
   valuesList: Array<{
     _type: 'value'
     _key: string
@@ -127,7 +125,7 @@ export type TeamMember = {
   name: string
   slug: { current: string; _type: 'slug' }
   role: string
-  image: Image
+  image: ImageWithMetadata
   bio: string
   email?: string
   linkedIn?: string
