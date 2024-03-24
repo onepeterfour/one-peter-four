@@ -12,7 +12,7 @@ const navigation = [
     links: [
       { title: 'Our Team', href: '/team' },
       { title: 'Services', href: '/services' },
-      { title: 'Learning', href: '/learning' },
+      { title: 'Policies', href: '/policies' },
       { title: 'Contact us', href: '/contact' }
     ]
   },
