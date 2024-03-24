@@ -1,4 +1,8 @@
-import { BlockElementIcon } from '@sanity/icons'
+import {
+  BlockElementIcon,
+  CheckmarkCircleIcon,
+  CloseCircleIcon
+} from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const statlist = defineType({
@@ -13,9 +17,7 @@ const statlist = defineType({
     prepare({ isEnabled }) {
       return {
         title: 'Stats List',
-        media: (
-          <span style={{ fontSize: '1rem' }}>{isEnabled ? '🟢' : '🔴'}</span>
-        )
+        media: isEnabled ? CheckmarkCircleIcon : CloseCircleIcon
       }
     }
   },

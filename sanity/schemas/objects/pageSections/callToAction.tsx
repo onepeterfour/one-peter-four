@@ -1,4 +1,8 @@
-import { BlockElementIcon } from '@sanity/icons'
+import {
+  BlockElementIcon,
+  CheckmarkCircleIcon,
+  CloseCircleIcon
+} from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const callToAction = defineType({
@@ -14,9 +18,7 @@ const callToAction = defineType({
       return {
         title: 'Call to Action',
         subtitle: title || 'untitled',
-        media: (
-          <span style={{ fontSize: '1rem' }}>{isEnabled ? '🟢' : '🔴'}</span>
-        )
+        media: isEnabled ? CheckmarkCircleIcon : CloseCircleIcon
       }
     }
   },

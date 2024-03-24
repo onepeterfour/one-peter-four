@@ -1,4 +1,8 @@
-import { BlockElementIcon } from '@sanity/icons'
+import {
+  BlockElementIcon,
+  CheckmarkCircleIcon,
+  CloseCircleIcon
+} from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
@@ -13,9 +17,7 @@ export default defineType({
     prepare({ isEnabled }) {
       return {
         title: 'Research Cards',
-        media: (
-          <span style={{ fontSize: '1rem' }}>{isEnabled ? '🟢' : '🔴'}</span>
-        )
+        media: isEnabled ? CheckmarkCircleIcon : CloseCircleIcon
       }
     }
   },
