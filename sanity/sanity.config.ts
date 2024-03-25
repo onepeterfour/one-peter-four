@@ -20,8 +20,8 @@ import { defineConfig } from 'sanity'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { DeskToolOptions, deskTool } from 'sanity/desk'
 import { presentationTool } from 'sanity/presentation'
-import { apiVersion, dataset, projectId } from './sanity/env'
-import { schema } from './sanity/schemas'
+import { apiVersion, dataset, projectId } from './env'
+import { schema } from './schemas'
 
 const deskToolOptions: DeskToolOptions = {
   structure: (S) =>
