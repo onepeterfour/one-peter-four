@@ -1,13 +1,6 @@
+import dataDocuments from './data'
 import pages from './pages'
-import researchArticleDocument from './researchArticleDocument'
-import teamMemberDocument from './teamMembers'
-import websitePolicyDocument from './websitePolicyDocument'
 
-const documents = [
-  ...pages,
-  teamMemberDocument,
-  researchArticleDocument,
-  websitePolicyDocument
-]
+const documents = [...pages, ...dataDocuments]
 
 export default documents
