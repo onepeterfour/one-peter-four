@@ -1,8 +1,5 @@
-import {
-  BlockElementIcon,
-  CheckmarkCircleIcon,
-  CloseCircleIcon
-} from '@sanity/icons'
+import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const heroWithoutImage = defineType({
@@ -19,9 +16,13 @@ const heroWithoutImage = defineType({
       return {
         title: 'Hero Without Image',
         subtitle,
-        media: isEnabled ? CheckmarkCircleIcon : CloseCircleIcon
+        media: BlockElementIcon,
+        isEnabled
       }
     }
+  },
+  components: {
+    preview: CustomListPreview
   },
   fields: [
     defineField({

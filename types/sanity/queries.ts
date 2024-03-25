@@ -137,6 +137,43 @@ export type SanityTeamQueryResult = BasePageSection<{
   teamMembersList: TeamMember[]
 }>
 
+type BaseDocument<T> = Pick<
+  SanityDocument,
+  '_createdAt' | '_id' | '_rev' | '_updatedAt'
+> &
+  T
+
+export type ResearchArticle = BaseDocument<{
+  _type: 'researchArticleDocument'
+  title: string
+  file: {
+    _type: 'file'
+    asset: {
+      _ref: string
+      _type: string
+    }
+    url: string
+  }
+}>
+
+export type FetchPoliciesPage = BaseDocument<{
+  _type: 'policiesPage'
+  metaData: MetaDataQueryResult
+  content: TypedObject[]
+  policiesList: Array<{
+    title: string
+    slug: { current: string; _type: 'slug' }
+    _id: string
+  }>
+}>
+
+export type WebsitePolicy = BaseDocument<{
+  _type: 'websitePolicyDocument'
+  title: 'string'
+  slug: { current: string; _type: 'slug' }
+  policy: TypedObject[]
+}>
+
 export type PageSectionQueryResult =
   | SanityHeroWithImageQueryResult
   | SanityHeroWithoutImageQueryResult

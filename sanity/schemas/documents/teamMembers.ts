@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 
-const teamMember = defineType({
+export default defineType({
   name: 'teamMemberDocument',
   title: 'Team Member',
   type: 'document',
@@ -58,5 +58,3 @@ const teamMember = defineType({
     })
   ]
 })
-
-export default teamMember

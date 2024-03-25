@@ -12,9 +12,13 @@ const navigation = [
     links: [
       { title: 'Our Team', href: '/team' },
       { title: 'Services', href: '/services' },
-      { title: 'Policies', href: '/policies' },
-      { title: 'Contact us', href: '/contact' }
+      { title: 'Case Studies', href: '/case-studies' },
+      { title: 'Research', href: '/research' }
     ]
+  },
+  {
+    title: 'Connect',
+    links: [{ title: 'Contact Us', href: '/contact' }, ...socialMediaProfiles]
   },
   {
     title: 'Partners',
@@ -33,15 +37,26 @@ const navigation = [
     ]
   },
   {
-    title: 'Connect',
-    links: socialMediaProfiles
+    title: 'Policies',
+    links: [
+      { title: 'Privacy Policy', href: '/policies/privacy' },
+      { title: 'Terms of Service', href: 'policies/terms' },
+      {
+        title: (
+          <>
+            See all <span aria-hidden='true'>&rarr;</span>
+          </>
+        ),
+        href: '/policies'
+      }
+    ]
   }
 ]
 
 function Navigation() {
   return (
     <nav>
-      <ul role='list' className='grid grid-cols-2 gap-8 sm:grid-cols-3'>
+      <ul role='list' className='grid grid-cols-2 gap-8 sm:grid-cols-4'>
         {navigation.map((section, sectionIndex) => (
           <li key={sectionIndex}>
             <div className='font-display text-sm font-semibold tracking-wider text-neutral-950'>

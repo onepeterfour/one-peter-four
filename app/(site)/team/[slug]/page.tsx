@@ -1,6 +1,6 @@
 import { Container } from '@/components/Container'
 import { urlForImage } from '@/sanity/lib/image'
-import { fetchTeamMember, fetchTeamMembers } from '@/sanity/lib/queries'
+import { fetchTeamMemberBySlug, fetchTeamMembers } from '@/sanity/lib/queries'
 import { QueryParams } from 'next-sanity'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -13,7 +13,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Page({ params }: { params: QueryParams }) {
-  const teamMember = await fetchTeamMember(params.slug)
+  const teamMember = await fetchTeamMemberBySlug(params.slug)
 
   if (!teamMember) {
     notFound()

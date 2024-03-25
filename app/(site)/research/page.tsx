@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default async function Research() {
   const researchPage = await fetchResearchPage()
-  console.log({ researchPage })
+  // console.log({ researchPage })
 
   return (
     <>

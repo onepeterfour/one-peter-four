@@ -10,7 +10,7 @@ import imageLeonardKrasner from '@/public/images/team/leonard-krasner.jpg'
 import imageLeslieAlexander from '@/public/images/team/leslie-alexander.jpg'
 import imageMichaelFoster from '@/public/images/team/michael-foster.jpg'
 import imageWhitneyFrancis from '@/public/images/team/whitney-francis.jpg'
-import { FooterData, Partner, WithHrefMetadata } from './types'
+import { Partner, WithHrefMetadata } from './types'
 import { HeaderNavigationQueryResult } from './types/sanity/queries'
 
 export const headerNavigation: HeaderNavigationQueryResult = {
@@ -79,19 +79,6 @@ export const headerNavigation: HeaderNavigationQueryResult = {
   ],
   _updatedAt: '2024-03-21T07:19:45Z'
 }
-
-export const footerData: FooterData = [
-  [
-    { href: '/team', label: 'Team' },
-    { href: '/research', label: 'Research' },
-    { href: '/services', label: 'Services' }
-  ],
-  [
-    { href: '/learning', label: 'Learning' },
-    { href: '/partners', label: 'Partners' },
-    { href: '/contact', label: 'Contact' }
-  ]
-]
 
 export const partners: Array<WithHrefMetadata<Partner>> = [
   {

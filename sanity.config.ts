@@ -4,13 +4,14 @@
 
 import { locate } from '@/sanity/presentation/locate'
 import {
+  ActivityIcon,
   BookIcon,
+  DocumentTextIcon,
   DocumentsIcon,
   EnvelopeIcon,
   HomeIcon,
   OkHandIcon,
   RocketIcon,
-  UnknownIcon,
   UsersIcon
 } from '@sanity/icons'
 import { visionTool } from '@sanity/vision'
@@ -53,7 +54,7 @@ const deskToolOptions: DeskToolOptions = {
                   ),
                 S.listItem()
                   .title('Research')
-                  .icon(UnknownIcon)
+                  .icon(ActivityIcon)
                   .child(
                     S.document()
                       .schemaType('researchPage')
@@ -95,6 +96,15 @@ const deskToolOptions: DeskToolOptions = {
                       .schemaType('contactPage')
                       .documentId('contactPage')
                       .title('Contact')
+                  ),
+                S.listItem()
+                  .title('Policies')
+                  .icon(DocumentTextIcon)
+                  .child(
+                    S.document()
+                      .schemaType('policiesPage')
+                      .documentId('policiesPage')
+                      .title('Policies')
                   )
               ])
           ),
@@ -102,7 +112,25 @@ const deskToolOptions: DeskToolOptions = {
         S.listItem()
           .title('Team Members')
           .icon(UsersIcon)
-          .child(S.documentTypeList('teamMemberDocument').title('Team Members'))
+          .child(
+            S.documentTypeList('teamMemberDocument').title('Team Members')
+          ),
+        S.listItem()
+          .title('Research Articles')
+          .icon(ActivityIcon)
+          .child(
+            S.documentTypeList('researchArticleDocument').title(
+              'Research Articles'
+            )
+          ),
+        S.listItem()
+          .title('Website Policies')
+          .icon(DocumentTextIcon)
+          .child(
+            S.documentTypeList('websitePolicyDocument').title(
+              'Website Policies'
+            )
+          )
       ])
 }
 
