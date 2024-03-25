@@ -1,6 +1,7 @@
 import { PageQuery, PageSectionQueryResult } from '@/types/sanity/queries'
 import { ComponentType } from 'react'
 import { CallToAction } from './CallToAction'
+import { CaseStudies } from './CaseStudies'
 import { Clients } from './Clients'
 import { Contact } from './Contact'
 import { Culture } from './Culture'
@@ -25,7 +26,8 @@ const Sections: Record<PageSectionQueryResult['_type'], ComponentType<any>> = {
   sanityPageSectionTestimonial: Testimonial,
   sanityPageSectionValues: Values,
   sanityPageSectionContact: Contact,
-  sanityPageSectionTeam: Team
+  sanityPageSectionTeam: Team,
+  sanityPageSectionCaseStudies: CaseStudies
 }
 
 type PageSectionsProps = {

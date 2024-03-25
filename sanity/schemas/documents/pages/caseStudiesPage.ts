@@ -1,8 +1,8 @@
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-const partnersPage = defineType({
-  name: 'partnersPage',
-  title: 'Partners Page',
+export default defineType({
+  name: 'caseStudiesPage',
+  title: 'Case Studies Page',
   type: 'document',
   fields: [
     defineField({
@@ -11,6 +11,10 @@ const partnersPage = defineType({
       type: 'array',
       description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
       of: [
+        defineArrayMember({
+          name: 'sanityPageSectionCaseStudies',
+          type: 'sanityPageSectionCaseStudies'
+        }),
         defineArrayMember({
           name: 'sanityPageSectionContact',
           type: 'sanityPageSectionContact'
@@ -32,5 +36,3 @@ const partnersPage = defineType({
     })
   ]
 })
-
-export default partnersPage

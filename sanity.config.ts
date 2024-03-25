@@ -10,6 +10,7 @@ import {
   DocumentsIcon,
   EnvelopeIcon,
   HomeIcon,
+  IceCreamIcon,
   OkHandIcon,
   RocketIcon,
   UsersIcon
@@ -53,15 +54,6 @@ const deskToolOptions: DeskToolOptions = {
                       .title('Team')
                   ),
                 S.listItem()
-                  .title('Research')
-                  .icon(ActivityIcon)
-                  .child(
-                    S.document()
-                      .schemaType('researchPage')
-                      .documentId('researchPage')
-                      .title('Research')
-                  ),
-                S.listItem()
                   .title('Services')
                   .icon(RocketIcon)
                   .child(
@@ -69,6 +61,24 @@ const deskToolOptions: DeskToolOptions = {
                       .schemaType('servicesPage')
                       .documentId('servicesPage')
                       .title('Services')
+                  ),
+                S.listItem()
+                  .title('Case Studies')
+                  .icon(IceCreamIcon)
+                  .child(
+                    S.document()
+                      .schemaType('caseStudiesPage')
+                      .documentId('caseStudiesPage')
+                      .title('Case Studies')
+                  ),
+                S.listItem()
+                  .title('Research')
+                  .icon(ActivityIcon)
+                  .child(
+                    S.document()
+                      .schemaType('researchPage')
+                      .documentId('researchPage')
+                      .title('Research')
                   ),
                 S.listItem()
                   .title('Learning')

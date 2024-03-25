@@ -1,9 +1,4 @@
-import { ContactSection } from '@/components/ContactSection'
 import { PageSections } from '@/components/PageSections'
-import { Partners } from '@/components/pageSpecific/partners/Partners'
-import { Testimonial } from '@/components/pageSpecific/partners/Testimonial'
-import { partners } from '@/mockedCMSData'
-import logoMailSmirk from '@/public/images/clients/mail-smirk/logo-dark.svg'
 import { fetchPartnersPage } from '@/sanity/lib/queries'
 import { Metadata } from 'next'
 
@@ -25,15 +20,6 @@ export default async function PartnersPage() {
   return (
     <>
       <PageSections pageSections={partnersPage?.pageSections} />
-      <Partners partners={partners} />
-      <Testimonial
-        className='mt-24 sm:mt-32 lg:mt-40'
-        client={{ name: 'Mail Smirk', logo: logoMailSmirk }}
-      >
-        We approached <em>Studio</em> because we loved their past work. They
-        delivered something remarkably similar in record time.
-      </Testimonial>
-      <ContactSection />
     </>
   )
 }

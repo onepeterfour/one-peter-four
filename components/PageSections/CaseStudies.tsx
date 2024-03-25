@@ -4,10 +4,11 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { formatDate } from '@/lib/formatDate'
+import { partners } from '@/mockedCMSData'
 import logoMarkFamilyFund from '@/public/images/clients/family-fund/logomark-dark.svg'
 import logoMarkPhobia from '@/public/images/clients/phobia/logomark-dark.svg'
 import logoMarkUnseal from '@/public/images/clients/unseal/logomark-dark.svg'
-import { Partner, WithHrefMetadata } from '@/types'
+// import { Partner, WithHrefMetadata } from '@/types'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -17,11 +18,7 @@ const caseStudyIconDictionary: Record<string, any> = {
   Phobia: logoMarkPhobia
 }
 
-export const Partners = ({
-  partners
-}: {
-  partners: Array<WithHrefMetadata<Partner>>
-}) => {
+export const CaseStudies = () => {
   return (
     <Container className='mt-40'>
       <FadeIn>

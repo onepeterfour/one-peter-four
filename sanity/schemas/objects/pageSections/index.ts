@@ -1,4 +1,5 @@
 import callToAction from './callToAction'
+import caseStudies from './caseStudies'
 import clients from './clients'
 import contact from './contact'
 import culture from './culture'
@@ -23,7 +24,8 @@ const pageSections = [
   testimonial,
   values,
   contact,
-  team
+  team,
+  caseStudies
 ]
 
 export default pageSections

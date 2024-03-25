@@ -1,3 +1,4 @@
+import caseStudiesPage from './caseStudiesPage'
 import contactPage from './contactPage'
 import homePage from './homePage'
 import learningPage from './learningPage'
@@ -15,7 +16,8 @@ const pages = [
   partnersPage,
   researchPage,
   servicesPage,
-  policiesPage
+  policiesPage,
+  caseStudiesPage
 ]
 
 export default pages

@@ -16,6 +16,13 @@ export const fetchHomePage = async () => {
 }
 
 /**
+ * Fetches data for the /case-studies page
+ */
+export const fetchCaseStudiesPage = async () => {
+  return await client.fetch<PageQuery>(groq`*[_type == "caseStudiesPage"][0]`)
+}
+
+/**
  * Fetches data for the /contact page
  */
 export const fetchContactPage = async () => {

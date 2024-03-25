@@ -137,6 +137,11 @@ export type SanityTeamQueryResult = BasePageSection<{
   teamMembersList: TeamMember[]
 }>
 
+export type SanitCaseStudiesQueryResult = BasePageSection<{
+  _type: 'sanityPageSectionCaseStudies'
+  eyebrow: string
+}>
+
 type BaseDocument<T> = Pick<
   SanityDocument,
   '_createdAt' | '_id' | '_rev' | '_updatedAt'
@@ -187,6 +192,7 @@ export type PageSectionQueryResult =
   | SanityValuesQueryResult
   | SanityContactQueryResult
   | SanityTeamQueryResult
+  | SanitCaseStudiesQueryResult
 
 type MandatoryPageComponents = {
   metaData: MetaDataQueryResult
