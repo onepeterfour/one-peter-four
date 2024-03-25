@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from 'sanity'
+import { defineField, defineType } from 'sanity'
 
 const partnersPage = defineType({
   name: 'partnersPage',
@@ -8,22 +8,7 @@ const partnersPage = defineType({
     defineField({
       name: 'pageSections',
       title: 'Page Sections',
-      type: 'array',
-      description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
-      of: [
-        defineArrayMember({
-          name: 'sanityPageSectionContact',
-          type: 'sanityPageSectionContact'
-        }),
-        defineArrayMember({
-          name: 'sanityPageSectionPageIntro',
-          type: 'sanityPageSectionPageIntro'
-        }),
-        defineArrayMember({
-          name: 'sanityPageSectionTestimonial',
-          type: 'sanityPageSectionTestimonial'
-        })
-      ]
+      type: 'pageSectionsArray'
     }),
     defineField({
       name: 'metaData',

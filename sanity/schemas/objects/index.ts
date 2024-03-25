@@ -1,6 +1,6 @@
 import pageSections from './pageSections'
 
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
 
 const enabled = defineType({
   name: 'enabled',
@@ -46,6 +46,69 @@ const metaDataType = defineType({
   ]
 })
 
-const objects = [enabled, imageWithMetadata, metaDataType, ...pageSections]
+const pageSectionsArray = defineType({
+  name: 'pageSectionsArray',
+  title: 'Page Sections',
+  type: 'array',
+  description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
+  of: [
+    defineArrayMember({
+      name: 'sanityPageSectionCallToAction',
+      type: 'sanityPageSectionCallToAction'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionCaseStudies',
+      type: 'sanityPageSectionCaseStudies'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionClients',
+      type: 'sanityPageSectionClients'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionContact',
+      type: 'sanityPageSectionContact'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionCulture',
+      type: 'sanityPageSectionCulture'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionHeroWithImage',
+      type: 'sanityPageSectionHeroWithImage'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionHeroWithoutImage',
+      type: 'sanityPageSectionHeroWithoutImage'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionPageIntro',
+      type: 'sanityPageSectionPageIntro'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionResearchCards',
+      type: 'sanityPageSectionResearchCards'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionTeam',
+      type: 'sanityPageSectionTeam'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionTestimonial',
+      type: 'sanityPageSectionTestimonial'
+    }),
+    defineArrayMember({
+      name: 'sanityPageSectionValues',
+      type: 'sanityPageSectionValues'
+    })
+  ]
+})
+
+const objects = [
+  enabled,
+  imageWithMetadata,
+  metaDataType,
+  ...pageSections,
+  pageSectionsArray
+]
 
 export default objects
