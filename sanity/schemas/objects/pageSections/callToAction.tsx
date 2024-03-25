@@ -1,14 +1,12 @@
-import {
-  BlockElementIcon,
-  CheckmarkCircleIcon,
-  CloseCircleIcon
-} from '@sanity/icons'
+import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const callToAction = defineType({
-  name: 'sanityPageSectionCallToAction',
   type: 'object',
+  name: 'sanityPageSectionCallToAction',
   title: 'Call to Action',
+  icon: BlockElementIcon,
   preview: {
     select: {
       title: 'title',
@@ -18,9 +16,13 @@ const callToAction = defineType({
       return {
         title: 'Call to Action',
         subtitle: title || 'untitled',
-        media: isEnabled ? CheckmarkCircleIcon : CloseCircleIcon
+        media: BlockElementIcon,
+        isEnabled
       }
     }
+  },
+  components: {
+    preview: CustomListPreview
   },
   fields: [
     defineField({
@@ -36,8 +38,7 @@ const callToAction = defineType({
       name: 'link',
       type: 'url'
     })
-  ],
-  icon: BlockElementIcon
+  ]
 })
 
 export default callToAction

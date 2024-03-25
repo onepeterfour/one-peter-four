@@ -1,13 +1,10 @@
-import {
-  BlockElementIcon,
-  CheckmarkCircleIcon,
-  CloseCircleIcon
-} from '@sanity/icons'
+import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'sanityPageSectionTestimonial',
   type: 'object',
+  name: 'sanityPageSectionTestimonial',
   title: 'Testimonial',
   icon: BlockElementIcon,
   preview: {
@@ -19,9 +16,13 @@ export default defineType({
       return {
         title: 'Testimonial',
         subtitle,
-        media: isEnabled ? CheckmarkCircleIcon : CloseCircleIcon
+        media: BlockElementIcon,
+        isEnabled
       }
     }
+  },
+  components: {
+    preview: CustomListPreview
   },
   fields: [
     defineField({

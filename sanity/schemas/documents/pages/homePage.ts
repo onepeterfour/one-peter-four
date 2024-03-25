@@ -12,8 +12,20 @@ const homePage = defineType({
       description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
       of: [
         defineArrayMember({
-          name: 'sanityPageSectionPageIntro',
-          type: 'sanityPageSectionPageIntro'
+          name: 'sanityPageSectionCallToAction',
+          type: 'sanityPageSectionCallToAction'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionClients',
+          type: 'sanityPageSectionClients'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionContact',
+          type: 'sanityPageSectionContact'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionCulture',
+          type: 'sanityPageSectionCulture'
         }),
         defineArrayMember({
           name: 'sanityPageSectionHeroWithImage',
@@ -24,16 +36,16 @@ const homePage = defineType({
           type: 'sanityPageSectionHeroWithoutImage'
         }),
         defineArrayMember({
-          name: 'sanityPageSectionCallToAction',
-          type: 'sanityPageSectionCallToAction'
-        }),
-        defineArrayMember({
-          name: 'sanityPageSectionClients',
-          type: 'sanityPageSectionClients'
+          name: 'sanityPageSectionPageIntro',
+          type: 'sanityPageSectionPageIntro'
         }),
         defineArrayMember({
           name: 'sanityPageSectionResearchCards',
           type: 'sanityPageSectionResearchCards'
+        }),
+        defineArrayMember({
+          name: 'sanityPageSectionTeam',
+          type: 'sanityPageSectionTeam'
         }),
         defineArrayMember({
           name: 'sanityPageSectionTestimonial',
@@ -42,10 +54,6 @@ const homePage = defineType({
         defineArrayMember({
           name: 'sanityPageSectionValues',
           type: 'sanityPageSectionValues'
-        }),
-        defineArrayMember({
-          name: 'sanityPageSectionContact',
-          type: 'sanityPageSectionContact'
         })
       ]
     }),

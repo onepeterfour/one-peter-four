@@ -1,13 +1,10 @@
-import {
-  BlockElementIcon,
-  CheckmarkCircleIcon,
-  CloseCircleIcon
-} from '@sanity/icons'
+import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 const statlist = defineType({
-  name: 'sanityPageSectionStatsList',
   type: 'object',
+  name: 'sanityPageSectionStatsList',
   title: 'Stats List',
   icon: BlockElementIcon,
   preview: {
@@ -17,9 +14,13 @@ const statlist = defineType({
     prepare({ isEnabled }) {
       return {
         title: 'Stats List',
-        media: isEnabled ? CheckmarkCircleIcon : CloseCircleIcon
+        media: BlockElementIcon,
+        isEnabled
       }
     }
+  },
+  components: {
+    preview: CustomListPreview
   },
   fields: [
     defineField({
