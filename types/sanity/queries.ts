@@ -60,12 +60,14 @@ export type SanityCultureQueryResult = BasePageSection<{
 export type SanityClientsQueryResult = BasePageSection<{
   _type: 'sanityPageSectionClients'
   title: string
-  clientsList?: Array<{
-    name: string
-    _type: string
-    _key: string
-    altText: string
+  clientList?: Array<{
     logo: ImageWithMetadata
+    name: string
+    _id: string
+    _updatedAt: string
+    _createdAt: string
+    _rev: string
+    _type: 'clientOrganisationDocument'
   }>
 }>
 

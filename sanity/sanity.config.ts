@@ -12,6 +12,7 @@ import {
   HomeIcon,
   IceCreamIcon,
   OkHandIcon,
+  RobotIcon,
   RocketIcon,
   UsersIcon
 } from '@sanity/icons'
@@ -124,6 +125,14 @@ const deskToolOptions: DeskToolOptions = {
           .icon(UsersIcon)
           .child(
             S.documentTypeList('teamMemberDocument').title('Team Members')
+          ),
+        S.listItem()
+          .title('Client Organisations')
+          .icon(RobotIcon)
+          .child(
+            S.documentTypeList('clientOrganisationDocument').title(
+              'Client Organisations'
+            )
           ),
         S.listItem()
           .title('Research Articles')

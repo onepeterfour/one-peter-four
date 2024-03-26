@@ -5,7 +5,7 @@ import { type SanityClientsQueryResult } from '@/types/sanity/queries'
 import Image from 'next/image'
 
 type ClientsProps = SanityClientsQueryResult & {}
-export const Clients = ({ clientsList, title }: ClientsProps) => {
+export const Clients = ({ clientList, title }: ClientsProps) => {
   return (
     <div className='mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56'>
       <Container>
@@ -20,10 +20,10 @@ export const Clients = ({ clientsList, title }: ClientsProps) => {
             role='list'
             className='mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4'
           >
-            {clientsList &&
-              clientsList.map((client) => {
+            {clientList &&
+              clientList.map((client) => {
                 return client?.logo ? (
-                  <li key={client?._key}>
+                  <li key={client?._id}>
                     <FadeIn>
                       <Image
                         className='rounded-lg bg-white'

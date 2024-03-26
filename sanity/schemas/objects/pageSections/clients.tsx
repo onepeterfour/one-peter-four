@@ -37,34 +37,16 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'clientsList',
+      name: 'clientList',
       title: 'Clients List',
       validation: (Rule) => Rule.required(),
       type: 'array',
       of: [
         defineField({
-          type: 'object',
+          type: 'reference',
           name: 'client',
           title: 'Client',
-          preview: {
-            select: {
-              media: 'logo',
-              title: 'name'
-            }
-          },
-          fields: [
-            defineField({
-              name: 'name',
-              title: 'Name',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'logo',
-              title: 'Logo',
-              type: 'imageWithMetadata'
-            })
-          ]
+          to: [{ type: 'clientOrganisationDocument' }]
         })
       ]
     })
