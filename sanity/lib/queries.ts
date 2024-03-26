@@ -12,7 +12,7 @@ import { client } from './client'
  * Fetches data for the home page
  */
 export const fetchHomePage = async () => {
-  return await client.fetch<PageQuery>(groq`*[_type == "homePage"]{
+  return await client.fetch<PageQuery>(groq`*[_type == "homePage" && !(_id in path("drafts.**"))]{
     ...,
       pageSections[]{
         ...,
