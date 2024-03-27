@@ -6,17 +6,6 @@ export type FooterData = Array<SiteLink[]>
 
 type ImagePropsWithOptionalAlt = Omit<ImageProps, 'alt'> & { alt?: string }
 
-export interface Article {
-  date: string
-  title: string
-  description: string
-  author: {
-    name: string
-    role: string
-    image: ImagePropsWithOptionalAlt
-  }
-}
-
 export interface Partner {
   date: string
   client: string
