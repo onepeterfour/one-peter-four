@@ -1,12 +1,12 @@
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityValuesQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionValues } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import { Container } from '../Container'
 import { FadeIn } from '../FadeIn'
 import { List, ListItem } from '../List'
 import { SectionIntro } from '../SectionIntro'
 import { StylizedImage } from '../StylizedImage'
 
-type ValuesProps = SanityValuesQueryResult & {}
+type ValuesProps = SanityPageSectionValues & {}
 export const Values = ({
   eyebrow,
   image,

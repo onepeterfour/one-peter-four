@@ -2,11 +2,11 @@ import { Border } from '@/components/Border'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityTeamQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionTeams } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type TeamProps = SanityTeamQueryResult & {}
+type TeamProps = SanityPageSectionTeams & {}
 export const Team = ({ title, _key, teamMembersList }: TeamProps) => {
   return (
     <Container className='mt-24 sm:mt-32 lg:mt-40'>

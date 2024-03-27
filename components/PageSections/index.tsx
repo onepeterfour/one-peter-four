@@ -1,4 +1,7 @@
-import { PageQuery, PageSectionQueryResult } from '@/types/sanity/queries'
+import type {
+  PageQuery,
+  PageSectionsArrayObject
+} from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import { ComponentType } from 'react'
 import { CallToAction } from './CallToAction'
 import { CaseStudies } from './CaseStudies'
@@ -14,7 +17,7 @@ import { Team } from './Team'
 import { Testimonial } from './Testimonial'
 import { Values } from './Values'
 
-const Sections: Record<PageSectionQueryResult['_type'], ComponentType<any>> = {
+const Sections: Record<PageSectionsArrayObject['_type'], ComponentType<any>> = {
   sanityPageSectionHeroWithoutImage: HeroWithoutImage,
   sanityPageSectionPageIntro: PageIntro,
   sanityPageSectionStatsList: StatsList,

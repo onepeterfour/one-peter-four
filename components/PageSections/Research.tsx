@@ -1,12 +1,12 @@
 import { Container } from '@/components/Container'
 import { SectionIntro } from '@/components/SectionIntro'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityResearchCardsQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionResearchCards } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FadeIn, FadeInStagger } from '../FadeIn'
 
-type ResearchCardsProps = SanityResearchCardsQueryResult & {}
+type ResearchCardsProps = SanityPageSectionResearchCards & {}
 export const ResearchCards = ({
   researchCards,
   title,

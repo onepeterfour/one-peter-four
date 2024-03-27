@@ -1,8 +1,8 @@
 import { urlForImage } from '@/sanity/lib/image'
-import { type SanityHeroWithImageQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionHero } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import Image from 'next/image'
 
-type HeroProps = SanityHeroWithImageQueryResult & {}
+type HeroProps = SanityPageSectionHero & {}
 
 export const Hero = ({ heading, image, tagline }: HeroProps) => {
   return (

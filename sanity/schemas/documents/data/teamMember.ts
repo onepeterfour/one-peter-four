@@ -1,4 +1,20 @@
 import { defineField, defineType } from 'sanity'
+import { ImageWithMetaDataObject } from '../../objects/imageWithMetaDataObject'
+
+export type TeamMember = {
+  _type: 'teamMemberDocument'
+  _id: string
+  _rev: string
+  _createdAt: string
+  _updatedAt: string
+  name: string
+  slug: { current: string; _type: 'slug' }
+  role: string
+  image: ImageWithMetaDataObject
+  bio: string
+  email?: string
+  linkedIn?: string
+}
 
 export default defineType({
   name: 'teamMemberDocument',

@@ -1,7 +1,7 @@
 import { Border } from '@/components/Border'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
-import { type SanityStatsListQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionStatsList } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import React from 'react'
 
 type StatsListItemProps = { label: string; value: string }
@@ -17,7 +17,7 @@ export const StatsListItem = ({ label, value }: StatsListItemProps) => {
   )
 }
 
-type StatsListProps = SanityStatsListQueryResult &
+type StatsListProps = SanityPageSectionStatsList &
   Omit<React.ComponentPropsWithoutRef<typeof FadeInStagger>, 'children'>
 
 export const StatsList = ({ stats, ...props }: StatsListProps) => {

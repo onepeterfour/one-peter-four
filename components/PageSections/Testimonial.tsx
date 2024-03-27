@@ -2,10 +2,10 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { GridPattern } from '@/components/GridPattern'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityTestimonialQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionTestimonial } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import Image from 'next/image'
 
-type TestimonialProps = SanityTestimonialQueryResult & {}
+type TestimonialProps = SanityPageSectionTestimonial & {}
 export function Testimonial({ quote, logo }: TestimonialProps) {
   return (
     <div className='relative isolate mt-24 bg-neutral-50 py-16 sm:mt-32 sm:py-28 md:py-32 lg:mt-40'>

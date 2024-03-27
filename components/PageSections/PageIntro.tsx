@@ -1,10 +1,10 @@
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { type SanityPageIntroQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionPageIntro } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 import clsx from 'clsx'
 import { PortableText } from '../PortableText'
 
-type PageIntroProps = SanityPageIntroQueryResult & {
+type PageIntroProps = SanityPageSectionPageIntro & {
   centered?: boolean
 }
 

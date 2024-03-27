@@ -1,11 +1,11 @@
 import {
   FetchPoliciesPage,
-  PageQuery,
   ResearchArticle,
-  TeamMember,
   WebsitePolicy
 } from '@/types/sanity/queries'
 import { groq } from 'next-sanity'
+import { TeamMember } from '../schemas/documents/data/teamMember'
+import { PageQuery } from '../schemas/objects/pageSectionsArrayObject'
 import { client } from './client'
 
 /**

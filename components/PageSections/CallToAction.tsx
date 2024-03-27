@@ -1,6 +1,6 @@
-import { SanityCallToActionQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionCTA } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 
-type CallToActionProps = SanityCallToActionQueryResult & {}
+type CallToActionProps = SanityPageSectionCTA & {}
 export const CallToAction = ({ title }: CallToActionProps) => {
   return <div>{title}</div>
 }

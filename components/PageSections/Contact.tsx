@@ -2,9 +2,9 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Offices } from '@/components/Offices'
-import { SanityContactQueryResult } from '@/types/sanity/queries'
+import { SanityPageSectionContact } from '@/sanity/schemas/objects/pageSectionsArrayObject'
 
-type ContactProps = SanityContactQueryResult & {}
+type ContactProps = SanityPageSectionContact & {}
 
 export const Contact = ({ title, buttonLabel }: ContactProps) => {
   return (

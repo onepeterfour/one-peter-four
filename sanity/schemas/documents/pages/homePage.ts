@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import type { MetaDataObject } from '../../objects/metaDataObject'
 
 const homePage = defineType({
   name: 'homePage',
@@ -19,3 +20,12 @@ const homePage = defineType({
 })
 
 export default homePage
+
+export type SanityHomePage = {
+  _id: string
+  _updatedAt: string
+  _createdAt: string
+  _rev: string
+  _type: 'homePage'
+  metaData: MetaDataObject
+}
