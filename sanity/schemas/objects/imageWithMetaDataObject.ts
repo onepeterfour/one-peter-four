@@ -1,6 +1,6 @@
 import { Image, defineField, defineType } from 'sanity'
 
-export type ImageWithMetaDataObject = Image & {
+export interface ImageWithMetaDataObject extends Image {
   _type: 'imageWithMetadata'
   alt: string
 }

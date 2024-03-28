@@ -1,7 +1,11 @@
+import { client } from '@/sanity/lib/client'
+import { groq } from 'next-sanity'
 import { defineField, defineType } from 'sanity'
 import type { MetaDataObject } from '../../objects/metaDataObject'
+import type { PageSection } from '../../objects/pageSectionsArrayObject'
 
-const homePage = defineType({
+// SANITY SCHEMA
+export default defineType({
   name: 'homePage',
   title: 'Home Page',
   type: 'document',
@@ -19,13 +23,34 @@ const homePage = defineType({
   ]
 })
 
-export default homePage
-
-export type SanityHomePage = {
-  _id: string
-  _updatedAt: string
-  _createdAt: string
-  _rev: string
+// INTERFACE
+interface HomePageDocument {
   _type: 'homePage'
+  _id: string
+  _rev: string
+  _createdAt: string
+  _updatedAt: string
+  _originalId?: string | undefined
   metaData: MetaDataObject
+  pageSections: PageSection[]
+}
+
+/**
+ * QUERY
+ *
+ * Fetches data for the home page
+ */
+export const fetchHomePage = async () => {
+  return await client.fetch<HomePageDocument>(groq`*[_type == "homePage" && !(_id in path("drafts.**"))]{
+    ...,
+      pageSections[]{
+        ...,
+        _type == "sanityPageSectionClients" => {
+        ...,
+          clientList[] -> {
+            ...
+          }
+        }
+      }
+    }[0]`)
 }

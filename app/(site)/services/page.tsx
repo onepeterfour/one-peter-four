@@ -4,7 +4,7 @@ import { Build } from '@/components/pageSpecific/services/Build'
 import { Deliver } from '@/components/pageSpecific/services/Deliver'
 import { Discover } from '@/components/pageSpecific/services/Discover'
 import { Values } from '@/components/pageSpecific/services/Values'
-import { fetchServicesPage } from '@/sanity/lib/queries'
+import { fetchServicesPage } from '@/sanity/schemas/documents/pages/servicesPage'
 import { Metadata } from 'next'
 
 // this would be the our process page in the template

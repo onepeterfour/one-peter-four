@@ -2,7 +2,7 @@ import { Container } from '@/components/Container'
 import { PageSections } from '@/components/PageSections'
 import { ContactDetails } from '@/components/pageSpecific/contact/ContactDetails'
 import { ContactForm } from '@/components/pageSpecific/contact/ContactForm'
-import { fetchContactPage } from '@/sanity/lib/queries'
+import { fetchContactPage } from '@/sanity/schemas/documents/pages/contactPage'
 import { Metadata } from 'next'
 
 // sanity page query

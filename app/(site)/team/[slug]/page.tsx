@@ -1,6 +1,9 @@
 import { Container } from '@/components/Container'
 import { urlForImage } from '@/sanity/lib/image'
-import { fetchTeamMemberBySlug, fetchTeamMembers } from '@/sanity/lib/queries'
+import {
+  fetchTeamMemberBySlug,
+  fetchTeamMembers
+} from '@/sanity/schemas/documents/data/teamMember'
 import { QueryParams } from 'next-sanity'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'

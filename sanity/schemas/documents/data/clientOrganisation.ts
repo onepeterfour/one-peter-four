@@ -1,5 +1,7 @@
 import { defineField, defineType } from 'sanity'
+import type { ImageWithMetaDataObject } from '../../objects/imageWithMetaDataObject'
 
+// SANITY SCHEMA
 export default defineType({
   name: 'clientOrganisationDocument',
   title: 'Client Organisation',
@@ -25,3 +27,17 @@ export default defineType({
     })
   ]
 })
+
+// INTERFACE
+export interface ClientOrganisationDocument {
+  _type: 'clientOrganisationDocument'
+  _id: string
+  _rev: string
+  _createdAt: string
+  _updatedAt: string
+  _originalId?: string | undefined
+  logo: ImageWithMetaDataObject
+  name: string
+}
+
+// QUERIES TBC...

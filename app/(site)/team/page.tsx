@@ -1,5 +1,5 @@
 import { PageSections } from '@/components/PageSections'
-import { fetchTeamPage } from '@/sanity/lib/queries'
+import { fetchTeamPage } from '@/sanity/schemas/documents/pages/teamPage'
 import { Metadata } from 'next'
 
 // sanity page query

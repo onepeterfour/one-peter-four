@@ -1,5 +1,5 @@
 import { PageSections } from '@/components/PageSections'
-import { fetchCaseStudiesPage } from '@/sanity/lib/queries'
+import { fetchCaseStudiesPage } from '@/sanity/schemas/documents/pages/caseStudiesPage'
 
 export default async function CaseStudiesPage() {
   const caseStudiesPage = await fetchCaseStudiesPage()

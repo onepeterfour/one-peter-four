@@ -1,21 +1,9 @@
+import { client } from '@/sanity/lib/client'
+import { groq } from 'next-sanity'
 import { defineField, defineType } from 'sanity'
-import { ImageWithMetaDataObject } from '../../objects/imageWithMetaDataObject'
+import type { ImageWithMetaDataObject } from '../../objects/imageWithMetaDataObject'
 
-export type TeamMember = {
-  _type: 'teamMemberDocument'
-  _id: string
-  _rev: string
-  _createdAt: string
-  _updatedAt: string
-  name: string
-  slug: { current: string; _type: 'slug' }
-  role: string
-  image: ImageWithMetaDataObject
-  bio: string
-  email?: string
-  linkedIn?: string
-}
-
+// SANITY SCHEMA
 export default defineType({
   name: 'teamMemberDocument',
   title: 'Team Member',
@@ -74,3 +62,40 @@ export default defineType({
     })
   ]
 })
+
+// INTERFACE
+export interface TeamMemberDocument {
+  _type: 'teamMemberDocument'
+  _id: string
+  _rev: string
+  _createdAt: string
+  _updatedAt: string
+  _originalId?: string | undefined
+  name: string
+  slug: { current: string; _type: 'slug' }
+  role: string
+  image: ImageWithMetaDataObject
+  bio: string
+  email?: string
+  linkedIn?: string
+}
+
+// QUERIES
+
+/**
+ * Fetches all published team members.
+ */
+export const fetchTeamMembers = async () => {
+  const fetchTeamMembersQuery = groq`*[_type == "teamMemberDocument" && !(_id in path("drafts.**"))]`
+
+  return await client.fetch<TeamMemberDocument[]>(fetchTeamMembersQuery)
+}
+
+/**
+ * Fetches an individual published team member by slug.
+ */
+export const fetchTeamMemberBySlug = async (slug: string) => {
+  const query = groq`*[_type == "teamMemberDocument" && slug.current == "${slug}" && !(_id in path("drafts.**"))][0]`
+
+  return await client.fetch<TeamMemberDocument>(query)
+}

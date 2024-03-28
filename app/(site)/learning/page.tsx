@@ -1,5 +1,5 @@
 import { PageSections } from '@/components/PageSections'
-import { fetchLearningPage } from '@/sanity/lib/queries'
+import { fetchLearningPage } from '@/sanity/schemas/documents/pages/learningPage'
 import { Metadata } from 'next'
 
 const learningPage = await fetchLearningPage()

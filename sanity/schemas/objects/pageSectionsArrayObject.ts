@@ -1,30 +1,26 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
 import { BlockElementIcon } from '@sanity/icons'
-import { SanityDocument } from 'next-sanity'
 import { TypedObject, defineArrayMember, defineField, defineType } from 'sanity'
-import { TeamMember } from '../documents/data/teamMember'
+import { TeamMemberDocument } from '../documents/data/teamMember'
 import type { ImageWithMetaDataObject } from './imageWithMetaDataObject'
-import { MetaDataObject } from './metaDataObject'
 
-export type SanityPageSectionCTA = {
-  _type: 'sanityPageSectionCallToAction'
+interface BasePageSection {
   _key: string
   isEnabled: boolean
+}
+export interface SanityPageSectionCTA extends BasePageSection {
+  _type: 'sanityPageSectionCallToAction'
   title: string
   link: string
 }
 
-export type SanityPageSectionCaseStudies = {
+export interface SanityPageSectionCaseStudies extends BasePageSection {
   _type: 'sanityPageSectionCaseStudies'
-  _key: string
-  isEnabled: boolean
   eyebrow: string
 }
 
-export type SanityPageSectionClients = {
+export interface SanityPageSectionClients extends BasePageSection {
   _type: 'sanityPageSectionClients'
-  _key: string
-  isEnabled: boolean
   title: string
   clientList?: Array<{
     logo: ImageWithMetaDataObject
@@ -37,18 +33,14 @@ export type SanityPageSectionClients = {
   }>
 }
 
-export type SanityPageSectionContact = {
+export interface SanityPageSectionContact extends BasePageSection {
   _type: 'sanityPageSectionContact'
-  _key: string
-  isEnabled: boolean
   title: string
   buttonLabel: string
 }
 
-export type SanityPageSectionCulture = {
+export interface SanityPageSectionCulture extends BasePageSection {
   _type: 'sanityPageSectionCulture'
-  _key: string
-  isEnabled: boolean
   eyebrow?: string
   title?: string
   subtitle?: string
@@ -60,37 +52,29 @@ export type SanityPageSectionCulture = {
   }>
 }
 
-export type SanityPageSectionHero = {
+export interface SanityPageSectionHero extends BasePageSection {
   _type: 'sanityPageSectionHeroWithImage'
-  _key: string
-  isEnabled: boolean
   heading: string
   tagline: string
   image: ImageWithMetaDataObject
 }
 
-export type SanityPageSectionHeroWithoutImage = {
+export interface SanityPageSectionHeroWithoutImage extends BasePageSection {
   _type: 'sanityPageSectionHeroWithoutImage'
-  _key: string
-  isEnabled: boolean
   heading?: string
   subheading?: string
 }
 
-export type SanityPageSectionPageIntro = {
+export interface SanityPageSectionPageIntro extends BasePageSection {
   _type: 'sanityPageSectionPageIntro'
-  _key: string
-  isEnabled: boolean
   eyebrow?: string
   subtitle?: string
   title?: string
   body?: TypedObject[]
 }
 
-export type SanityPageSectionResearchCards = {
+export interface SanityPageSectionResearchCards extends BasePageSection {
   _type: 'sanityPageSectionResearchCards'
-  _key: string
-  isEnabled: boolean
   title: string
   subtitle: string
   researchCards: Array<{
@@ -104,10 +88,8 @@ export type SanityPageSectionResearchCards = {
   }>
 }
 
-export type SanityPageSectionStatsList = {
+export interface SanityPageSectionStatsList extends BasePageSection {
   _type: 'sanityPageSectionStatsList'
-  _key: string
-  isEnabled: boolean
   statsList: Array<{
     _type: string
     _key: string
@@ -116,27 +98,21 @@ export type SanityPageSectionStatsList = {
   }>
 }
 
-export type SanityPageSectionTeams = {
+export interface SanityPageSectionTeams extends BasePageSection {
   _type: 'sanityPageSectionTeam'
-  _key: string
-  isEnabled: boolean
   title: string
-  teamMembersList: TeamMember[]
+  teamMembersList: TeamMemberDocument[]
 }
 
-export type SanityPageSectionTestimonial = {
+export interface SanityPageSectionTestimonial extends BasePageSection {
   _type: 'sanityPageSectionTestimonial'
-  _key: string
-  isEnabled: boolean
   client: string
   quote: string
   logo: ImageWithMetaDataObject
 }
 
-export type SanityPageSectionValues = {
+export interface SanityPageSectionValues extends BasePageSection {
   _type: 'sanityPageSectionValues'
-  _key: string
-  isEnabled: boolean
   eyebrow: string
   title: string
   subtitle: string
@@ -149,7 +125,7 @@ export type SanityPageSectionValues = {
   }>
 }
 
-export type PageSectionsArrayObject =
+export type PageSection =
   | SanityPageSectionCTA
   | SanityPageSectionCaseStudies
   | SanityPageSectionClients
@@ -164,33 +140,12 @@ export type PageSectionsArrayObject =
   | SanityPageSectionTestimonial
   | SanityPageSectionValues
 
-// ------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------
-// MOVE THESE TYPINGS TO QUERY SPECIFIC FILE
-
-type MandatoryPageComponents = {
-  metaData: MetaDataObject
-  pageSections: PageSectionsArrayObject[]
-}
-
-/**
- * This is the type which describes the result of sanity api queries for each main page.
- * It takes an optional generic for pages that contain additional data to what's described
- * in MandatoryPageComponents.
- */
-export type PageQuery<T extends Record<string, any> = {}> = Omit<
-  SanityDocument<MandatoryPageComponents & T>,
-  '_originalId'
->
-
-// ------------------------------------------------------------------------------
-// ------------------------------------------------------------------------------
-
 export default defineType({
   name: 'pageSectionsArray',
   title: 'Page Sections',
   type: 'array',
   description: `These are the sections of the page, organised in the order that they will appear, top to bottom.`,
+  validation: (Rule) => Rule.required(),
   of: [
     // sanityPageSectionCallToAction
     defineArrayMember({
@@ -656,6 +611,7 @@ export default defineType({
         })
       ]
     }),
+    // sanityPageSectionStatsList
     defineArrayMember({
       type: 'object',
       name: 'sanityPageSectionStatsList',
@@ -706,61 +662,6 @@ export default defineType({
         })
       ]
     }),
-    // defineArrayMember({
-    //   type: 'object',
-    //   name: 'sanityPageSectionStatsList',
-    //   title: 'Stats List',
-    //   icon: BlockElementIcon,
-    //   preview: {
-    //     select: {
-    //       isEnabled: 'isEnabled'
-    //     },
-    //     prepare({ isEnabled }) {
-    //       return {
-    //         title: 'Stats List',
-    //         media: BlockElementIcon,
-    //         isEnabled
-    //       }
-    //     }
-    //   },
-    //   components: {
-    //     preview: CustomListPreview
-    //   },
-    //   fields: [
-    //     defineField({
-    //       name: 'isEnabled',
-    //       type: 'enabled',
-    //       initialValue: false
-    //     }),
-    //     defineField({
-    //       name: 'stats',
-    //       title: 'Stats',
-    //       type: 'array',
-    //       description: 'Add up to 3 stats',
-    //       validation: (Rule) => Rule.required().max(3),
-    //       of: [
-    //         {
-    //           name: 'statlistObject',
-    //           type: 'object',
-    //           title: 'Stat',
-    //           fields: [
-    //             defineField({
-    //               name: 'title',
-    //               type: 'string',
-    //               validation: (Rule) => Rule.required()
-    //             }),
-    //             defineField({
-    //               name: 'value',
-    //               type: 'string',
-    //               validation: (Rule) => Rule.required()
-    //             })
-    //           ]
-    //         }
-    //       ]
-    //     })
-    //   ]
-    // }),
-
     // sanityPageSectionTeam
     defineArrayMember({
       type: 'object',

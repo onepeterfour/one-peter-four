@@ -1,5 +1,5 @@
 import { PageSections } from '@/components/PageSections'
-import { fetchPartnersPage } from '@/sanity/lib/queries'
+import { fetchPartnersPage } from '@/sanity/schemas/documents/pages/partnersPage'
 import { Metadata } from 'next'
 
 // this would be the "our work page in the studio template"

@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity'
 
-export type MetaDataObject = {
+export interface MetaDataObject {
   _type: 'metaDataType'
   description: string
   title: string
@@ -12,6 +12,7 @@ export default defineType({
   title: 'Metadata',
   description: `This content is not visible on the page but is used by search engines and social media.`,
   options: { collapsible: true, collapsed: true },
+  validation: (Rule) => Rule.required(),
   fields: [
     defineField({
       name: 'title',

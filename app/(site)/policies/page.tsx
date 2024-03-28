@@ -1,6 +1,6 @@
 import { Container } from '@/components/Container'
 import { PortableText } from '@/components/PortableText'
-import { fetchPoliciesPage } from '@/sanity/lib/queries'
+import { fetchPoliciesPage } from '@/sanity/schemas/documents/pages/policiesPage'
 import { Metadata } from 'next'
 import Link from 'next/link'
 

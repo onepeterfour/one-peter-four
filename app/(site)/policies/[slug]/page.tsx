@@ -3,7 +3,7 @@ import { PortableText } from '@/components/PortableText'
 import {
   fetchWebsitePolicies,
   fetchWebsitePolicyBySlug
-} from '@/sanity/lib/queries'
+} from '@/sanity/schemas/documents/data/websitePolicy'
 import { QueryParams } from 'next-sanity'
 
 export async function generateStaticParams() {

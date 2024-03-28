@@ -1,5 +1,5 @@
 import { PageSections } from '@/components/PageSections'
-import { fetchResearchPage } from '@/sanity/lib/queries'
+import { fetchResearchPage } from '@/sanity/schemas/documents/pages/researchPage'
 import { Metadata } from 'next'
 
 // this page can reuse the same layout as the partners page, just with some slight modifications.
