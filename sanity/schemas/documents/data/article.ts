@@ -87,7 +87,7 @@ export interface ArticleDocument {
     _type: 'file'
     asset: {
       _ref: string
-      _type: string
+      _type: 'reference'
     }
     url: string
   }
@@ -115,9 +115,9 @@ export const fetchArticles = async () => {
       image,
       slug
     },
-    "file": {
-      ...file,
-      "url": file.asset -> url
+    file{
+      ...,
+      "url": asset -> url
     }
   }`
   return await client.fetch<ArticleDocument[]>(query)
@@ -143,10 +143,12 @@ export const fetchArticleBySlug = async (slug: string) => {
       image,
       slug
     },
-    "file": {
-    ...file,
-    "url": file.asset -> url
+    file{
+      ...,
+      "url": asset -> url
     }
   }`
   return await client.fetch<ArticleDocument>(query)
 }
+
+//3-lessons-we-learned-going-back-to-the-office

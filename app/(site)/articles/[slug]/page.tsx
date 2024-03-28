@@ -6,7 +6,9 @@ import {
   fetchArticleBySlug,
   fetchArticles
 } from '@/sanity/schemas/documents/data/article'
+import { ArchiveIcon } from '@sanity/icons'
 import { QueryParams } from 'next-sanity'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
@@ -33,6 +35,17 @@ export default async function Page({ params }: { params: QueryParams }) {
           {article?.title}
         </h1>
         <p className='text-center text-sm font-bold'>{`By ${article?.author?.name}, ${article?.author?.role}`}</p>
+        {article?.file?.url && (
+          <Link
+            href={`${article.file.url}?dl=`}
+            className='flex items-center justify-center gap-2 text-sm'
+          >
+            <span>Download</span>
+            <span>
+              <ArchiveIcon className='text-sm' />
+            </span>
+          </Link>
+        )}
         <PortableText value={article?.body} />
       </article>
       <div className='mt-8 text-center'>
