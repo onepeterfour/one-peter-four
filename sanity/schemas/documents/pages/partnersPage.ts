@@ -36,4 +36,4 @@ interface PartnersPageDocument {
 
 //QUERY
 export const fetchPartnersPage = async () =>
-  fetchPage<PartnersPageDocument>('homePage')
+  fetchPage<PartnersPageDocument>('partnersPage')

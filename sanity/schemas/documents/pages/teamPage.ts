@@ -35,4 +35,4 @@ interface TeamPageDocument {
 }
 
 //QUERY
-export const fetchTeamPage = async () => fetchPage<TeamPageDocument>('homePage')
+export const fetchTeamPage = async () => fetchPage<TeamPageDocument>('teamPage')

@@ -36,4 +36,4 @@ interface ServicesPageDocument {
 
 //QUERY
 export const fetchServicesPage = async () =>
-  fetchPage<ServicesPageDocument>('homePage')
+  fetchPage<ServicesPageDocument>('servicesPage')

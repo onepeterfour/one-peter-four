@@ -1,3 +1,4 @@
+import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { urlForImage } from '@/sanity/lib/image'
 import {
@@ -45,6 +46,9 @@ export default async function Page({ params }: { params: QueryParams }) {
             <p>{teamMember?.bio}</p>
           </div>
         </div>
+      </div>
+      <div className='mt-8 text-center'>
+        <Button href='/team'>Back</Button>
       </div>
     </Container>
   )

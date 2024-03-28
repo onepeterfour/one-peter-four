@@ -36,4 +36,4 @@ interface LearningPageDocument {
 
 //QUERY
 export const fetchLearningPage = async () =>
-  fetchPage<LearningPageDocument>('homePage')
+  fetchPage<LearningPageDocument>('learningPage')

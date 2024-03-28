@@ -1,3 +1,4 @@
+import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { PortableText } from '@/components/PortableText'
 import { formatDateString } from '@/lib/formatDate'
@@ -34,6 +35,9 @@ export default async function Page({ params }: { params: QueryParams }) {
         <p className='text-center text-sm font-bold'>{`By ${article?.author?.name}, ${article?.author?.role}`}</p>
         <PortableText value={article?.body} />
       </article>
+      <div className='mt-8 text-center'>
+        <Button href='/articles'>Back</Button>
+      </div>
     </Container>
   )
 }
