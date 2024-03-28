@@ -7,7 +7,7 @@ import Link from 'next/link'
 const policiesPage = await fetchPoliciesPage()
 
 export const metadata: Metadata = {
-  title: `1P4: ${policiesPage?.metaData?.title}`,
+  title: `${policiesPage?.metaData?.title} - 1P4`,
   description: policiesPage?.metaData?.description
 }
 

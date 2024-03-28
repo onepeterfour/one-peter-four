@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 const learningPage = await fetchLearningPage()
 
 export const metadata: Metadata = {
-  title: `1P4: ${learningPage?.metaData?.title}`,
+  title: `${learningPage?.metaData?.title} - 1P4`,
   description: learningPage?.metaData?.description
 }
 export default async function Learning() {

@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 const homePage = await fetchHomePage()
 
 export const metadata: Metadata = {
-  title: `1P4: ${homePage?.metaData?.title}`,
+  title: `${homePage?.metaData?.title} - 1P4`,
   description: homePage?.metaData?.description
 }
 

@@ -5,6 +5,7 @@ import {
   fetchTeamMemberBySlug,
   fetchTeamMembers
 } from '@/sanity/schemas/documents/data/teamMember'
+import { Metadata } from 'next'
 import { QueryParams } from 'next-sanity'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
@@ -14,6 +15,18 @@ export async function generateStaticParams() {
   return teamMembers.map((teamMember) => ({
     slug: teamMember?.slug?.current
   }))
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: QueryParams
+}): Promise<Metadata> {
+  const teamMember = await fetchTeamMemberBySlug(params?.slug)
+  return {
+    title: `${teamMember?.name} - 1P4`,
+    description: teamMember?.bio
+  }
 }
 
 export default async function Page({ params }: { params: QueryParams }) {

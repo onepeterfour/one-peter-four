@@ -7,6 +7,7 @@ import {
   fetchArticles
 } from '@/sanity/schemas/documents/data/article'
 import { ArchiveIcon } from '@sanity/icons'
+import { Metadata } from 'next'
 import { QueryParams } from 'next-sanity'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -16,6 +17,18 @@ export async function generateStaticParams() {
   return articles?.map((article) => ({
     slug: article?.slug?.current
   }))
+}
+
+export async function generateMetadata({
+  params
+}: {
+  params: QueryParams
+}): Promise<Metadata> {
+  const article = await fetchArticleBySlug(params?.slug)
+  return {
+    title: `${article?.title} - 1P4`,
+    description: article?.description
+  }
 }
 
 export default async function Page({ params }: { params: QueryParams }) {

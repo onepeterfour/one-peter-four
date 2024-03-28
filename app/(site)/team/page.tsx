@@ -7,7 +7,7 @@ const teamPage = await fetchTeamPage()
 
 // nextJS api
 export const metadata: Metadata = {
-  title: `1P4: ${teamPage?.metaData?.title}`,
+  title: `${teamPage?.metaData?.title} - 1P4`,
   description: teamPage?.metaData?.description
 }
 

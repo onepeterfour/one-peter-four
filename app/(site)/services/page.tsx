@@ -11,7 +11,7 @@ import { Metadata } from 'next'
 const servicesPage = await fetchServicesPage()
 
 export const metadata: Metadata = {
-  title: `1P4: ${servicesPage?.metaData?.title}`,
+  title: `${servicesPage?.metaData?.title} - 1P4`,
   description: servicesPage?.metaData?.description
 }
 

@@ -10,7 +10,7 @@ const contactPage = await fetchContactPage()
 
 // nextJS api
 export const metadata: Metadata = {
-  title: `1P4: ${contactPage?.metaData?.title}`,
+  title: `${contactPage?.metaData?.title} - 1P4`,
   description: contactPage?.metaData?.description
 }
 
