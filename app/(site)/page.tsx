@@ -2,11 +2,11 @@ import { PageSections } from '@/components/PageSections'
 import { fetchHomePage } from '@/sanity/schemas/documents/pages/homePage'
 import { Metadata } from 'next'
 
-const homepage = await fetchHomePage()
+const homePage = await fetchHomePage()
 
 export const metadata: Metadata = {
-  title: `1P4: ${homepage?.metaData?.title}`,
-  description: homepage?.metaData?.description
+  title: `1P4: ${homePage?.metaData?.title}`,
+  description: homePage?.metaData?.description
 }
 
 export default async function Home() {

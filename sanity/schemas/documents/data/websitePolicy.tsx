@@ -30,6 +30,7 @@ export default defineType({
       name: 'policy',
       title: 'Policy',
       type: 'array',
+      validation: (Rule) => Rule.required(),
       of: [{ type: 'block' }]
     })
   ]

@@ -1,5 +1,5 @@
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionValues } from '@/sanity/schemas/objects/pageSectionsArrayObject'
+import type { SanityPageSectionValues } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import { Container } from '../Container'
 import { FadeIn } from '../FadeIn'
 import { List, ListItem } from '../List'

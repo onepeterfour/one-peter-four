@@ -1,8 +1,7 @@
-import { client } from '@/sanity/lib/client'
-import { groq } from 'next-sanity'
+import type { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
+import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import { defineField, defineType } from 'sanity'
-import type { MetaDataObject } from '../../objects/metaDataObject'
-import type { PageSection } from '../../objects/pageSectionsArrayObject'
+import { fetchPage } from './homePage'
 
 // SANITY SCHEMA
 export default defineType({
@@ -35,30 +34,5 @@ interface TeamPageDocument {
   pageSections: PageSection[]
 }
 
-/**
- * QUERY
- *
- * Fetches data for the /team page
- */
-export const fetchTeamPage = async () => {
-  return await client.fetch<TeamPageDocument>(groq`*[_type == "teamPage"]{
-    metaData,
-    pageSections[]{
-      ...,
-      _type == "sanityPageSectionTeam" => {
-      ...,
-      teamMembersList[] -> {
-          _type,
-          _id,
-          name,
-          slug,
-          role,
-          image,
-          bio,
-          email,
-          linkedIn
-        }
-      }
-    }
-  }[0]`)
-}
+//QUERY
+export const fetchTeamPage = async () => fetchPage<TeamPageDocument>('homePage')

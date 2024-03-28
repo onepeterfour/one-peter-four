@@ -1,8 +1,8 @@
 import { client } from '@/sanity/lib/client'
+import type { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
+import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import { groq } from 'next-sanity'
 import { defineField, defineType } from 'sanity'
-import type { MetaDataObject } from '../../objects/metaDataObject'
-import type { PageSection } from '../../objects/pageSectionsArrayObject'
 
 // SANITY SCHEMA
 export default defineType({
@@ -38,19 +38,63 @@ interface HomePageDocument {
 /**
  * QUERY
  *
- * Fetches data for the home page
+ * Reusable Query for fetching pages which use the page section pattern
  */
-export const fetchHomePage = async () => {
-  return await client.fetch<HomePageDocument>(groq`*[_type == "homePage" && !(_id in path("drafts.**"))]{
+
+type PageName =
+  | 'homePage'
+  | 'servicesPage'
+  | 'caseStudiesPage'
+  | 'articlesPage'
+  | 'contactPage'
+  | 'learningPage'
+  | 'partnersPage'
+  | 'teamPage'
+
+export const fetchPage = async <T>(pageName: PageName) => {
+  return await client.fetch<T>(groq`*[_type == "${pageName}" && !(_id in path("drafts.**"))]{
     ...,
       pageSections[]{
         ...,
+        _type == "sanityPageSectionArticlesList" => {
+          ...,
+          articlesList[] -> {
+            _id,
+            slug,
+            title,
+            description,
+            _updatedAt,
+            _createdAt,
+            author -> {
+              _id,
+              name,
+              role,
+              image
+            }
+          }
+        },
         _type == "sanityPageSectionClients" => {
-        ...,
+          ...,
           clientList[] -> {
             ...
+          }
+        },
+        _type == "sanityPageSectionTeam" => {
+          ...,
+          teamMembersList[] -> {
+            _type,
+            _id,
+            name,
+            slug,
+            role,
+            image,
+            bio,
+            email,
+            linkedIn
           }
         }
       }
     }[0]`)
 }
+
+export const fetchHomePage = async () => fetchPage<HomePageDocument>('homePage')

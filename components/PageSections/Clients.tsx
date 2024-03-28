@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionClients } from '@/sanity/schemas/objects/pageSectionsArrayObject'
+import type { SanityPageSectionClients } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import Image from 'next/image'
 
 type ClientsProps = SanityPageSectionClients & {}

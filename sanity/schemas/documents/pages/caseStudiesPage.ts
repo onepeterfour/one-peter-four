@@ -1,8 +1,7 @@
-import { client } from '@/sanity/lib/client'
-import { groq } from 'next-sanity'
+import type { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
+import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import { defineField, defineType } from 'sanity'
-import type { MetaDataObject } from '../../objects/metaDataObject'
-import type { PageSection } from '../../objects/pageSectionsArrayObject'
+import { fetchPage } from './homePage'
 
 // SANITY SCHEMA
 export default defineType({
@@ -35,13 +34,6 @@ interface CaseStudiesPageDocument {
   pageSections: PageSection[]
 }
 
-/**
- * QUERY
- *
- * Fetches data for the /case-studies page
- */
-export const fetchCaseStudiesPage = async () => {
-  return await client.fetch<CaseStudiesPageDocument>(
-    groq`*[_type == "caseStudiesPage"][0]`
-  )
-}
+//QUERY
+export const fetchCaseStudiesPage = async () =>
+  fetchPage<CaseStudiesPageDocument>('caseStudiesPage')

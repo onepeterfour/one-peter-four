@@ -69,9 +69,9 @@ export const headerNavigation: HeaderNavigationQueryResult = {
           _key: 'd5dc08f76cd4'
         },
         {
-          path: '/research',
+          path: '/articles',
           _type: 'navigationItem',
-          label: 'Research',
+          label: 'Articles',
           _key: '2882ae3d1148'
         }
       ]

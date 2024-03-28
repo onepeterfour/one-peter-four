@@ -1,5 +1,6 @@
-import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject'
+import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import { ComponentType } from 'react'
+import { Articles } from './ArticlesList'
 import { CallToAction } from './CallToAction'
 import { CaseStudies } from './CaseStudies'
 import { Clients } from './Clients'
@@ -27,7 +28,8 @@ const Sections: Record<PageSection['_type'], ComponentType<any>> = {
   sanityPageSectionValues: Values,
   sanityPageSectionContact: Contact,
   sanityPageSectionTeam: Team,
-  sanityPageSectionCaseStudies: CaseStudies
+  sanityPageSectionCaseStudies: CaseStudies,
+  sanityPageSectionArticlesList: Articles
 }
 
 type PageSectionsProps = {

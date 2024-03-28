@@ -1,13 +1,12 @@
-import { client } from '@/sanity/lib/client'
-import { groq } from 'next-sanity'
+import type { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
+import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import { defineField, defineType } from 'sanity'
-import type { MetaDataObject } from '../../objects/metaDataObject'
-import type { PageSection } from '../../objects/pageSectionsArrayObject'
+import { fetchPage } from './homePage'
 
 // SANITY SCHEMA
 export default defineType({
-  name: 'researchPage',
-  title: 'Research Page',
+  name: 'articlesPage',
+  title: 'Articles Page',
   type: 'document',
   fields: [
     defineField({
@@ -24,8 +23,8 @@ export default defineType({
 })
 
 // INTERFACE
-interface ResearchPageDocument {
-  _type: 'researchPage'
+interface ArticlesPageDocument {
+  _type: 'articlesPage'
   _id: string
   _rev: string
   _createdAt: string
@@ -35,13 +34,6 @@ interface ResearchPageDocument {
   pageSections: PageSection[]
 }
 
-/**
- * QUERY
- *
- * Fetches data for the /research page
- */
-export const fetchResearchPage = async () => {
-  return await client.fetch<ResearchPageDocument>(
-    groq`*[_type == "researchPage"][0]`
-  )
-}
+// QUERY
+export const fetchArticlesPage = async () =>
+  fetchPage<ArticlesPageDocument>('articlesPage')

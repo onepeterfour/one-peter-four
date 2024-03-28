@@ -4,10 +4,10 @@
 
 import { locate } from '@/sanity/presentation/locate'
 import {
-  ActivityIcon,
   BookIcon,
   DocumentTextIcon,
   DocumentsIcon,
+  EditIcon,
   EnvelopeIcon,
   HomeIcon,
   IceCreamIcon,
@@ -73,13 +73,13 @@ const deskToolOptions: DeskToolOptions = {
                       .title('Case Studies')
                   ),
                 S.listItem()
-                  .title('Research')
-                  .icon(ActivityIcon)
+                  .title('Articles')
+                  .icon(EditIcon)
                   .child(
                     S.document()
-                      .schemaType('researchPage')
-                      .documentId('researchPage')
-                      .title('Research')
+                      .schemaType('articlesPage')
+                      .documentId('articlesPage')
+                      .title('Articles')
                   ),
                 S.listItem()
                   .title('Learning')
@@ -135,13 +135,9 @@ const deskToolOptions: DeskToolOptions = {
             )
           ),
         S.listItem()
-          .title('Research Articles')
-          .icon(ActivityIcon)
-          .child(
-            S.documentTypeList('researchArticleDocument').title(
-              'Research Articles'
-            )
-          ),
+          .title('Articles')
+          .icon(EditIcon)
+          .child(S.documentTypeList('articleDocument').title('Articles')),
         S.listItem()
           .title('Website Policies')
           .icon(DocumentTextIcon)

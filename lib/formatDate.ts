@@ -9,3 +9,13 @@ export function formatDate(dateString: string) {
     timeZone: 'UTC'
   })
 }
+
+export function formatDateString(dateString: string) {
+  const formattedDate = new Date(dateString).toLocaleDateString('en-GB', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC'
+  })
+  return formattedDate
+}
