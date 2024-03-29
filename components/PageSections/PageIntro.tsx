@@ -4,8 +4,12 @@ import type { SanityPageSectionPageIntro } from '@/sanity/schemas/objects/pageSe
 import clsx from 'clsx'
 import { PortableText } from '../PortableText'
 
-type PageIntroProps = Omit<SanityPageSectionPageIntro, 'isEnabled'> & {
+type PageIntroProps = Omit<
+  SanityPageSectionPageIntro,
+  'isEnabled' | '_type'
+> & {
   centered?: boolean
+  _type: string
 }
 
 export function PageIntro({

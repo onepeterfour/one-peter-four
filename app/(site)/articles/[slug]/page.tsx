@@ -1,5 +1,7 @@
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
+import { FadeIn } from '@/components/FadeIn'
+import { PageIntro } from '@/components/PageSections/PageIntro'
 import { PortableText } from '@/components/PortableText'
 import { formatDateString } from '@/lib/formatDate'
 import {
@@ -39,31 +41,34 @@ export default async function Page({ params }: { params: QueryParams }) {
   }
 
   return (
-    <Container className='mt-24 sm:mt-32 lg:mt-40'>
-      <article className='prose mx-auto'>
-        <p className='text-center text-sm'>
-          {formatDateString(article?._createdAt)}
-        </p>
-        <h1 className='text-center font-sans text-4xl font-extrabold'>
-          {article?.title}
-        </h1>
-        <p className='text-center text-sm font-bold'>{`By ${article?.author?.name}, ${article?.author?.role}`}</p>
-        {article?.file?.url && (
-          <Link
-            href={`${article.file.url}?dl=`}
-            className='flex items-center justify-center gap-2 text-sm'
-          >
-            <span>Download</span>
-            <span>
-              <ArchiveIcon className='text-sm' />
-            </span>
-          </Link>
-        )}
-        <PortableText value={article?.body} />
+    <Container as='div' className='mt-24 sm:mt-32 lg:mt-40'>
+      <article>
+        <PageIntro
+          title={article?.title}
+          _type={article?._type}
+          centered
+          eyebrow={formatDateString(article?._createdAt)}
+          subtitle={`By ${article?.author?.name}, ${article?.author?.role}`}
+          _key={article?._id}
+        />
+        <FadeIn className='prose mx-auto'>
+          {article?.file?.url && (
+            <Link
+              href={`${article.file.url}?dl=`}
+              className='flex items-center justify-center gap-2 text-sm'
+            >
+              <span>Download</span>
+              <span>
+                <ArchiveIcon className='text-sm' />
+              </span>
+            </Link>
+          )}
+          <PortableText value={article?.body} />
+        </FadeIn>
+        <FadeIn className='mt-8 text-center'>
+          <Button href='/articles'>Back</Button>
+        </FadeIn>
       </article>
-      <div className='mt-8 text-center'>
-        <Button href='/articles'>Back</Button>
-      </div>
     </Container>
   )
 }
