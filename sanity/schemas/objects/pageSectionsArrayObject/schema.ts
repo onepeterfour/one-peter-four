@@ -17,13 +17,11 @@ export default defineType({
       icon: BlockElementIcon,
       preview: {
         select: {
-          title: 'eyebrow',
           isEnabled: 'isEnabled'
         },
-        prepare({ title, isEnabled }) {
+        prepare({ isEnabled }) {
           return {
             title: 'Articles List',
-            subtitle: title || 'untitled',
             media: BlockElementIcon,
             isEnabled
           }
@@ -41,8 +39,7 @@ export default defineType({
         }),
         defineField({
           name: 'eyebrow',
-          type: 'string',
-          validation: (Rule) => Rule.required()
+          type: 'string'
         }),
         defineField({
           name: 'articlesList',

@@ -12,7 +12,7 @@ export function Culture({
   cultureList
 }: CultureProps) {
   return (
-    <div className='mt-24 rounded-4xl bg-neutral-950 py-24 sm:mt-32 lg:mt-40 lg:py-32'>
+    <section className='mt-24 rounded-4xl bg-neutral-950 py-24 sm:mt-32 lg:mt-40 lg:py-32'>
       <SectionIntro
         eyebrow={eyebrow || 'Add eyebrow in Sanity'}
         title={title || 'Add title in Sanity'}
@@ -21,7 +21,7 @@ export function Culture({
         <p>{subtitle || 'Add subtitle in Sanity'}</p>
       </SectionIntro>
       {cultureList && (
-        <Container className='mt-16'>
+        <Container as='div' className='mt-16'>
           <GridList>
             {cultureList.map((item) => {
               return (
@@ -37,6 +37,6 @@ export function Culture({
           </GridList>
         </Container>
       )}
-    </div>
+    </section>
   )
 }

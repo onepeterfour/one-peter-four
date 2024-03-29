@@ -26,7 +26,7 @@ export const headerNavigation: HeaderNavigationQueryResult = {
         {
           path: '/team',
           _type: 'navigationItem',
-          label: 'Our Team',
+          label: 'Team',
           _key: 'a0134e9db4be'
         },
         {
@@ -43,16 +43,16 @@ export const headerNavigation: HeaderNavigationQueryResult = {
       _key: '166ab848cb24',
       items: [
         {
+          path: '/articles',
+          _type: 'navigationItem',
+          label: 'Articles',
+          _key: '2882ae3d1148'
+        },
+        {
           path: '/case-studies',
           _type: 'navigationItem',
           label: 'Case Studies',
           _key: 'edef7324e11basd'
-        },
-        {
-          path: '/partners',
-          _type: 'navigationItem',
-          label: 'Partners',
-          _key: 'edef7324e11b'
         }
       ],
       order: 2
@@ -65,14 +65,14 @@ export const headerNavigation: HeaderNavigationQueryResult = {
         {
           path: '/learning',
           _type: 'navigationItem',
-          label: 'Learning Library',
+          label: 'Library',
           _key: 'd5dc08f76cd4'
         },
         {
-          path: '/articles',
+          path: '/partners',
           _type: 'navigationItem',
-          label: 'Articles',
-          _key: '2882ae3d1148'
+          label: 'Partners',
+          _key: 'edef7324e11b'
         }
       ]
     }

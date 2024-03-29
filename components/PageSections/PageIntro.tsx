@@ -4,7 +4,7 @@ import type { SanityPageSectionPageIntro } from '@/sanity/schemas/objects/pageSe
 import clsx from 'clsx'
 import { PortableText } from '../PortableText'
 
-type PageIntroProps = SanityPageSectionPageIntro & {
+type PageIntroProps = Omit<SanityPageSectionPageIntro, 'isEnabled'> & {
   centered?: boolean
 }
 
@@ -13,10 +13,12 @@ export function PageIntro({
   title,
   centered = false,
   subtitle,
-  body
+  body,
+  _type
 }: PageIntroProps) {
   return (
     <Container
+      id={_type}
       className={clsx(centered && 'text-center', 'mt-24 sm:mt-32 lg:mt-40')}
     >
       <FadeIn>
@@ -40,7 +42,7 @@ export function PageIntro({
             centered && 'mx-auto'
           )}
         >
-          <p>{subtitle || 'No subtitle provided'}</p>
+          {subtitle && <p>{subtitle}</p>}
           <div className='mt-10 max-w-2xl space-y-6 text-base'>
             {body && <PortableText value={body} />}
           </div>

@@ -10,7 +10,7 @@ interface BasePageSection {
 
 export interface SanityPageSectionArticlesList extends BasePageSection {
   _type: 'sanityPageSectionArticlesList'
-  eyebrow: string
+  eyebrow?: string
   articlesList: Array<
     Pick<
       ArticleDocument,

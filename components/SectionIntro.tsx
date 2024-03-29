@@ -21,7 +21,7 @@ export function SectionIntro({
   invert?: boolean
 }) {
   return (
-    <Container {...props}>
+    <Container {...props} as='div'>
       <FadeIn className='max-w-2xl'>
         <h2>
           {eyebrow && (
