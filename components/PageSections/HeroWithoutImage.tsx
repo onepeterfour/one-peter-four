@@ -1,5 +1,5 @@
 import { FadeIn } from '@/components/FadeIn'
-import type { SanityPageSectionHeroWithoutImage } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import type { SanityPageSectionHeroWithoutImage } from '@/sanity/schemas/objects/pageSections/types'
 import { Container } from '../Container'
 
 type HeroWithoutImageProps = SanityPageSectionHeroWithoutImage & {}

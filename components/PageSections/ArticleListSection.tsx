@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container'
-import type { ArticleListSectionSchema } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import type { ArticleListSectionSchema } from '@/sanity/schemas/objects/pageSections/types'
 import { ArticleCard } from '../ArticleCard'
 
 export const ArticleListSection = ({

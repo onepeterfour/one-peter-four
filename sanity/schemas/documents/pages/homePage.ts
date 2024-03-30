@@ -1,6 +1,6 @@
 import { client } from '@/sanity/lib/client'
 import type { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
-import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import type { PageSection } from '@/sanity/schemas/objects/pageSections/types'
 import { groq } from 'next-sanity'
 import { defineField, defineType } from 'sanity'
 

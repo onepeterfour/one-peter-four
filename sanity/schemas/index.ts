@@ -3,7 +3,23 @@ import { type SchemaTypeDefinition } from 'sanity'
 // IMPORT OBJECTS
 import imageWithMetaDataObject from './objects/imageWithMetaDataObject'
 import metaDataObject from './objects/metaDataObject'
-import pageSectionsArrayObject from './objects/pageSectionsArrayObject/schema'
+
+// IMPORT PAGE SECTION OBJECTS
+import pageSections from './objects/pageSections'
+import CaseStudyCardsListSection from './objects/pageSections/CaseStudyCardsListSection'
+import articleListSection from './objects/pageSections/articleListSection'
+import callToActionsSection from './objects/pageSections/callToActionsSection'
+import caseStudiesListSection from './objects/pageSections/caseStudiesListSection'
+import contactSection from './objects/pageSections/contactSection'
+import heroImageSection from './objects/pageSections/heroImageSection'
+import heroTextSection from './objects/pageSections/heroTextSection'
+import imageListSection from './objects/pageSections/imageListSection'
+import logoListSection from './objects/pageSections/logoListSection'
+import pageIntroSection from './objects/pageSections/pageIntroSection'
+import statisticListSection from './objects/pageSections/statisticListSection'
+import teamMemberListSection from './objects/pageSections/teamMemberListSections'
+import testimonialSection from './objects/pageSections/testimonialSection'
+import textListSection from './objects/pageSections/textListSection'
 
 // IMPORT PAGE DOCUMENTS
 import articlesPage from './documents/pages/articlesPage'
@@ -23,13 +39,29 @@ import clientOrganisation from './documents/data/clientOrganisation'
 import teamMember from './documents/data/teamMember'
 import websitePolicy from './documents/data/websitePolicy'
 
-const OBJECTS = [
-  imageWithMetaDataObject,
-  metaDataObject,
-  pageSectionsArrayObject
-]
+// WE CAN USE SETS HERE!
 
-const PAGE_DOCUMENTS = [
+const PAGE_SECTION_OBJECTS = new Set([
+  articleListSection,
+  callToActionsSection,
+  caseStudiesListSection,
+  logoListSection,
+  contactSection,
+  textListSection,
+  heroImageSection,
+  heroTextSection,
+  pageIntroSection,
+  CaseStudyCardsListSection,
+  statisticListSection,
+  teamMemberListSection,
+  testimonialSection,
+  imageListSection,
+  pageSections
+])
+
+const OBJECTS = new Set([imageWithMetaDataObject, metaDataObject])
+
+const PAGE_DOCUMENTS = new Set([
   homePage,
   teamPage,
   contactPage,
@@ -39,16 +71,21 @@ const PAGE_DOCUMENTS = [
   servicesPage,
   policiesPage,
   caseStudiesPage
-]
+])
 
-const DATA_DOCUMENTS = [
+const DATA_DOCUMENTS = new Set([
   article,
   articleCategory,
   teamMember,
   websitePolicy,
   clientOrganisation
-]
+])
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [...OBJECTS, ...PAGE_DOCUMENTS, ...DATA_DOCUMENTS]
+  types: [
+    ...OBJECTS,
+    ...PAGE_SECTION_OBJECTS,
+    ...PAGE_DOCUMENTS,
+    ...DATA_DOCUMENTS
+  ]
 }

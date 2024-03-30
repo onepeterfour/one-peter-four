@@ -3,7 +3,7 @@ import { Button } from '@/components/Button'
 import { FadeIn } from '@/components/FadeIn'
 import { formatDateString } from '@/lib/formatDate'
 import { urlForImage } from '@/sanity/lib/image'
-import { ArticleListSectionSchema } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import { ArticleListSectionSchema } from '@/sanity/schemas/objects/pageSections/types'
 import Image from 'next/image'
 import Link from 'next/link'
 

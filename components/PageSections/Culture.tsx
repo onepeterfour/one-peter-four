@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container'
 import { GridList, GridListItem } from '@/components/GridList'
 import { SectionIntro } from '@/components/SectionIntro'
-import type { SanityPageSectionCulture } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import type { SanityPageSectionCulture } from '@/sanity/schemas/objects/pageSections/types'
 
 type CultureProps = SanityPageSectionCulture & {}
 

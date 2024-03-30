@@ -1,5 +1,5 @@
 import type { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
-import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import type { PageSection } from '@/sanity/schemas/objects/pageSections/types'
 import { defineField, defineType } from 'sanity'
 import { fetchPage } from './homePage'
 
