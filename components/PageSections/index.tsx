@@ -15,22 +15,22 @@ import { Team } from './Team'
 import { Testimonial } from './Testimonial'
 import { Values } from './Values'
 
-const Sections: Record<PageSection['_type'], ComponentType<any>> = {
-  sanityPageSectionHeroWithoutImage: HeroWithoutImage,
-  sanityPageSectionPageIntro: PageIntro,
-  sanityPageSectionStatsList: StatsList,
-  sanityPageSectionCulture: Culture,
-  sanityPageSectionClients: Clients,
-  sanityPageSectionHeroWithImage: Hero,
-  sanityPageSectionCallToAction: CallToAction,
-  sanityPageSectionResearchCards: ResearchCards,
-  sanityPageSectionTestimonial: Testimonial,
-  sanityPageSectionValues: Values,
-  sanityPageSectionContact: Contact,
-  sanityPageSectionTeam: Team,
-  sanityPageSectionCaseStudies: CaseStudies,
-  sanityPageSectionArticlesList: Articles
-}
+const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
+  ['sanityPageSectionHeroWithoutImage', HeroWithoutImage],
+  ['sanityPageSectionPageIntro', PageIntro],
+  ['sanityPageSectionStatsList', StatsList],
+  ['sanityPageSectionCulture', Culture],
+  ['sanityPageSectionClients', Clients],
+  ['sanityPageSectionHeroWithImage', Hero],
+  ['sanityPageSectionCallToAction', CallToAction],
+  ['sanityPageSectionResearchCards', ResearchCards],
+  ['sanityPageSectionTestimonial', Testimonial],
+  ['sanityPageSectionValues', Values],
+  ['sanityPageSectionContact', Contact],
+  ['sanityPageSectionTeam', Team],
+  ['sanityPageSectionCaseStudies', CaseStudies],
+  ['sanityPageSectionArticlesList', Articles]
+])
 
 type PageSectionsProps = {
   pageSections?: PageSection[]
@@ -43,8 +43,12 @@ export const PageSections = ({ pageSections }: PageSectionsProps) => {
         if (!isEnabled) {
           return null
         }
-        const SectionComponent = Sections[section?._type] || null
-        return <SectionComponent key={section._key} {...section} />
+        const PageSection = pageSectionsMap.get(section._type)
+        return PageSection ? (
+          <PageSection key={section._key} {...section} />
+        ) : (
+          <div>This Page Section does not exist</div>
+        )
       })}
     </>
   )
