@@ -1,6 +1,6 @@
 import { client } from '@/sanity/lib/client'
 import { EditIcon } from '@sanity/icons'
-import { groq } from 'next-sanity'
+import { groq, type SanityDocument } from 'next-sanity'
 import { defineField, defineType, type TypedObject } from 'sanity'
 import { ArticleCategoryDocument } from './articleCategory'
 import { TeamMemberDocument } from './teamMember'
@@ -64,13 +64,7 @@ export default defineType({
 })
 
 // INTERFACE
-export interface ArticleDocument {
-  _type: 'articleDocument'
-  _id: string
-  _rev: string
-  _createdAt: string
-  _updatedAt: string
-  _originalId?: string | undefined
+export interface Article {
   title: string
   description: string
   author: Pick<
@@ -92,6 +86,8 @@ export interface ArticleDocument {
     url: string
   }
 }
+
+export type ArticleDocument = SanityDocument<Article>
 
 // QUERIES
 
@@ -150,5 +146,3 @@ export const fetchArticleBySlug = async (slug: string) => {
   }`
   return await client.fetch<ArticleDocument>(query)
 }
-
-//3-lessons-we-learned-going-back-to-the-office

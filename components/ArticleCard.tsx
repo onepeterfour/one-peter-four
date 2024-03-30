@@ -3,9 +3,14 @@ import { Button } from '@/components/Button'
 import { FadeIn } from '@/components/FadeIn'
 import { formatDateString } from '@/lib/formatDate'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionArticlesList } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import { ArticleListSectionSchema } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
 import Image from 'next/image'
 import Link from 'next/link'
+
+type ArticleCardProps = Omit<
+  ArticleListSectionSchema['articleList'][0],
+  'isEnabled'
+>
 
 export const ArticleCard = ({
   author,
@@ -14,7 +19,7 @@ export const ArticleCard = ({
   description,
   slug,
   title
-}: SanityPageSectionArticlesList['articlesList'][0]) => {
+}: ArticleCardProps) => {
   const articleLink = `/articles/${slug?.current}`
   return (
     <FadeIn key={_id}>

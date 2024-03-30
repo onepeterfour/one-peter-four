@@ -12,8 +12,8 @@ export default defineType({
     // sanityPageSectionArticlesList
     defineArrayMember({
       type: 'object',
-      name: 'sanityPageSectionArticlesList',
-      title: 'Articles List',
+      name: 'articleListSection',
+      title: 'Article List Section',
       icon: BlockElementIcon,
       preview: {
         select: {
@@ -21,7 +21,7 @@ export default defineType({
         },
         prepare({ isEnabled }) {
           return {
-            title: 'Articles List',
+            title: 'Article List',
             media: BlockElementIcon,
             isEnabled
           }
@@ -42,8 +42,8 @@ export default defineType({
           type: 'string'
         }),
         defineField({
-          name: 'articlesList',
-          title: 'Articles List',
+          name: 'articleList',
+          title: 'Article List',
           type: 'array',
           validation: (Rule) => Rule.required().max(4),
           of: [

@@ -8,10 +8,10 @@ interface BasePageSection {
   isEnabled: boolean
 }
 
-export interface SanityPageSectionArticlesList extends BasePageSection {
-  _type: 'sanityPageSectionArticlesList'
+export interface ArticleListSectionSchema extends BasePageSection {
+  _type: 'articleListSection'
   eyebrow?: string
-  articlesList: Array<
+  articleList: Array<
     Pick<
       ArticleDocument,
       '_id' | 'slug' | 'title' | 'description' | '_updatedAt' | '_createdAt'
@@ -139,7 +139,7 @@ export interface SanityPageSectionValues extends BasePageSection {
 }
 
 export type PageSection =
-  | SanityPageSectionArticlesList
+  | ArticleListSectionSchema
   | SanityPageSectionCTA
   | SanityPageSectionCaseStudies
   | SanityPageSectionClients

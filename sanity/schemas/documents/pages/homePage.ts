@@ -56,9 +56,9 @@ export const fetchPage = async <T>(pageName: PageName) => {
     ...,
       pageSections[]{
         ...,
-        _type == "sanityPageSectionArticlesList" => {
+        _type == "articleListSection" => {
           ...,
-          articlesList[] -> {
+          articleList[] -> {
             _id,
             slug,
             title,
