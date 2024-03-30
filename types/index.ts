@@ -24,3 +24,12 @@ export interface Partner {
   }
 }
 export type WithHrefMetadata<T> = T & { href: string; metadata: T }
+
+/**
+ * SANITY SPECIFIC TYPES
+ */
+
+export interface BasePageSectionSchema {
+  _key: string
+  isEnabled: boolean
+}

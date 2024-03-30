@@ -1,6 +1,23 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
+import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
+
+export interface SanityPageSectionResearchCards extends BasePageSectionSchema {
+  _type: 'sanityPageSectionResearchCards'
+  title: string
+  subtitle: string
+  researchCards: Array<{
+    _type: string
+    _key: string
+    logo: ImageWithMetaDataObject
+    date: string
+    title: string
+    description: string
+    href: string
+  }>
+}
 
 export default defineType({
   type: 'object',

@@ -2,7 +2,8 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { GridPattern } from '@/components/GridPattern'
 import { urlForImage } from '@/sanity/lib/image'
-import type { SanityPageSectionTestimonial } from '@/sanity/schemas/objects/pageSections/types'
+import { SanityPageSectionTestimonial } from '@/sanity/schemas/objects/pageSections/testimonialSection'
+
 import Image from 'next/image'
 
 type TestimonialProps = SanityPageSectionTestimonial & {}

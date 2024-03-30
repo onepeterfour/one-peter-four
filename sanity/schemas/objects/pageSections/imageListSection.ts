@@ -1,6 +1,22 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
+import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
+
+export interface SanityPageSectionValues extends BasePageSectionSchema {
+  _type: 'sanityPageSectionValues'
+  eyebrow: string
+  title: string
+  subtitle: string
+  image: ImageWithMetaDataObject
+  valuesList: Array<{
+    _type: 'value'
+    _key: string
+    title: string
+    description: string
+  }>
+}
 
 export default defineType({
   type: 'object',

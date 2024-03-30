@@ -1,6 +1,12 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
+
+export interface SanityPageSectionCaseStudies extends BasePageSectionSchema {
+  _type: 'sanityPageSectionCaseStudies'
+  eyebrow: string
+}
 
 export default defineType({
   type: 'object',

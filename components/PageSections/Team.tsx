@@ -2,7 +2,7 @@ import { Border } from '@/components/Border'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { urlForImage } from '@/sanity/lib/image'
-import type { SanityPageSectionTeams } from '@/sanity/schemas/objects/pageSections/types'
+import { SanityPageSectionTeams } from '@/sanity/schemas/objects/pageSections/teamMemberListSections'
 import Image from 'next/image'
 import Link from 'next/link'
 
