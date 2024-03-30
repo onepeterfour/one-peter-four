@@ -1,6 +1,6 @@
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import type { SanityPageSectionPageIntro } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import type { SanityPageSectionPageIntro } from '@/sanity/schemas/objects/pageSections/types'
 import clsx from 'clsx'
 import { PortableText } from '../PortableText'
 

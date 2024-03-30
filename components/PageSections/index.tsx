@@ -1,4 +1,4 @@
-import type { PageSection } from '@/sanity/schemas/objects/pageSectionsArrayObject/types'
+import type { PageSection } from '@/sanity/schemas/objects/pageSections/types'
 import { ComponentType } from 'react'
 import { ArticleListSection } from './ArticleListSection'
 import { CallToAction } from './CallToAction'
