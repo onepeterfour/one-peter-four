@@ -1,6 +1,17 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
+
+export interface SanityPageSectionStatsList extends BasePageSectionSchema {
+  _type: 'sanityPageSectionStatsList'
+  statsList: Array<{
+    _type: string
+    _key: string
+    title: string
+    value: string
+  }>
+}
 
 export default defineType({
   type: 'object',

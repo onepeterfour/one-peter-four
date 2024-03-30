@@ -1,4 +1,34 @@
 import { defineArrayMember, defineType } from 'sanity'
+import { ArticleListSectionSchema } from './articleListSection'
+import type { SanityPageSectionCTA } from './callToActionsSection'
+import type { SanityPageSectionCaseStudies } from './caseStudiesListSection'
+import { SanityPageSectionResearchCards } from './caseStudyCardListSection'
+import { SanityPageSectionContact } from './contactSection'
+import { SanityPageSectionHero } from './heroImageSection'
+import { SanityPageSectionHeroWithoutImage } from './heroTextSection'
+import { SanityPageSectionValues } from './imageListSection'
+import { SanityPageSectionClients } from './logoListSection'
+import { SanityPageSectionPageIntro } from './pageIntroSection'
+import { SanityPageSectionStatsList } from './statisticListSection'
+import { SanityPageSectionTeams } from './teamMemberListSections'
+import { SanityPageSectionTestimonial } from './testimonialSection'
+import { SanityPageSectionCulture } from './textListSection'
+
+export type PageSection =
+  | ArticleListSectionSchema
+  | SanityPageSectionCTA
+  | SanityPageSectionCaseStudies
+  | SanityPageSectionClients
+  | SanityPageSectionContact
+  | SanityPageSectionCulture
+  | SanityPageSectionHero
+  | SanityPageSectionHeroWithoutImage
+  | SanityPageSectionPageIntro
+  | SanityPageSectionResearchCards
+  | SanityPageSectionStatsList
+  | SanityPageSectionTeams
+  | SanityPageSectionTestimonial
+  | SanityPageSectionValues
 
 export default defineType({
   name: 'pageSectionsArray',

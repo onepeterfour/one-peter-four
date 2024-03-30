@@ -1,5 +1,6 @@
 import { urlForImage } from '@/sanity/lib/image'
-import type { SanityPageSectionHero } from '@/sanity/schemas/objects/pageSections/types'
+import { SanityPageSectionHero } from '@/sanity/schemas/objects/pageSections/heroImageSection'
+
 import Image from 'next/image'
 
 type HeroProps = SanityPageSectionHero & {}

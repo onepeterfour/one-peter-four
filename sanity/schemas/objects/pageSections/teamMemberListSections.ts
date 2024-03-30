@@ -1,6 +1,14 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
+import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
+import { TeamMemberDocument } from '../../documents/data/teamMember'
+
+export interface SanityPageSectionTeams extends BasePageSectionSchema {
+  _type: 'sanityPageSectionTeam'
+  title: string
+  teamMembersList: TeamMemberDocument[]
+}
 
 export default defineType({
   type: 'object',

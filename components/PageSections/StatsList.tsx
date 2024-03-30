@@ -1,7 +1,8 @@
 import { Border } from '@/components/Border'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
-import type { SanityPageSectionStatsList } from '@/sanity/schemas/objects/pageSections/types'
+import { SanityPageSectionStatsList } from '@/sanity/schemas/objects/pageSections/statisticListSection'
+
 import React from 'react'
 
 type StatsListItemProps = SanityPageSectionStatsList['statsList'][0]

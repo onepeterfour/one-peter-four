@@ -6,10 +6,10 @@ import metaDataObject from './objects/metaDataObject'
 
 // IMPORT PAGE SECTION OBJECTS
 import pageSections from './objects/pageSections'
-import CaseStudyCardsListSection from './objects/pageSections/CaseStudyCardsListSection'
 import articleListSection from './objects/pageSections/articleListSection'
 import callToActionsSection from './objects/pageSections/callToActionsSection'
 import caseStudiesListSection from './objects/pageSections/caseStudiesListSection'
+import caseStudyCardListSection from './objects/pageSections/caseStudyCardListSection'
 import contactSection from './objects/pageSections/contactSection'
 import heroImageSection from './objects/pageSections/heroImageSection'
 import heroTextSection from './objects/pageSections/heroTextSection'
@@ -51,7 +51,7 @@ const PAGE_SECTION_OBJECTS = new Set([
   heroImageSection,
   heroTextSection,
   pageIntroSection,
-  CaseStudyCardsListSection,
+  caseStudyCardListSection,
   statisticListSection,
   teamMemberListSection,
   testimonialSection,

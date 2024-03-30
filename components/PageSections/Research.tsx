@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container'
 import { SectionIntro } from '@/components/SectionIntro'
 import { urlForImage } from '@/sanity/lib/image'
-import type { SanityPageSectionResearchCards } from '@/sanity/schemas/objects/pageSections/types'
+import { SanityPageSectionResearchCards } from '@/sanity/schemas/objects/pageSections/caseStudyCardListSection'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FadeIn, FadeInStagger } from '../FadeIn'
