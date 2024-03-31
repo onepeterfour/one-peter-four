@@ -17,7 +17,7 @@ import { Values } from './Values'
 
 const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['articleListSection', ArticleListSection],
-  ['sanityPageSectionCallToAction', CallToActionSection],
+  ['callToActionSection', CallToActionSection],
   ['sanityPageSectionHeroWithoutImage', HeroWithoutImage],
   ['sanityPageSectionPageIntro', PageIntro],
   ['sanityPageSectionStatsList', StatsList],

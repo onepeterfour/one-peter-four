@@ -43,8 +43,8 @@ export default defineType({
       title: 'Article List Section'
     }),
     defineArrayMember({
-      type: 'sanityPageSectionCallToAction',
-      name: 'sanityPageSectionCallToAction',
+      type: 'callToActionSection',
+      name: 'callToActionSection',
       title: 'Call to Action'
     }),
     defineArrayMember({
