@@ -3,7 +3,7 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-export interface SanityPageSectionCTA extends BasePageSectionSchema {
+export interface CallToActionSectionSchema extends BasePageSectionSchema {
   _type: 'sanityPageSectionCallToAction'
   title: string
   link: string

@@ -1,6 +1,6 @@
 import { defineArrayMember, defineType } from 'sanity'
 import { ArticleListSectionSchema } from './articleListSection'
-import type { SanityPageSectionCTA } from './callToActionsSection'
+import type { CallToActionSectionSchema } from './callToActionsSection'
 import type { SanityPageSectionCaseStudies } from './caseStudiesListSection'
 import { SanityPageSectionResearchCards } from './caseStudyCardListSection'
 import { SanityPageSectionContact } from './contactSection'
@@ -16,7 +16,7 @@ import { SanityPageSectionCulture } from './textListSection'
 
 export type PageSection =
   | ArticleListSectionSchema
-  | SanityPageSectionCTA
+  | CallToActionSectionSchema
   | SanityPageSectionCaseStudies
   | SanityPageSectionClients
   | SanityPageSectionContact

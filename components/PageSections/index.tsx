@@ -1,7 +1,7 @@
 import type { PageSection } from '@/sanity/schemas/objects/pageSections'
 import { ComponentType } from 'react'
 import { ArticleListSection } from './ArticleListSection'
-import { CallToAction } from './CallToAction'
+import { CallToActionSection } from './CallToActionSection'
 import { CaseStudies } from './CaseStudies'
 import { Clients } from './Clients'
 import { Contact } from './Contact'
@@ -17,13 +17,13 @@ import { Values } from './Values'
 
 const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['articleListSection', ArticleListSection],
+  ['sanityPageSectionCallToAction', CallToActionSection],
   ['sanityPageSectionHeroWithoutImage', HeroWithoutImage],
   ['sanityPageSectionPageIntro', PageIntro],
   ['sanityPageSectionStatsList', StatsList],
   ['sanityPageSectionCulture', Culture],
   ['sanityPageSectionClients', Clients],
   ['sanityPageSectionHeroWithImage', Hero],
-  ['sanityPageSectionCallToAction', CallToAction],
   ['sanityPageSectionResearchCards', ResearchCards],
   ['sanityPageSectionTestimonial', Testimonial],
   ['sanityPageSectionValues', Values],
