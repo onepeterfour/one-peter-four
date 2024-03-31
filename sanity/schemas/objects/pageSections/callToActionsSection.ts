@@ -4,14 +4,14 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export interface CallToActionSectionSchema extends BasePageSectionSchema {
-  _type: 'sanityPageSectionCallToAction'
+  _type: 'callToActionSection'
   title: string
   link: string
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionCallToAction',
+  name: 'callToActionSection',
   title: 'Call to Action',
   icon: BlockElementIcon,
   preview: {
