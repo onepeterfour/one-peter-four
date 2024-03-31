@@ -1,8 +1,8 @@
 import { defineArrayMember, defineType } from 'sanity'
 import { ArticleListSectionSchema } from './articleListSection'
 import type { CallToActionSectionSchema } from './callToActionsSection'
-import type { SanityPageSectionCaseStudies } from './caseStudiesListSection'
 import { SanityPageSectionResearchCards } from './caseStudyCardListSection'
+import type { CaseStudyListSectionSchema } from './caseStudyListSection'
 import { SanityPageSectionContact } from './contactSection'
 import { SanityPageSectionHero } from './heroImageSection'
 import { SanityPageSectionHeroWithoutImage } from './heroTextSection'
@@ -17,7 +17,7 @@ import { SanityPageSectionCulture } from './textListSection'
 export type PageSection =
   | ArticleListSectionSchema
   | CallToActionSectionSchema
-  | SanityPageSectionCaseStudies
+  | CaseStudyListSectionSchema
   | SanityPageSectionClients
   | SanityPageSectionContact
   | SanityPageSectionCulture
@@ -48,8 +48,8 @@ export default defineType({
       title: 'Call to Action'
     }),
     defineArrayMember({
-      type: 'sanityPageSectionCaseStudies',
-      name: 'sanityPageSectionCaseStudies',
+      type: 'caseStudyListSection',
+      name: 'caseStudyListSection',
       title: 'Case Studies'
     }),
     defineArrayMember({
