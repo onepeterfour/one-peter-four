@@ -18,7 +18,7 @@ const caseStudyIconDictionary: Record<string, any> = {
   Phobia: logoMarkPhobia
 }
 
-export const CaseStudies = () => {
+export const CaseStudyListSection = () => {
   return (
     <Container className='mt-40'>
       <FadeIn>

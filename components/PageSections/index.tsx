@@ -2,7 +2,7 @@ import type { PageSection } from '@/sanity/schemas/objects/pageSections'
 import { ComponentType } from 'react'
 import { ArticleListSection } from './ArticleListSection'
 import { CallToActionSection } from './CallToActionSection'
-import { CaseStudies } from './CaseStudies'
+import { CaseStudyListSection } from './CaseStudyListSection'
 import { Clients } from './Clients'
 import { Contact } from './Contact'
 import { Culture } from './Culture'
@@ -29,7 +29,7 @@ const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['sanityPageSectionValues', Values],
   ['sanityPageSectionContact', Contact],
   ['sanityPageSectionTeam', Team],
-  ['sanityPageSectionCaseStudies', CaseStudies]
+  ['caseStudyListSection', CaseStudyListSection]
 ])
 
 type PageSectionsProps = {

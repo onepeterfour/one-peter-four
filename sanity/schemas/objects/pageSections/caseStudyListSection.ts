@@ -3,14 +3,14 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-export interface SanityPageSectionCaseStudies extends BasePageSectionSchema {
-  _type: 'sanityPageSectionCaseStudies'
+export interface CaseStudyListSectionSchema extends BasePageSectionSchema {
+  _type: 'caseStudyListSection'
   eyebrow: string
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionCaseStudies',
+  name: 'caseStudyListSection',
   title: 'Case Studies',
   icon: BlockElementIcon,
   preview: {
