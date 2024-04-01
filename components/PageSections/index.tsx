@@ -5,7 +5,6 @@ import { CallToActionSection } from './CallToActionSection'
 import { CaseStudyCardListSection } from './CaseStudyCardListSection'
 import { CaseStudyListSection } from './CaseStudyListSection'
 import { ContactSection } from './ContactSection'
-import { Culture } from './Culture'
 import { Hero } from './Hero'
 import { HeroWithoutImage } from './HeroWithoutImage'
 import { LogoListSection } from './LogoListSection'
@@ -13,6 +12,7 @@ import { PageIntro } from './PageIntro'
 import { StatsList } from './StatsList'
 import { Team } from './Team'
 import { Testimonial } from './Testimonial'
+import { TextListSection } from './TextListSection'
 import { Values } from './Values'
 
 const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
@@ -24,7 +24,7 @@ const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['sanityPageSectionHeroWithoutImage', HeroWithoutImage],
   ['sanityPageSectionPageIntro', PageIntro],
   ['sanityPageSectionStatsList', StatsList],
-  ['sanityPageSectionCulture', Culture],
+  ['textListSection', TextListSection],
   ['sanityPageSectionHeroWithImage', Hero],
   ['sanityPageSectionTestimonial', Testimonial],
   ['sanityPageSectionValues', Values],

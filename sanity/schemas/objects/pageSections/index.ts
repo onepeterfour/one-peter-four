@@ -12,7 +12,7 @@ import { SanityPageSectionPageIntro } from './pageIntroSection'
 import { SanityPageSectionStatsList } from './statisticListSection'
 import { SanityPageSectionTeams } from './teamMemberListSections'
 import { SanityPageSectionTestimonial } from './testimonialSection'
-import { SanityPageSectionCulture } from './textListSection'
+import { TextListSectionSchema } from './textListSection'
 
 export type PageSection =
   | ArticleListSectionSchema
@@ -20,7 +20,7 @@ export type PageSection =
   | CaseStudyListSectionSchema
   | LogoListSectionSchema
   | ContactSectionSchema
-  | SanityPageSectionCulture
+  | TextListSectionSchema
   | SanityPageSectionHero
   | SanityPageSectionHeroWithoutImage
   | SanityPageSectionPageIntro
@@ -68,9 +68,9 @@ export default defineType({
       title: 'Contact Section'
     }),
     defineArrayMember({
-      type: 'sanityPageSectionCulture',
-      name: 'sanityPageSectionCulture',
-      title: 'Culture'
+      type: 'textListSection',
+      name: 'textListSection',
+      title: 'Text List Section'
     }),
     defineArrayMember({
       type: 'sanityPageSectionHeroWithImage',

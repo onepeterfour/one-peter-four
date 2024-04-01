@@ -3,12 +3,12 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-export interface SanityPageSectionCulture extends BasePageSectionSchema {
-  _type: 'sanityPageSectionCulture'
+export interface TextListSectionSchema extends BasePageSectionSchema {
+  _type: 'textListSection'
   eyebrow?: string
   title?: string
   subtitle?: string
-  cultureList?: Array<{
+  textList?: Array<{
     title?: string
     text?: string
     _key: string
@@ -18,8 +18,8 @@ export interface SanityPageSectionCulture extends BasePageSectionSchema {
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionCulture',
-  title: 'Culture',
+  name: 'textListSection',
+  title: 'Text List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -28,7 +28,7 @@ export default defineType({
     },
     prepare({ subtitle, isEnabled }) {
       return {
-        title: 'Culture',
+        title: 'Text List Section',
         subtitle,
         media: BlockElementIcon,
         isEnabled
@@ -59,15 +59,15 @@ export default defineType({
       rows: 2
     }),
     defineField({
-      name: 'cultureList',
-      title: 'Culture List',
+      name: 'textList',
+      title: 'Text List',
       type: 'array',
       validation: (rule) => rule.length(3),
       of: [
         {
           type: 'object',
-          name: 'cultureListItem',
-          title: 'Culture List Item',
+          name: 'textItem',
+          title: 'Text Item',
           fields: [
             defineField({ name: 'title', type: 'string' }),
             defineField({ name: 'text', type: 'text', rows: 3 })
