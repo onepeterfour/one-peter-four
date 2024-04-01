@@ -1,11 +1,12 @@
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionHero } from '@/sanity/schemas/objects/pageSections/heroImageSection'
-
+import { HeroImageSectionSchema } from '@/sanity/schemas/objects/pageSections/heroImageSection'
 import Image from 'next/image'
 
-type HeroProps = SanityPageSectionHero & {}
-
-export const Hero = ({ heading, image, tagline }: HeroProps) => {
+export const HeroImageSection = ({
+  heading,
+  image,
+  tagline
+}: Omit<HeroImageSectionSchema, 'isEnabled'>) => {
   return (
     <div className='mt-24 py-20 sm:mt-32 sm:py-32 lg:mt-56'>
       <div className='container'>

@@ -4,8 +4,8 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
 
-export interface SanityPageSectionHero extends BasePageSectionSchema {
-  _type: 'sanityPageSectionHeroWithImage'
+export interface HeroImageSectionSchema extends BasePageSectionSchema {
+  _type: 'heroImageSection'
   heading: string
   tagline: string
   image: ImageWithMetaDataObject
@@ -13,7 +13,7 @@ export interface SanityPageSectionHero extends BasePageSectionSchema {
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionHeroWithImage',
+  name: 'heroImageSection',
   title: 'Hero With Image',
   icon: BlockElementIcon,
   preview: {

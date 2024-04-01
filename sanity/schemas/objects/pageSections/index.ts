@@ -4,7 +4,7 @@ import type { CallToActionSectionSchema } from './callToActionsSection'
 import { CaseStudyCardListSectionSchema } from './caseStudyCardListSection'
 import type { CaseStudyListSectionSchema } from './caseStudyListSection'
 import { ContactSectionSchema } from './contactSection'
-import { SanityPageSectionHero } from './heroImageSection'
+import { HeroImageSectionSchema } from './heroImageSection'
 import { SanityPageSectionHeroWithoutImage } from './heroTextSection'
 import { SanityPageSectionValues } from './imageListSection'
 import { LogoListSectionSchema } from './logoListSection'
@@ -21,7 +21,7 @@ export type PageSection =
   | LogoListSectionSchema
   | ContactSectionSchema
   | TextListSectionSchema
-  | SanityPageSectionHero
+  | HeroImageSectionSchema
   | SanityPageSectionHeroWithoutImage
   | SanityPageSectionPageIntro
   | CaseStudyCardListSectionSchema
@@ -68,14 +68,14 @@ export default defineType({
       title: 'Contact Section'
     }),
     defineArrayMember({
+      type: 'heroImageSection',
+      name: 'heroImageSection',
+      title: 'Hero Image Section'
+    }),
+    defineArrayMember({
       type: 'textListSection',
       name: 'textListSection',
       title: 'Text List Section'
-    }),
-    defineArrayMember({
-      type: 'sanityPageSectionHeroWithImage',
-      name: 'sanityPageSectionHeroWithImage',
-      title: 'Hero With Image'
     }),
     defineArrayMember({
       type: 'sanityPageSectionHeroWithoutImage',
