@@ -14,7 +14,7 @@ export interface CaseStudyCardListSectionSchema extends BasePageSectionSchema {
 export default defineType({
   type: 'object',
   name: 'caseStudyCardListSection',
-  title: 'Case Study List Section',
+  title: 'Case Study Card List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -23,7 +23,7 @@ export default defineType({
     },
     prepare({ isEnabled, subtitle }) {
       return {
-        title: 'Case Study List Section',
+        title: 'Case Study Card List Section',
         subtitle,
         media: BlockElementIcon,
         isEnabled

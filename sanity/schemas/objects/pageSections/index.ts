@@ -7,7 +7,7 @@ import { SanityPageSectionContact } from './contactSection'
 import { SanityPageSectionHero } from './heroImageSection'
 import { SanityPageSectionHeroWithoutImage } from './heroTextSection'
 import { SanityPageSectionValues } from './imageListSection'
-import { SanityPageSectionClients } from './logoListSection'
+import { LogoListSectionSchema } from './logoListSection'
 import { SanityPageSectionPageIntro } from './pageIntroSection'
 import { SanityPageSectionStatsList } from './statisticListSection'
 import { SanityPageSectionTeams } from './teamMemberListSections'
@@ -18,7 +18,7 @@ export type PageSection =
   | ArticleListSectionSchema
   | CallToActionSectionSchema
   | CaseStudyListSectionSchema
-  | SanityPageSectionClients
+  | LogoListSectionSchema
   | SanityPageSectionContact
   | SanityPageSectionCulture
   | SanityPageSectionHero
@@ -50,17 +50,17 @@ export default defineType({
     defineArrayMember({
       type: 'caseStudyCardListSection',
       name: 'caseStudyCardListSection',
-      title: 'Case Study List Section'
+      title: 'Case Study Cards Section'
     }),
     defineArrayMember({
       type: 'caseStudyListSection',
       name: 'caseStudyListSection',
-      title: 'Case Studies'
+      title: 'Case Studies List Section'
     }),
     defineArrayMember({
-      type: 'sanityPageSectionClients',
-      name: 'sanityPageSectionClients',
-      title: 'Clients'
+      type: 'logoListSection',
+      name: 'logoListSection',
+      title: 'Client List Section'
     }),
     defineArrayMember({
       type: 'sanityPageSectionContact',

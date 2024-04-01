@@ -73,7 +73,7 @@ export const fetchPage = async <T>(pageName: PageName) => {
             }
           }
         },
-        _type == "sanityPageSectionClients" => {
+        _type == "logoListSection" => {
           ...,
           clientList[] -> {
             ...

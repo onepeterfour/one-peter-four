@@ -1,12 +1,14 @@
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionClients } from '@/sanity/schemas/objects/pageSections/logoListSection'
+import { LogoListSectionSchema } from '@/sanity/schemas/objects/pageSections/logoListSection'
 
 import Image from 'next/image'
 
-type ClientsProps = SanityPageSectionClients & {}
-export const Clients = ({ clientList, title }: ClientsProps) => {
+export const LogoListSection = ({
+  clientList,
+  title
+}: Omit<LogoListSectionSchema, 'isEnabled'>) => {
   return (
     <div className='mt-24 rounded-4xl bg-neutral-950 py-20 sm:mt-32 sm:py-32 lg:mt-56'>
       <Container>
