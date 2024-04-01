@@ -4,8 +4,8 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
 
-export interface SanityPageSectionClients extends BasePageSectionSchema {
-  _type: 'sanityPageSectionClients'
+export interface LogoListSectionSchema extends BasePageSectionSchema {
+  _type: 'logoListSection'
   title: string
   clientList?: Array<{
     logo: ImageWithMetaDataObject
@@ -20,8 +20,8 @@ export interface SanityPageSectionClients extends BasePageSectionSchema {
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionClients',
-  title: 'Clients',
+  name: 'logoListSection',
+  title: 'Logo List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -30,7 +30,7 @@ export default defineType({
     },
     prepare({ subtitle, isEnabled }) {
       return {
-        title: 'Clients',
+        title: 'Client List Section',
         subtitle,
         media: BlockElementIcon,
         isEnabled
