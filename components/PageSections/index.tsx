@@ -5,7 +5,7 @@ import { CallToActionSection } from './CallToActionSection'
 import { CaseStudyCardListSection } from './CaseStudyCardListSection'
 import { CaseStudyListSection } from './CaseStudyListSection'
 import { ContactSection } from './ContactSection'
-import { Hero } from './Hero'
+import { HeroImageSection } from './Hero'
 import { HeroWithoutImage } from './HeroWithoutImage'
 import { LogoListSection } from './LogoListSection'
 import { PageIntro } from './PageIntro'
@@ -25,7 +25,7 @@ const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['sanityPageSectionPageIntro', PageIntro],
   ['sanityPageSectionStatsList', StatsList],
   ['textListSection', TextListSection],
-  ['sanityPageSectionHeroWithImage', Hero],
+  ['heroImageSection', HeroImageSection],
   ['sanityPageSectionTestimonial', Testimonial],
   ['sanityPageSectionValues', Values],
   ['contactSection', ContactSection],
