@@ -1,17 +1,16 @@
 import { Container } from '@/components/Container'
 import { SectionIntro } from '@/components/SectionIntro'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionResearchCards } from '@/sanity/schemas/objects/pageSections/caseStudyCardListSection'
+import { CaseStudyCardListSectionSchema } from '@/sanity/schemas/objects/pageSections/caseStudyCardListSection'
 import Image from 'next/image'
 import Link from 'next/link'
 import { FadeIn, FadeInStagger } from '../FadeIn'
 
-type ResearchCardsProps = SanityPageSectionResearchCards & {}
 export const ResearchCards = ({
-  researchCards,
+  caseStudyList,
   title,
   subtitle
-}: ResearchCardsProps) => {
+}: Omit<CaseStudyCardListSectionSchema, 'isEnabled'>) => {
   return (
     <>
       <SectionIntro title={title} className='mt-24 sm:mt-32 lg:mt-40'>
@@ -19,15 +18,16 @@ export const ResearchCards = ({
       </SectionIntro>
       <Container className='mt-16'>
         <FadeInStagger className='grid grid-cols-1 gap-8 lg:grid-cols-3'>
-          {researchCards.map((card) => (
-            <FadeIn key={card._key} className='flex'>
+          {caseStudyList.map((card) => (
+            <FadeIn key={card._id} className='flex'>
               <article className='relative flex w-full flex-col rounded-3xl p-6 ring-1 ring-neutral-950/5 transition hover:bg-neutral-50 sm:p-8'>
                 <h3>
-                  <Link href={card.href}>
+                  <Link href={`/case-studies/${card?.slug?.current}`}>
                     <span className='absolute inset-0 rounded-3xl' />
+
                     <Image
-                      src={urlForImage(card?.logo)}
-                      alt={card?.logo?.alt}
+                      src={urlForImage(card?.client?.logo)}
+                      alt={card?.client?.logo?.alt}
                       className='h-16 w-16'
                       width={50}
                       height={50}

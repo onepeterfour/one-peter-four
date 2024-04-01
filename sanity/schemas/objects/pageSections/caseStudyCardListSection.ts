@@ -1,22 +1,14 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
 import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
-import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { CaseStudyDocument } from '../../documents/data/caseStudy'
 
-export interface SanityPageSectionResearchCards extends BasePageSectionSchema {
+export interface CaseStudyCardListSectionSchema extends BasePageSectionSchema {
   _type: 'sanityPageSectionResearchCards'
   title: string
   subtitle: string
-  researchCards: Array<{
-    _type: string
-    _key: string
-    logo: ImageWithMetaDataObject
-    date: string
-    title: string
-    description: string
-    href: string
-  }>
+  caseStudyList: CaseStudyDocument[]
 }
 
 export default defineType({
@@ -60,54 +52,67 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'researchCards',
-      title: 'Research Cards',
-      validation: (Rule) => Rule.required().max(3),
+      name: 'caseStudyList',
+      title: 'Case Studies',
       type: 'array',
       of: [
-        {
-          name: 'researchCardObject',
-          type: 'object',
-          title: 'Research Card',
-          preview: {
-            select: {
-              media: 'logo',
-              title: 'title'
-            }
-          },
-          fields: [
-            defineField({
-              name: 'logo',
-              title: 'Logo',
-              type: 'imageWithMetadata'
-            }),
-            defineField({
-              name: 'date',
-              title: 'Date',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'description',
-              title: 'Description',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            }),
-            defineField({
-              name: 'href',
-              title: 'Href',
-              type: 'string',
-              validation: (Rule) => Rule.required()
-            })
-          ]
-        }
+        defineArrayMember({
+          name: 'caseStudy',
+          title: 'Case Study',
+          type: 'reference',
+          to: [{ type: 'caseStudyDocument' }]
+        })
       ]
     })
+    // defineField({
+    //   name: 'researchCards',
+    //   title: 'Research Cards',
+    //   validation: (Rule) => Rule.required().max(3),
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       name: 'researchCardObject',
+    //       type: 'object',
+    //       title: 'Research Card',
+    //       preview: {
+    //         select: {
+    //           media: 'logo',
+    //           title: 'title'
+    //         }
+    //       },
+    //       fields: [
+    //         defineField({
+    //           name: 'logo',
+    //           title: 'Logo',
+    //           type: 'imageWithMetadata'
+    //         }),
+    //         defineField({
+    //           name: 'date',
+    //           title: 'Date',
+    //           type: 'string',
+    //           validation: (Rule) => Rule.required()
+    //         }),
+    //         defineField({
+    //           name: 'title',
+    //           title: 'Title',
+    //           type: 'string',
+    //           validation: (Rule) => Rule.required()
+    //         }),
+    //         defineField({
+    //           name: 'description',
+    //           title: 'Description',
+    //           type: 'string',
+    //           validation: (Rule) => Rule.required()
+    //         }),
+    //         defineField({
+    //           name: 'href',
+    //           title: 'Href',
+    //           type: 'string',
+    //           validation: (Rule) => Rule.required()
+    //         })
+    //       ]
+    //     }
+    //   ]
+    // })
   ]
 })

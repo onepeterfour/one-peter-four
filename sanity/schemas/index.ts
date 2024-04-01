@@ -35,6 +35,7 @@ import teamPage from './documents/pages/teamPage'
 // IMPORT DATA DOCUMENTS
 import article from './documents/data/article'
 import articleCategory from './documents/data/articleCategory'
+import caseStudy from './documents/data/caseStudy'
 import clientOrganisation from './documents/data/clientOrganisation'
 import teamMember from './documents/data/teamMember'
 import websitePolicy from './documents/data/websitePolicy'
@@ -78,7 +79,8 @@ const DATA_DOCUMENTS = new Set([
   articleCategory,
   teamMember,
   websitePolicy,
-  clientOrganisation
+  clientOrganisation,
+  caseStudy
 ])
 
 export const schema: { types: SchemaTypeDefinition[] } = {

@@ -135,6 +135,10 @@ const deskToolOptions: DeskToolOptions = {
             )
           ),
         S.listItem()
+          .title('Case Studies')
+          .icon(BookIcon)
+          .child(S.documentTypeList('caseStudyDocument').title('Case Studies')),
+        S.listItem()
           .title('Articles')
           .icon(EditIcon)
           .child(S.documentTypeList('articleDocument').title('Articles')),

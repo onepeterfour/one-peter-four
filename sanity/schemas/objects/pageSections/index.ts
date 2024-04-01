@@ -1,7 +1,7 @@
 import { defineArrayMember, defineType } from 'sanity'
 import { ArticleListSectionSchema } from './articleListSection'
 import type { CallToActionSectionSchema } from './callToActionsSection'
-import { SanityPageSectionResearchCards } from './caseStudyCardListSection'
+import { CaseStudyCardListSectionSchema } from './caseStudyCardListSection'
 import type { CaseStudyListSectionSchema } from './caseStudyListSection'
 import { SanityPageSectionContact } from './contactSection'
 import { SanityPageSectionHero } from './heroImageSection'
@@ -24,7 +24,7 @@ export type PageSection =
   | SanityPageSectionHero
   | SanityPageSectionHeroWithoutImage
   | SanityPageSectionPageIntro
-  | SanityPageSectionResearchCards
+  | CaseStudyCardListSectionSchema
   | SanityPageSectionStatsList
   | SanityPageSectionTeams
   | SanityPageSectionTestimonial
