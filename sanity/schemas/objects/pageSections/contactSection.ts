@@ -3,23 +3,23 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-export interface SanityPageSectionContact extends BasePageSectionSchema {
-  _type: 'sanityPageSectionContact'
+export interface ContactSectionSchema extends BasePageSectionSchema {
+  _type: 'contactSection'
   title: string
   buttonLabel: string
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionContact',
-  title: 'Contact',
+  name: 'contactSection',
+  title: 'Contact Section',
   icon: BlockElementIcon,
   preview: {
     select: {
       isEnabled: 'isEnabled'
     },
     prepare: ({ isEnabled }) => ({
-      title: 'Contact',
+      title: 'Contact Section',
       media: BlockElementIcon,
       isEnabled
     })

@@ -3,7 +3,7 @@ import { ArticleListSectionSchema } from './articleListSection'
 import type { CallToActionSectionSchema } from './callToActionsSection'
 import { CaseStudyCardListSectionSchema } from './caseStudyCardListSection'
 import type { CaseStudyListSectionSchema } from './caseStudyListSection'
-import { SanityPageSectionContact } from './contactSection'
+import { ContactSectionSchema } from './contactSection'
 import { SanityPageSectionHero } from './heroImageSection'
 import { SanityPageSectionHeroWithoutImage } from './heroTextSection'
 import { SanityPageSectionValues } from './imageListSection'
@@ -19,7 +19,7 @@ export type PageSection =
   | CallToActionSectionSchema
   | CaseStudyListSectionSchema
   | LogoListSectionSchema
-  | SanityPageSectionContact
+  | ContactSectionSchema
   | SanityPageSectionCulture
   | SanityPageSectionHero
   | SanityPageSectionHeroWithoutImage
@@ -63,9 +63,9 @@ export default defineType({
       title: 'Client List Section'
     }),
     defineArrayMember({
-      type: 'sanityPageSectionContact',
-      name: 'sanityPageSectionContact',
-      title: 'Contact'
+      type: 'contactSection',
+      name: 'contactSection',
+      title: 'Contact Section'
     }),
     defineArrayMember({
       type: 'sanityPageSectionCulture',
