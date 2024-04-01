@@ -48,6 +48,11 @@ export default defineType({
       title: 'Call to Action'
     }),
     defineArrayMember({
+      type: 'caseStudyCardListSection',
+      name: 'caseStudyCardListSection',
+      title: 'Case Study List Section'
+    }),
+    defineArrayMember({
       type: 'caseStudyListSection',
       name: 'caseStudyListSection',
       title: 'Case Studies'
@@ -81,11 +86,6 @@ export default defineType({
       type: 'sanityPageSectionPageIntro',
       name: 'sanityPageSectionPageIntro',
       title: 'Page Intro'
-    }),
-    defineArrayMember({
-      type: 'sanityPageSectionResearchCards',
-      name: 'sanityPageSectionResearchCards',
-      title: 'Research Cards'
     }),
     defineArrayMember({
       type: 'sanityPageSectionStatsList',

@@ -5,7 +5,7 @@ import { defineArrayMember, defineField, defineType } from 'sanity'
 import { CaseStudyDocument } from '../../documents/data/caseStudy'
 
 export interface CaseStudyCardListSectionSchema extends BasePageSectionSchema {
-  _type: 'sanityPageSectionResearchCards'
+  _type: 'caseStudyCardListSection'
   title: string
   subtitle: string
   caseStudyList: CaseStudyDocument[]
@@ -13,16 +13,18 @@ export interface CaseStudyCardListSectionSchema extends BasePageSectionSchema {
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionResearchCards',
-  title: 'Research Cards',
+  name: 'caseStudyCardListSection',
+  title: 'Case Study List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
-      isEnabled: 'isEnabled'
+      isEnabled: 'isEnabled',
+      subtitle: 'subtitle'
     },
-    prepare({ isEnabled }) {
+    prepare({ isEnabled, subtitle }) {
       return {
-        title: 'Research Cards',
+        title: 'Case Study List Section',
+        subtitle,
         media: BlockElementIcon,
         isEnabled
       }
@@ -64,55 +66,5 @@ export default defineType({
         })
       ]
     })
-    // defineField({
-    //   name: 'researchCards',
-    //   title: 'Research Cards',
-    //   validation: (Rule) => Rule.required().max(3),
-    //   type: 'array',
-    //   of: [
-    //     {
-    //       name: 'researchCardObject',
-    //       type: 'object',
-    //       title: 'Research Card',
-    //       preview: {
-    //         select: {
-    //           media: 'logo',
-    //           title: 'title'
-    //         }
-    //       },
-    //       fields: [
-    //         defineField({
-    //           name: 'logo',
-    //           title: 'Logo',
-    //           type: 'imageWithMetadata'
-    //         }),
-    //         defineField({
-    //           name: 'date',
-    //           title: 'Date',
-    //           type: 'string',
-    //           validation: (Rule) => Rule.required()
-    //         }),
-    //         defineField({
-    //           name: 'title',
-    //           title: 'Title',
-    //           type: 'string',
-    //           validation: (Rule) => Rule.required()
-    //         }),
-    //         defineField({
-    //           name: 'description',
-    //           title: 'Description',
-    //           type: 'string',
-    //           validation: (Rule) => Rule.required()
-    //         }),
-    //         defineField({
-    //           name: 'href',
-    //           title: 'Href',
-    //           type: 'string',
-    //           validation: (Rule) => Rule.required()
-    //         })
-    //       ]
-    //     }
-    //   ]
-    // })
   ]
 })
