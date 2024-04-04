@@ -1,15 +1,12 @@
 import { FadeIn } from '@/components/FadeIn'
-
-import { SanityPageSectionHeroWithoutImage } from '@/sanity/schemas/objects/pageSections/heroTextSection'
+import { HeroTextSectionSchema } from '@/sanity/schemas/objects/pageSections/heroTextSection'
 import { Container } from '../Container'
 
-type HeroWithoutImageProps = SanityPageSectionHeroWithoutImage & {}
-
-export const HeroWithoutImage = ({
+export const HeroTextSection = ({
   heading,
   subheading: subHeading,
   _key
-}: HeroWithoutImageProps) => {
+}: Omit<HeroTextSectionSchema, 'isEnabled'>) => {
   return (
     <Container className='mt-24 sm:mt-32 lg:mt-40'>
       <FadeIn className='max-w-3xl' key={_key}>

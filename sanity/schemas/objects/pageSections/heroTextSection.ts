@@ -3,17 +3,16 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-export interface SanityPageSectionHeroWithoutImage
-  extends BasePageSectionSchema {
-  _type: 'sanityPageSectionHeroWithoutImage'
+export interface HeroTextSectionSchema extends BasePageSectionSchema {
+  _type: 'heroTextSection'
   heading?: string
   subheading?: string
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionHeroWithoutImage',
-  title: 'Hero Without Image',
+  name: 'heroTextSection',
+  title: 'Hero Text Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -22,7 +21,7 @@ export default defineType({
     },
     prepare({ subtitle, isEnabled }) {
       return {
-        title: 'Hero Without Image',
+        title: 'Hero Text Section',
         subtitle,
         media: BlockElementIcon,
         isEnabled
