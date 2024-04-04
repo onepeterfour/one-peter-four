@@ -9,7 +9,7 @@ import { HeroImageSection } from './Hero'
 import { HeroTextSection } from './HeroTextSection'
 import { LogoListSection } from './LogoListSection'
 import { PageIntroSection } from './PageIntroSection'
-import { StatsList } from './StatsList'
+import { StatisticListSection } from './StatisticListSection'
 import { Team } from './Team'
 import { Testimonial } from './Testimonial'
 import { TextListSection } from './TextListSection'
@@ -24,7 +24,7 @@ const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['heroTextSection', HeroTextSection],
   ['logoListSection', LogoListSection],
   ['pageIntroSection', PageIntroSection],
-  ['sanityPageSectionStatsList', StatsList],
+  ['statisticListSection', StatisticListSection],
   ['textListSection', TextListSection],
   ['sanityPageSectionTestimonial', Testimonial],
   ['sanityPageSectionValues', Values],
