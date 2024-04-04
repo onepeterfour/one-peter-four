@@ -1,7 +1,7 @@
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { PageIntro } from '@/components/PageSections/PageIntro'
+import { PageIntroSection } from '@/components/PageSections/PageIntroSection'
 import { PortableText } from '@/components/PortableText'
 import { formatDateString } from '@/lib/formatDate'
 import {
@@ -43,7 +43,7 @@ export default async function Page({ params }: { params: QueryParams }) {
   return (
     <Container as='div' className='mt-24 sm:mt-32 lg:mt-40'>
       <article>
-        <PageIntro
+        <PageIntroSection
           title={article?.title}
           _type={article?._type}
           centered

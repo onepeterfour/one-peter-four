@@ -1,18 +1,15 @@
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
-import { SanityPageSectionPageIntro } from '@/sanity/schemas/objects/pageSections/pageIntroSection'
+import { PageIntroSectionSchema } from '@/sanity/schemas/objects/pageSections/pageIntroSection'
 import clsx from 'clsx'
 import { PortableText } from '../PortableText'
 
-type PageIntroProps = Omit<
-  SanityPageSectionPageIntro,
-  'isEnabled' | '_type'
-> & {
+type PageIntroProps = Omit<PageIntroSectionSchema, 'isEnabled' | '_type'> & {
   centered?: boolean
   _type: string
 }
 
-export function PageIntro({
+export function PageIntroSection({
   eyebrow,
   title,
   centered = false,
