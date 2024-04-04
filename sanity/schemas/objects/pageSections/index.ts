@@ -8,7 +8,7 @@ import { HeroImageSectionSchema } from './heroImageSection'
 import { HeroTextSectionSchema } from './heroTextSection'
 import { SanityPageSectionValues } from './imageListSection'
 import { LogoListSectionSchema } from './logoListSection'
-import { SanityPageSectionPageIntro } from './pageIntroSection'
+import { PageIntroSectionSchema } from './pageIntroSection'
 import { SanityPageSectionStatsList } from './statisticListSection'
 import { SanityPageSectionTeams } from './teamMemberListSections'
 import { SanityPageSectionTestimonial } from './testimonialSection'
@@ -23,7 +23,7 @@ export type PageSection =
   | TextListSectionSchema
   | HeroImageSectionSchema
   | HeroTextSectionSchema
-  | SanityPageSectionPageIntro
+  | PageIntroSectionSchema
   | CaseStudyCardListSectionSchema
   | SanityPageSectionStatsList
   | SanityPageSectionTeams
@@ -58,11 +58,6 @@ export default defineType({
       title: 'Case Studies List Section'
     }),
     defineArrayMember({
-      type: 'logoListSection',
-      name: 'logoListSection',
-      title: 'Client List Section'
-    }),
-    defineArrayMember({
       type: 'contactSection',
       name: 'contactSection',
       title: 'Contact Section'
@@ -78,14 +73,19 @@ export default defineType({
       title: 'Hero Text Section'
     }),
     defineArrayMember({
+      type: 'logoListSection',
+      name: 'logoListSection',
+      title: 'Client List Section'
+    }),
+    defineArrayMember({
+      type: 'pageIntroSection',
+      name: 'pageIntroSection',
+      title: 'Page Intro Section'
+    }),
+    defineArrayMember({
       type: 'textListSection',
       name: 'textListSection',
       title: 'Text List Section'
-    }),
-    defineArrayMember({
-      type: 'sanityPageSectionPageIntro',
-      name: 'sanityPageSectionPageIntro',
-      title: 'Page Intro'
     }),
     defineArrayMember({
       type: 'sanityPageSectionStatsList',

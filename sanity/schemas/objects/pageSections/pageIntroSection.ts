@@ -3,8 +3,8 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { TypedObject, defineField, defineType } from 'sanity'
 
-export interface SanityPageSectionPageIntro extends BasePageSectionSchema {
-  _type: 'sanityPageSectionPageIntro'
+export interface PageIntroSectionSchema extends BasePageSectionSchema {
+  _type: 'pageIntroSection'
   eyebrow?: string
   subtitle?: string
   title?: string
@@ -13,8 +13,8 @@ export interface SanityPageSectionPageIntro extends BasePageSectionSchema {
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionPageIntro',
-  title: 'Page Intro',
+  name: 'pageIntroSection',
+  title: 'Page Intro Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -23,7 +23,7 @@ export default defineType({
     },
     prepare({ subtitle, isEnabled }) {
       return {
-        title: 'Page Intro',
+        title: 'Page Intro Section',
         subtitle,
         media: BlockElementIcon,
         isEnabled
