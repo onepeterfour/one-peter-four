@@ -2,12 +2,15 @@ import { Border } from '@/components/Border'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionTeams } from '@/sanity/schemas/objects/pageSections/teamMemberListSections'
+import { TeamMemberListSectionSchema } from '@/sanity/schemas/objects/pageSections/teamMemberListSections'
 import Image from 'next/image'
 import Link from 'next/link'
 
-type TeamProps = SanityPageSectionTeams & {}
-export const Team = ({ title, _key, teamMembersList }: TeamProps) => {
+export const TeamMemberListSection = ({
+  title,
+  _key,
+  teamMemberList
+}: Omit<TeamMemberListSectionSchema, 'isEnabled'>) => {
   return (
     <Container className='mt-24 sm:mt-32 lg:mt-40'>
       <div className='space-y-24'>
@@ -24,8 +27,8 @@ export const Team = ({ title, _key, teamMembersList }: TeamProps) => {
                 role='list'
                 className='grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-8'
               >
-                {teamMembersList.length > 0 &&
-                  teamMembersList.map((teamMember) => {
+                {teamMemberList.length > 0 &&
+                  teamMemberList.map((teamMember) => {
                     return (
                       <li key={teamMember?._id}>
                         <Link href={`/team/${teamMember?.slug?.current}`}>
