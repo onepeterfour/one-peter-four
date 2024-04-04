@@ -4,16 +4,16 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 import { TeamMemberDocument } from '../../documents/data/teamMember'
 
-export interface SanityPageSectionTeams extends BasePageSectionSchema {
-  _type: 'sanityPageSectionTeam'
+export interface TeamMemberListSectionSchema extends BasePageSectionSchema {
+  _type: 'teamMemberListSection'
   title: string
-  teamMembersList: TeamMemberDocument[]
+  teamMemberList: TeamMemberDocument[]
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionTeam',
-  title: 'Team',
+  name: 'teamMemberListSection',
+  title: 'Team Member List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -21,7 +21,7 @@ export default defineType({
     },
     prepare({ isEnabled }) {
       return {
-        title: 'Team',
+        title: 'Team Member List Section',
         media: BlockElementIcon,
         isEnabled
       }
@@ -44,7 +44,7 @@ export default defineType({
       validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'teamMembersList',
+      name: 'teamMemberList',
       title: 'Team Members',
       type: 'array',
       of: [
