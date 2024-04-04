@@ -9,7 +9,7 @@ import { HeroTextSectionSchema } from './heroTextSection'
 import { SanityPageSectionValues } from './imageListSection'
 import { LogoListSectionSchema } from './logoListSection'
 import { PageIntroSectionSchema } from './pageIntroSection'
-import { SanityPageSectionStatsList } from './statisticListSection'
+import { StatisticListSectionSchema } from './statisticListSection'
 import { SanityPageSectionTeams } from './teamMemberListSections'
 import { SanityPageSectionTestimonial } from './testimonialSection'
 import { TextListSectionSchema } from './textListSection'
@@ -25,7 +25,7 @@ export type PageSection =
   | HeroTextSectionSchema
   | PageIntroSectionSchema
   | CaseStudyCardListSectionSchema
-  | SanityPageSectionStatsList
+  | StatisticListSectionSchema
   | SanityPageSectionTeams
   | SanityPageSectionTestimonial
   | SanityPageSectionValues
@@ -88,9 +88,9 @@ export default defineType({
       title: 'Text List Section'
     }),
     defineArrayMember({
-      type: 'sanityPageSectionStatsList',
-      name: 'sanityPageSectionStatsList',
-      title: 'Stats List'
+      type: 'statisticListSection',
+      name: 'statisticListSection',
+      title: 'Statistic List Section'
     }),
     defineArrayMember({
       type: 'sanityPageSectionTeam',

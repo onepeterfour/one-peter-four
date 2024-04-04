@@ -3,20 +3,21 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
-export interface SanityPageSectionStatsList extends BasePageSectionSchema {
-  _type: 'sanityPageSectionStatsList'
-  statsList: Array<{
-    _type: string
-    _key: string
-    title: string
-    value: string
-  }>
+export interface StatisticSchema {
+  _type: 'statistic'
+  _key: string
+  title: string
+  value: string
+}
+export interface StatisticListSectionSchema extends BasePageSectionSchema {
+  _type: 'statisticListSection'
+  statisticList: StatisticSchema[]
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionStatsList',
-  title: 'Stats List',
+  name: 'statisticListSection',
+  title: 'Statistic List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -24,7 +25,7 @@ export default defineType({
     },
     prepare({ isEnabled }) {
       return {
-        title: 'Stats List',
+        title: 'Statistic List Section',
         media: BlockElementIcon,
         isEnabled
       }
@@ -41,13 +42,13 @@ export default defineType({
       initialValue: false
     }),
     defineField({
-      name: 'statsList',
+      name: 'statisticList',
       type: 'array',
       of: [
         defineField({
           type: 'object',
-          name: 'stat',
-          title: 'Stat',
+          name: 'statistic',
+          title: 'Statistic',
           fields: [
             defineField({
               name: 'title',
