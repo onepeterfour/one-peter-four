@@ -7,29 +7,29 @@ import { CaseStudyListSection } from './CaseStudyListSection'
 import { ContactSection } from './ContactSection'
 import { HeroImageSection } from './Hero'
 import { HeroTextSection } from './HeroTextSection'
+import { ImageTextListSection } from './ImageTextListSection'
 import { LogoListSection } from './LogoListSection'
 import { PageIntroSection } from './PageIntroSection'
 import { StatisticListSection } from './StatisticListSection'
 import { TeamMemberListSection } from './TeamMemberListSection'
 import { TestimonialSection } from './TestimonialSection'
 import { TextListSection } from './TextListSection'
-import { Values } from './Values'
 
 const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['articleListSection', ArticleListSection],
   ['callToActionSection', CallToActionSection],
   ['caseStudyCardListSection', CaseStudyCardListSection],
   ['caseStudyListSection', CaseStudyListSection],
+  ['contactSection', ContactSection],
   ['heroImageSection', HeroImageSection],
   ['heroTextSection', HeroTextSection],
+  ['imageTextListSection', ImageTextListSection],
   ['logoListSection', LogoListSection],
   ['pageIntroSection', PageIntroSection],
   ['statisticListSection', StatisticListSection],
   ['teamMemberListSection', TeamMemberListSection],
   ['testimonialSection', TestimonialSection],
-  ['textListSection', TextListSection],
-  ['sanityPageSectionValues', Values],
-  ['contactSection', ContactSection]
+  ['textListSection', TextListSection]
 ])
 
 type PageSectionsProps = {
