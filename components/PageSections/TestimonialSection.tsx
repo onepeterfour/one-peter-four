@@ -2,12 +2,14 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { GridPattern } from '@/components/GridPattern'
 import { urlForImage } from '@/sanity/lib/image'
-import { SanityPageSectionTestimonial } from '@/sanity/schemas/objects/pageSections/testimonialSection'
+import { TestimonialSectionSchema } from '@/sanity/schemas/objects/pageSections/testimonialSection'
 
 import Image from 'next/image'
 
-type TestimonialProps = SanityPageSectionTestimonial & {}
-export function Testimonial({ quote, logo }: TestimonialProps) {
+export function TestimonialSection({
+  quote,
+  client
+}: Omit<TestimonialSectionSchema, 'isEnabled'>) {
   return (
     <div className='relative isolate mt-24 bg-neutral-50 py-16 sm:mt-32 sm:py-28 md:py-32 lg:mt-40'>
       <GridPattern
@@ -24,8 +26,8 @@ export function Testimonial({ quote, logo }: TestimonialProps) {
             </blockquote>
             <figcaption className='mt-10'>
               <Image
-                src={urlForImage(logo)}
-                alt={logo?.alt}
+                src={urlForImage(client.logo)}
+                alt={client.logo?.alt}
                 unoptimized
                 width={50}
                 height={50}

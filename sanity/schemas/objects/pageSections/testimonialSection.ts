@@ -2,29 +2,26 @@ import { CustomListPreview } from '@/sanity/components/CustomListPreview'
 import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
-import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
+import { ClientOrganisationDocument } from '../../documents/data/clientOrganisation'
 
-export interface SanityPageSectionTestimonial extends BasePageSectionSchema {
-  _type: 'sanityPageSectionTestimonial'
-  client: string
+export interface TestimonialSectionSchema extends BasePageSectionSchema {
+  _type: 'testimonialSection'
+  client: ClientOrganisationDocument
   quote: string
-  logo: ImageWithMetaDataObject
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionTestimonial',
-  title: 'Testimonial',
+  name: 'testimonialSection',
+  title: 'Testimonial Section',
   icon: BlockElementIcon,
   preview: {
     select: {
-      subtitle: 'client',
       isEnabled: 'isEnabled'
     },
-    prepare({ subtitle, isEnabled }) {
+    prepare({ isEnabled }) {
       return {
-        title: 'Testimonial',
-        subtitle,
+        title: 'Testimonial Section',
         media: BlockElementIcon,
         isEnabled
       }
@@ -43,19 +40,14 @@ export default defineType({
     defineField({
       name: 'client',
       title: 'Client',
-      type: 'string',
+      type: 'reference',
+      to: [{ type: 'clientOrganisationDocument' }],
       validation: (Rule) => Rule.required()
     }),
     defineField({
       name: 'quote',
       title: 'Quote',
       type: 'text',
-      validation: (Rule) => Rule.required()
-    }),
-    defineField({
-      name: 'logo',
-      title: 'Logo',
-      type: 'imageWithMetadata',
       validation: (Rule) => Rule.required()
     })
   ]
