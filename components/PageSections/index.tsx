@@ -11,7 +11,7 @@ import { LogoListSection } from './LogoListSection'
 import { PageIntroSection } from './PageIntroSection'
 import { StatisticListSection } from './StatisticListSection'
 import { TeamMemberListSection } from './TeamMemberListSection'
-import { Testimonial } from './Testimonial'
+import { TestimonialSection } from './TestimonialSection'
 import { TextListSection } from './TextListSection'
 import { Values } from './Values'
 
@@ -25,11 +25,11 @@ const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['logoListSection', LogoListSection],
   ['pageIntroSection', PageIntroSection],
   ['statisticListSection', StatisticListSection],
+  ['teamMemberListSection', TeamMemberListSection],
+  ['testimonialSection', TestimonialSection],
   ['textListSection', TextListSection],
-  ['sanityPageSectionTestimonial', Testimonial],
   ['sanityPageSectionValues', Values],
-  ['contactSection', ContactSection],
-  ['teamMemberListSection', TeamMemberListSection]
+  ['contactSection', ContactSection]
 ])
 
 type PageSectionsProps = {

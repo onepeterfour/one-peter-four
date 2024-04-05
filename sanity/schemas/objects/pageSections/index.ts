@@ -11,7 +11,7 @@ import { LogoListSectionSchema } from './logoListSection'
 import { PageIntroSectionSchema } from './pageIntroSection'
 import { StatisticListSectionSchema } from './statisticListSection'
 import { TeamMemberListSectionSchema } from './teamMemberListSections'
-import { SanityPageSectionTestimonial } from './testimonialSection'
+import { TestimonialSectionSchema } from './testimonialSection'
 import { TextListSectionSchema } from './textListSection'
 
 export type PageSection =
@@ -27,7 +27,7 @@ export type PageSection =
   | CaseStudyCardListSectionSchema
   | StatisticListSectionSchema
   | TeamMemberListSectionSchema
-  | SanityPageSectionTestimonial
+  | TestimonialSectionSchema
   | SanityPageSectionValues
 
 export default defineType({
@@ -88,6 +88,11 @@ export default defineType({
       title: 'Team Member List Section'
     }),
     defineArrayMember({
+      type: 'testimonialSection',
+      name: 'testimonialSection',
+      title: 'Testimonial Section'
+    }),
+    defineArrayMember({
       type: 'textListSection',
       name: 'textListSection',
       title: 'Text List Section'
@@ -96,11 +101,6 @@ export default defineType({
       type: 'statisticListSection',
       name: 'statisticListSection',
       title: 'Statistic List Section'
-    }),
-    defineArrayMember({
-      type: 'sanityPageSectionTestimonial',
-      name: 'sanityPageSectionTestimonial',
-      title: 'Testimonial'
     }),
     defineArrayMember({
       type: 'sanityPageSectionValues',

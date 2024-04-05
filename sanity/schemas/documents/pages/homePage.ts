@@ -56,6 +56,12 @@ export const fetchPage = async <T>(pageName: PageName) => {
     ...,
       pageSections[]{
         ...,
+        _type == "testimonialSection" => {
+          ...,
+          client -> {
+            ...,
+            }
+        },
         _type == "articleListSection" => {
           ...,
           articleList[] -> {
