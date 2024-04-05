@@ -4,31 +4,34 @@ import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
 
-export interface SanityPageSectionValues extends BasePageSectionSchema {
-  _type: 'sanityPageSectionValues'
+interface TextListItem {
+  _type: 'textListItem'
+  _key: string
+  title: string
+  description: string
+}
+export interface ImageTextListSectionSchema extends BasePageSectionSchema {
+  _type: 'imageTextListSection'
   eyebrow: string
   title: string
   subtitle: string
   image: ImageWithMetaDataObject
-  valuesList: Array<{
-    _type: 'value'
-    _key: string
-    title: string
-    description: string
-  }>
+  textList: TextListItem[]
 }
 
 export default defineType({
   type: 'object',
-  name: 'sanityPageSectionValues',
-  title: 'Values',
+  name: 'imageTextListSection',
+  title: 'Image Text List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
-      isEnabled: 'isEnabled'
+      isEnabled: 'isEnabled',
+      subtitle: 'eyebrow'
     },
-    prepare: ({ isEnabled }) => ({
-      title: 'Values',
+    prepare: ({ isEnabled, subtitle }) => ({
+      title: 'Text List Section',
+      subtitle,
       media: BlockElementIcon,
       isEnabled
     })
@@ -65,17 +68,18 @@ export default defineType({
     defineField({
       name: 'image',
       title: 'Image',
-      type: 'imageWithMetadata'
+      type: 'imageWithMetadata',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: 'valuesList',
-      title: 'Values List',
+      name: 'textList',
+      title: 'Text List',
       type: 'array',
       validation: (Rule) => Rule.required().max(4),
       of: [
         {
           type: 'object',
-          name: 'value',
+          name: 'textListItem',
           fields: [
             {
               name: 'title',

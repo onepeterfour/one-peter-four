@@ -1,20 +1,19 @@
 import { urlForImage } from '@/sanity/lib/image'
 
-import { SanityPageSectionValues } from '@/sanity/schemas/objects/pageSections/imageListSection'
+import { ImageTextListSectionSchema } from '@/sanity/schemas/objects/pageSections/imageTextListSection'
 import { Container } from '../Container'
 import { FadeIn } from '../FadeIn'
 import { List, ListItem } from '../List'
 import { SectionIntro } from '../SectionIntro'
 import { StylizedImage } from '../StylizedImage'
 
-type ValuesProps = SanityPageSectionValues & {}
-export const Values = ({
+export const ImageTextListSection = ({
   eyebrow,
   image,
   subtitle,
   title,
-  valuesList
-}: ValuesProps) => {
+  textList
+}: Omit<ImageTextListSectionSchema, 'isEnabled'>) => {
   return (
     <>
       <SectionIntro
@@ -38,12 +37,15 @@ export const Values = ({
               />
             </FadeIn>
           </div>
-          {valuesList.length > 0 && (
+          {textList.length > 0 && (
             <List className='mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4'>
-              {valuesList.map((value) => {
+              {textList.map((textListItem) => {
                 return (
-                  <ListItem key={value?._key} title={value?.title}>
-                    {value?.description}
+                  <ListItem
+                    key={textListItem?._key}
+                    title={textListItem?.title}
+                  >
+                    {textListItem?.description}
                   </ListItem>
                 )
               })}

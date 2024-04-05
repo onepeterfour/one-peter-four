@@ -39,5 +39,3 @@ export interface ClientOrganisationDocument {
   logo: ImageWithMetaDataObject
   name: string
 }
-
-// QUERIES TBC...
