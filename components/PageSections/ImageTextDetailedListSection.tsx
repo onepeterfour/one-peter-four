@@ -1,6 +1,8 @@
 import { TagList, TagListItem } from '@/components/TagList'
 import { urlForImage } from '@/sanity/lib/image'
 import { ImageTextDetailedListSectionSchema } from '@/sanity/schemas/objects/pageSections/imageTextDetailedListSection'
+import { TagListObject } from '@/sanity/schemas/objects/tagListObject'
+import { TitleWithTextListObject } from '@/sanity/schemas/objects/titleWithTextListObject'
 import { Blockquote } from '../Blockquote'
 import { Container } from '../Container'
 import { FadeIn } from '../FadeIn'
@@ -10,16 +12,10 @@ import { StylizedImage } from '../StylizedImage'
 
 type SectionProps = Pick<
   ImageTextDetailedListSectionSchema['itemList'][0],
-  'title' | 'image' | 'content' | 'tagList' | 'titleWithTextList' | 'quote'
+  'title' | 'image' | 'content' | 'optionalField'
 >
-const Section = ({
-  title,
-  image,
-  content,
-  tagList,
-  titleWithTextList,
-  quote
-}: SectionProps) => {
+const Section = ({ title, image, content, optionalField }: SectionProps) => {
+  console.log({ optionalField })
   return (
     <Container className='group/section [counter-increment:section]'>
       <div className='lg:flex lg:items-center lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20'>
@@ -48,22 +44,24 @@ const Section = ({
               <div className='space-y-6 text-base text-neutral-600'>
                 <PortableText value={content} />
               </div>
-              {tagList && <TagListSection tagList={tagList} />}
-              {titleWithTextList && (
+
+              {optionalField?.[0]?._type === 'tagListObject' && (
+                <TagListSection tagList={optionalField[0].tagList} />
+              )}
+              {optionalField?.[0]?._type === 'titleWithTextListObject' && (
                 <TitleWithTextListSection
-                  titleWithTextList={titleWithTextList}
+                  titleWithTextList={optionalField[0].titleWithTextList}
                 />
               )}
-              {quote && (
+              {optionalField?.[0]?._type === 'quoteObject' && (
                 <Blockquote
                   author={{
-                    name: quote.name,
-                    role: `${quote.role} of ${quote.company}`
+                    name: optionalField[0].quote.name,
+                    role: `${optionalField[0].quote.role} of ${optionalField[0].quote.company}`
                   }}
                   className='mt-12'
                 >
-                  Studio were so regular with their progress updates we almost
-                  began to think they were automated!
+                  {optionalField[0].quote?.text}
                 </Blockquote>
               )}
             </div>
@@ -74,11 +72,7 @@ const Section = ({
   )
 }
 
-const TagListSection = ({
-  tagList
-}: Required<
-  Pick<ImageTextDetailedListSectionSchema['itemList'][0], 'tagList'>
->) => {
+const TagListSection = ({ tagList }: Pick<TagListObject, 'tagList'>) => {
   return (
     <>
       <h3 className='mt-12 font-display text-base font-semibold text-neutral-950'>
@@ -95,9 +89,7 @@ const TagListSection = ({
 
 const TitleWithTextListSection = ({
   titleWithTextList
-}: Required<
-  Pick<ImageTextDetailedListSectionSchema['itemList'][0], 'titleWithTextList'>
->) => {
+}: Required<Pick<TitleWithTextListObject, 'titleWithTextList'>>) => {
   return (
     <>
       <h3 className='mt-12 font-display text-base font-semibold text-neutral-950'>
@@ -129,9 +121,7 @@ export const ImageTextDetailedListSection = ({
               title={item?.title}
               image={item?.image}
               content={item?.content}
-              tagList={item?.tagList}
-              titleWithTextList={item?.titleWithTextList}
-              quote={item?.quote}
+              optionalField={item?.optionalField}
             />
           )
         })}

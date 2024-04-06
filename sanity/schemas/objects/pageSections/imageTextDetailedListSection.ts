@@ -3,27 +3,9 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { TypedObject, defineArrayMember, defineField, defineType } from 'sanity'
 import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
-
-interface Tag {
-  _type: 'tag'
-  _key: string
-  title: string
-}
-
-interface TitleWithTextListItem {
-  _type: 'titleWithTextListItem'
-  _key: string
-  title: string
-  text: string
-}
-
-interface Quote {
-  _type: 'quote'
-  text: string
-  name: string
-  role: string
-  company: string
-}
+import { QuoteObject } from '../quoteObject'
+import { TagListObject } from '../tagListObject'
+import { TitleWithTextListObject } from '../titleWithTextListObject'
 
 interface DetailedListItem {
   _type: 'item'
@@ -31,9 +13,7 @@ interface DetailedListItem {
   title: string
   image: ImageWithMetaDataObject
   content: TypedObject[]
-  tagList?: Tag[]
-  titleWithTextList?: TitleWithTextListItem[]
-  quote?: Quote
+  optionalField?: Array<TagListObject | TitleWithTextListObject | QuoteObject>
 }
 
 export interface ImageTextDetailedListSectionSchema
@@ -101,82 +81,16 @@ export default defineType({
               of: [{ type: 'block' }]
             }),
             defineField({
-              name: 'tagList',
-              title: 'Tag List',
+              name: 'optionalField',
+              title: 'Optional Field',
+              description:
+                'Optional field to add additional content to the item',
               type: 'array',
+              validation: (rule) => rule.max(1),
               of: [
-                defineArrayMember({
-                  name: 'tag',
-                  title: 'Tag',
-                  type: 'object',
-                  fields: [
-                    defineField({
-                      name: 'title',
-                      title: 'Title',
-                      type: 'string',
-                      validation: (rule) => rule.required()
-                    })
-                  ]
-                })
-              ]
-            }),
-            defineField({
-              name: 'titleWithTextList',
-              title: 'Title and Text List',
-              type: 'array',
-              of: [
-                defineArrayMember({
-                  name: 'titleWithTextListItem',
-                  title: 'Item',
-                  type: 'object',
-                  fields: [
-                    defineField({
-                      name: 'title',
-                      title: 'Title',
-                      type: 'string',
-                      validation: (rule) => rule.required()
-                    }),
-                    defineField({
-                      name: 'text',
-                      title: 'Text',
-                      type: 'text',
-                      rows: 3,
-                      validation: (rule) => rule.required()
-                    })
-                  ]
-                })
-              ]
-            }),
-            defineField({
-              name: 'quote',
-              title: 'Quote',
-              type: 'object',
-              fields: [
-                defineField({
-                  name: 'text',
-                  title: 'Text',
-                  type: 'text',
-                  rows: 3,
-                  validation: (rule) => rule.required()
-                }),
-                defineField({
-                  name: 'name',
-                  title: 'Name',
-                  type: 'string',
-                  validation: (rule) => rule.required()
-                }),
-                defineField({
-                  name: 'role',
-                  title: 'Role',
-                  type: 'string',
-                  validation: (rule) => rule.required()
-                }),
-                defineField({
-                  name: 'company',
-                  title: 'Company',
-                  type: 'string',
-                  validation: (rule) => rule.required()
-                })
+                { type: 'tagListObject' },
+                { type: 'titleWithTextListObject' },
+                { type: 'quoteObject' }
               ]
             })
           ]
