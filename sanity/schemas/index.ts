@@ -3,6 +3,9 @@ import { type SchemaTypeDefinition } from 'sanity'
 // IMPORT OBJECTS
 import imageWithMetaDataObject from './objects/imageWithMetaDataObject'
 import metaDataObject from './objects/metaDataObject'
+import quoteObject from './objects/quoteObject'
+import tagListObject from './objects/tagListObject'
+import titleWithTextListObject from './objects/titleWithTextListObject'
 
 // IMPORT PAGE SECTION OBJECTS
 import pageSections from './objects/pageSections'
@@ -62,7 +65,13 @@ const PAGE_SECTION_OBJECTS = new Set([
   pageSections
 ])
 
-const OBJECTS = new Set([imageWithMetaDataObject, metaDataObject])
+const OBJECTS = new Set([
+  imageWithMetaDataObject,
+  metaDataObject,
+  tagListObject,
+  titleWithTextListObject,
+  quoteObject
+])
 
 const PAGE_DOCUMENTS = new Set([
   homePage,
