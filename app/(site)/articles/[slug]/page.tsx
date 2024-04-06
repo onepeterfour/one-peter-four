@@ -52,16 +52,23 @@ export default async function Page({ params }: { params: QueryParams }) {
           _key={article?._id}
         />
         <FadeIn className='prose mx-auto'>
-          {article?.file?.url && (
-            <Link
-              href={`${article.file.url}?dl=`}
-              className='flex items-center justify-center gap-2 text-sm'
-            >
-              <span>Download</span>
-              <span>
-                <ArchiveIcon className='text-sm' />
-              </span>
-            </Link>
+          {article?.fileList && (
+            <div className='flex flex-wrap items-center justify-center gap-4'>
+              {article.fileList?.map((file) => {
+                return (
+                  <Link
+                    key={file?._id}
+                    href={`${file.file.url}?dl=${file.file.originalFilename}`}
+                    className='flex items-center justify-center gap-2 text-sm'
+                  >
+                    <span>{file?.name}</span>
+                    <span>
+                      <ArchiveIcon className='text-sm' />
+                    </span>
+                  </Link>
+                )
+              })}
+            </div>
           )}
           <PortableText value={article?.body} />
         </FadeIn>

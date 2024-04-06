@@ -1,8 +1,14 @@
 import { client } from '@/sanity/lib/client'
 import { EditIcon } from '@sanity/icons'
 import { groq, type SanityDocument } from 'next-sanity'
-import { defineField, defineType, type TypedObject } from 'sanity'
+import {
+  defineArrayMember,
+  defineField,
+  defineType,
+  type TypedObject
+} from 'sanity'
 import { ArticleCategoryDocument } from './articleCategory'
+import { FileDocument } from './file'
 import { TeamMemberDocument } from './teamMember'
 
 // SANITY SCHEMA
@@ -56,14 +62,21 @@ export default defineType({
       }
     }),
     defineField({
-      name: 'file',
-      title: 'File',
-      type: 'file'
+      name: 'fileList',
+      title: 'File List',
+      type: 'array',
+      description: 'Optionally add up to 5 files to this article.',
+      validation: (Rule) => Rule.max(5),
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'fileDocument' }]
+        })
+      ]
     })
   ]
 })
 
-// INTERFACE
 export interface Article {
   title: string
   description: string
@@ -77,14 +90,7 @@ export interface Article {
   >[]
   body: TypedObject[]
   slug: { current: string; _type: 'slug' }
-  file: {
-    _type: 'file'
-    asset: {
-      _ref: string
-      _type: 'reference'
-    }
-    url: string
-  }
+  fileList?: FileDocument[]
 }
 
 export type ArticleDocument = SanityDocument<Article>
@@ -111,9 +117,13 @@ export const fetchArticles = async () => {
       image,
       slug
     },
-    file{
+    fileList[] -> {
       ...,
-      "url": asset -> url
+          file{
+      ...,
+      "url": asset -> url,
+      "originalFilename": asset -> originalFilename
+      }
     }
   }`
   return await client.fetch<ArticleDocument[]>(query)
@@ -139,9 +149,13 @@ export const fetchArticleBySlug = async (slug: string) => {
       image,
       slug
     },
-    file{
+    fileList[] -> {
       ...,
-      "url": asset -> url
+          file{
+      ...,
+      "url": asset -> url,
+      "originalFilename": asset -> originalFilename
+      }
     }
   }`
   return await client.fetch<ArticleDocument>(query)

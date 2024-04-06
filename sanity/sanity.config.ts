@@ -5,6 +5,7 @@
 import { locate } from '@/sanity/presentation/locate'
 import {
   BookIcon,
+  DocumentPdfIcon,
   DocumentTextIcon,
   DocumentsIcon,
   EditIcon,
@@ -142,6 +143,10 @@ const deskToolOptions: DeskToolOptions = {
           .title('Articles')
           .icon(EditIcon)
           .child(S.documentTypeList('articleDocument').title('Articles')),
+        S.listItem()
+          .title('Files')
+          .icon(DocumentPdfIcon)
+          .child(S.documentTypeList('fileDocument').title('Files')),
         S.listItem()
           .title('Website Policies')
           .icon(DocumentTextIcon)
