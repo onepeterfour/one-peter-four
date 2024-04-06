@@ -6,6 +6,7 @@ import type { CaseStudyListSectionSchema } from './caseStudyListSection'
 import { ContactSectionSchema } from './contactSection'
 import { HeroImageSectionSchema } from './heroImageSection'
 import { HeroTextSectionSchema } from './heroTextSection'
+import { ImageTextDetailedListSectionSchema } from './imageTextDetailedListSection'
 import { ImageTextListSectionSchema } from './imageTextListSection'
 import { LogoListSectionSchema } from './logoListSection'
 import { PageIntroSectionSchema } from './pageIntroSection'
@@ -17,18 +18,19 @@ import { TextListSectionSchema } from './textListSection'
 export type PageSection =
   | ArticleListSectionSchema
   | CallToActionSectionSchema
+  | CaseStudyCardListSectionSchema
   | CaseStudyListSectionSchema
-  | LogoListSectionSchema
   | ContactSectionSchema
-  | TextListSectionSchema
   | HeroImageSectionSchema
   | HeroTextSectionSchema
+  | ImageTextListSectionSchema
+  | ImageTextDetailedListSectionSchema
+  | LogoListSectionSchema
   | PageIntroSectionSchema
-  | CaseStudyCardListSectionSchema
   | StatisticListSectionSchema
   | TeamMemberListSectionSchema
   | TestimonialSectionSchema
-  | ImageTextListSectionSchema
+  | TextListSectionSchema
 
 export default defineType({
   name: 'pageSectionsArray',
@@ -76,6 +78,11 @@ export default defineType({
       type: 'imageTextListSection',
       name: 'imageTextListSection',
       title: 'Image Text List Section'
+    }),
+    defineArrayMember({
+      type: 'imageTextDetailedListSection',
+      name: 'imageTextDetailedListSection',
+      title: 'Image Text Detailed List Section'
     }),
     defineArrayMember({
       type: 'logoListSection',
