@@ -7,6 +7,7 @@ import { CaseStudyListSection } from './CaseStudyListSection'
 import { ContactSection } from './ContactSection'
 import { HeroImageSection } from './Hero'
 import { HeroTextSection } from './HeroTextSection'
+import { ImageTextDetailedListSection } from './ImageTextDetailedListSection'
 import { ImageTextListSection } from './ImageTextListSection'
 import { LogoListSection } from './LogoListSection'
 import { PageIntroSection } from './PageIntroSection'
@@ -23,6 +24,7 @@ const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
   ['contactSection', ContactSection],
   ['heroImageSection', HeroImageSection],
   ['heroTextSection', HeroTextSection],
+  ['imageTextDetailedListSection', ImageTextDetailedListSection],
   ['imageTextListSection', ImageTextListSection],
   ['logoListSection', LogoListSection],
   ['pageIntroSection', PageIntroSection],

@@ -13,6 +13,7 @@ import caseStudiesListSection from './objects/pageSections/caseStudyListSection'
 import contactSection from './objects/pageSections/contactSection'
 import heroImageSection from './objects/pageSections/heroImageSection'
 import heroTextSection from './objects/pageSections/heroTextSection'
+import imageTextDetailedListSection from './objects/pageSections/imageTextDetailedListSection'
 import imageListSection from './objects/pageSections/imageTextListSection'
 import logoListSection from './objects/pageSections/logoListSection'
 import pageIntroSection from './objects/pageSections/pageIntroSection'
@@ -45,18 +46,19 @@ import websitePolicy from './documents/data/websitePolicy'
 const PAGE_SECTION_OBJECTS = new Set([
   articleListSection,
   callToActionsSection,
+  caseStudyCardListSection,
   caseStudiesListSection,
-  logoListSection,
   contactSection,
-  textListSection,
   heroImageSection,
   heroTextSection,
+  imageListSection,
+  imageTextDetailedListSection,
+  logoListSection,
   pageIntroSection,
-  caseStudyCardListSection,
   statisticListSection,
   teamMemberListSection,
   testimonialSection,
-  imageListSection,
+  textListSection,
   pageSections
 ])
 

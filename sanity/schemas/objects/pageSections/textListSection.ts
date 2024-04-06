@@ -3,17 +3,19 @@ import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
+interface TextListItem {
+  title?: string
+  text?: string
+  _key: string
+  _type: string
+}
 export interface TextListSectionSchema extends BasePageSectionSchema {
   _type: 'textListSection'
   eyebrow?: string
   title?: string
   subtitle?: string
-  textList?: Array<{
-    title?: string
-    text?: string
-    _key: string
-    _type: string
-  }>
+  variant: 'light' | 'dark'
+  textList: TextListItem[]
 }
 
 export default defineType({
@@ -46,6 +48,19 @@ export default defineType({
       initialValue: false
     }),
     defineField({
+      name: 'variant',
+      title: 'Variant',
+      type: 'string',
+      validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: 'Light', value: 'light' },
+          { title: 'Dark', value: 'dark' }
+        ],
+        layout: 'dropdown'
+      }
+    }),
+    defineField({
       name: 'eyebrow',
       type: 'string'
     }),
@@ -62,7 +77,7 @@ export default defineType({
       name: 'textList',
       title: 'Text List',
       type: 'array',
-      validation: (rule) => rule.length(3),
+      validation: (rule) => rule.min(3).max(6),
       of: [
         {
           type: 'object',
