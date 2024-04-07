@@ -87,7 +87,7 @@ export default defineType({
     defineArrayMember({
       type: 'logoListSection',
       name: 'logoListSection',
-      title: 'Client List Section'
+      title: 'Logo List Section'
     }),
     defineArrayMember({
       type: 'pageIntroSection',

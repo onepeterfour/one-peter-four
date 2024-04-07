@@ -7,6 +7,7 @@ import { ImageWithMetaDataObject } from '../imageWithMetaDataObject'
 export interface LogoListSectionSchema extends BasePageSectionSchema {
   _type: 'logoListSection'
   title: string
+  variant: 'light' | 'dark'
   clientList?: Array<{
     logo: ImageWithMetaDataObject
     name: string
@@ -30,7 +31,7 @@ export default defineType({
     },
     prepare({ subtitle, isEnabled }) {
       return {
-        title: 'Client List Section',
+        title: 'Logo List Section',
         subtitle,
         media: BlockElementIcon,
         isEnabled
@@ -46,6 +47,19 @@ export default defineType({
       type: 'boolean',
       description: 'If checked, this section will be shown on the page',
       initialValue: false
+    }),
+    defineField({
+      name: 'variant',
+      title: 'Variant',
+      type: 'string',
+      validation: (rule) => rule.required(),
+      options: {
+        list: [
+          { title: 'Light', value: 'light' },
+          { title: 'Dark', value: 'dark' }
+        ],
+        layout: 'dropdown'
+      }
     }),
     defineField({
       name: 'title',
