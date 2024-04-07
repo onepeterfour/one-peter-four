@@ -1,17 +1,21 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
 import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
+import { defineArrayMember, defineField, defineType } from 'sanity'
+import { CaseStudyDocument } from '../../documents/data/caseStudy'
 
 export interface CaseStudyListSectionSchema extends BasePageSectionSchema {
   _type: 'caseStudyListSection'
-  eyebrow: string
+  eyebrow?: string
+  title?: string
+  subtitle?: string
+  caseStudyList: CaseStudyDocument[]
 }
 
 export default defineType({
   type: 'object',
   name: 'caseStudyListSection',
-  title: 'Case Studies',
+  title: 'Case Study List Section',
   icon: BlockElementIcon,
   preview: {
     select: {
@@ -19,7 +23,7 @@ export default defineType({
     },
     prepare({ isEnabled }) {
       return {
-        title: 'Case Studies',
+        title: 'Case Study List Section',
         media: BlockElementIcon,
         isEnabled
       }
@@ -38,8 +42,32 @@ export default defineType({
     defineField({
       name: 'eyebrow',
       title: 'Eyebrow',
-      type: 'string',
-      validation: (Rule) => Rule.required()
+      type: 'string'
+    }),
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string'
+    }),
+    defineField({
+      name: 'subtitle',
+      title: 'Subtitle',
+      type: 'text',
+      rows: 3
+    }),
+    defineField({
+      name: 'caseStudyList',
+      title: 'Case Studies',
+      type: 'array',
+      validation: (Rule) => Rule.required(),
+      of: [
+        defineArrayMember({
+          name: 'caseStudy',
+          title: 'Case Study',
+          type: 'reference',
+          to: [{ type: 'caseStudyDocument' }]
+        })
+      ]
     })
   ]
 })
