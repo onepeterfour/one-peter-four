@@ -36,7 +36,7 @@ export default defineType({
       title: 'Body',
       type: 'array',
       validation: (Rule) => Rule.required(),
-      of: [{ type: 'block' }]
+      of: [{ type: 'block' }, { type: 'imageWithMetadata' }]
     }),
     defineField({
       name: 'author',

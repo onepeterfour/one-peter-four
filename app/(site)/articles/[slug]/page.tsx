@@ -3,18 +3,36 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { ContactSection } from '@/components/PageSections/ContactSection'
 import { PageIntroSection } from '@/components/PageSections/PageIntroSection'
-import { PortableText } from '@/components/PortableText'
 import { ReadMore } from '@/components/ReadMore'
 import { formatDateString } from '@/lib/formatDate'
+import { urlForImage } from '@/sanity/lib/image'
 import {
   fetchArticleBySlug,
   fetchArticles
 } from '@/sanity/schemas/documents/data/article'
+import { PortableText, PortableTextReactComponents } from '@portabletext/react'
 import { ArchiveIcon } from '@sanity/icons'
 import { Metadata } from 'next'
 import { QueryParams } from 'next-sanity'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+
+const components: Partial<PortableTextReactComponents> = {
+  types: {
+    imageWithMetadata: ({ value }) => {
+      return (
+        <Image
+          className='aspect-[16/10] w-full rounded-4xl object-cover'
+          src={urlForImage(value)}
+          alt={value?.alt}
+          width={200}
+          height={200}
+        />
+      )
+    }
+  }
+}
 
 export async function generateStaticParams() {
   const articles = await fetchArticles()
@@ -45,6 +63,8 @@ export default async function Page({ params }: { params: QueryParams }) {
   if (!article) {
     notFound()
   }
+
+  console.log(article?.body)
 
   return (
     <>
@@ -77,7 +97,7 @@ export default async function Page({ params }: { params: QueryParams }) {
                 })}
               </div>
             )}
-            <PortableText value={article?.body} />
+            <PortableText value={article?.body} components={components} />
           </FadeIn>
           <FadeIn className='my-8 text-center'>
             <Button href='/articles'>Back</Button>

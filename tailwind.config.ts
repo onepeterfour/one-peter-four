@@ -31,7 +31,15 @@ const config: Config = {
           ['var(--font-open-sans)', ...defaultTheme.fontFamily.sans],
           { fontVariationSettings: '"wdth" 125' }
         ]
-      }
+      },
+      typography: (theme: any) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: '48rem',
+            fontSize: theme('fontSize.lg')
+          }
+        }
+      })
     }
   },
   plugins: [require('@tailwindcss/typography')]
