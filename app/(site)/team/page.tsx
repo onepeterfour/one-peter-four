@@ -13,7 +13,6 @@ export const metadata: Metadata = {
 
 export default async function TeamPage() {
   const teamPage = await fetchTeamPage()
-  // console.log({ pageSections: teamPage?.pageSections })
 
   return (
     <>
