@@ -1,8 +1,10 @@
 import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
+import { ContactSection } from '@/components/PageSections/ContactSection'
 import { PageIntroSection } from '@/components/PageSections/PageIntroSection'
 import { PortableText } from '@/components/PortableText'
+import { ReadMore } from '@/components/ReadMore'
 import {
   fetchCaseStudies,
   fetchCaseStudyBySlug
@@ -32,28 +34,41 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: QueryParams }) {
   const caseStudy = await fetchCaseStudyBySlug(params?.slug)
+  const caseStudies = await fetchCaseStudies()
+  const readMoreCaseStudies = caseStudies
+    .filter((caseStudy) => caseStudy.slug.current !== params.slug)
+    .slice(0, 2)
 
   if (!caseStudy) {
     notFound()
   }
 
   return (
-    <Container as='div' className='mt-24 sm:mt-32 lg:mt-40'>
-      <article>
-        <PageIntroSection
-          title={caseStudy?.title}
-          _type={caseStudy?._type}
-          centered
-          subtitle={caseStudy?.description}
-          _key={caseStudy?._id}
-        />
-        <FadeIn className='prose mx-auto'>
-          <PortableText value={caseStudy?.body} />
-        </FadeIn>
-        <FadeIn className='mt-8 text-center'>
-          <Button href='/articles'>Back</Button>
-        </FadeIn>
-      </article>
-    </Container>
+    <>
+      <Container as='div' className='mt-24 sm:mt-32 lg:mt-40'>
+        <article>
+          <PageIntroSection
+            title={caseStudy?.title}
+            _type={caseStudy?._type}
+            centered
+            subtitle={caseStudy?.description}
+            _key={caseStudy?._id}
+          />
+          <FadeIn className='prose mx-auto'>
+            <PortableText value={caseStudy?.body} />
+          </FadeIn>
+          <FadeIn className='my-8 text-center'>
+            <Button href='/articles'>Back</Button>
+          </FadeIn>
+        </article>
+      </Container>
+      <ReadMore title='More case studies' items={readMoreCaseStudies} />
+      <ContactSection
+        _key={caseStudy?._id}
+        _type='contactSection'
+        buttonLabel='Say hi'
+        title='Tell us about your project'
+      />
+    </>
   )
 }
