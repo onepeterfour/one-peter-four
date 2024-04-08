@@ -15,7 +15,6 @@ type SectionProps = Pick<
   'title' | 'image' | 'content' | 'optionalField'
 >
 const Section = ({ title, image, content, optionalField }: SectionProps) => {
-  console.log({ optionalField })
   return (
     <Container className='group/section [counter-increment:section]'>
       <div className='lg:flex lg:items-center lg:justify-end lg:gap-x-8 lg:group-even/section:justify-start xl:gap-x-20'>

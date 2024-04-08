@@ -10,7 +10,6 @@ export const metadata: Metadata = {
 }
 export default async function Learning() {
   const learningPage = await fetchLearningPage()
-  console.log({ learningPage })
 
   return (
     <>

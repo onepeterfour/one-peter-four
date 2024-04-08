@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 
 export default async function PartnersPage() {
   const partnersPage = await fetchPartnersPage()
-  console.log({ partnersPage })
 
   return (
     <>

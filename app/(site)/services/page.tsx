@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 
 export default async function Services() {
   const servicesPage = await fetchServicesPage()
-  console.log({ servicesPage })
 
   return (
     <>

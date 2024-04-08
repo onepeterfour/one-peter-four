@@ -17,8 +17,6 @@ export const metadata: Metadata = {
 export default async function Contact() {
   const contactPage = await fetchContactPage()
 
-  console.log({ contactPage })
-
   return (
     <>
       <PageSections pageSections={contactPage?.pageSections} />

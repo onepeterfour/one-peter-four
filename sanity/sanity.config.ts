@@ -15,6 +15,7 @@ import {
   OkHandIcon,
   RobotIcon,
   RocketIcon,
+  UserIcon,
   UsersIcon
 } from '@sanity/icons'
 import { visionTool } from '@sanity/vision'
@@ -136,6 +137,14 @@ const deskToolOptions: DeskToolOptions = {
             )
           ),
         S.listItem()
+          .title('Partner Organisations')
+          .icon(UserIcon)
+          .child(
+            S.documentTypeList('partnerOrganisationDocument').title(
+              'Partner Organisations'
+            )
+          ),
+        S.listItem()
           .title('Case Studies')
           .icon(BookIcon)
           .child(S.documentTypeList('caseStudyDocument').title('Case Studies')),
@@ -147,6 +156,14 @@ const deskToolOptions: DeskToolOptions = {
           .title('Files')
           .icon(DocumentPdfIcon)
           .child(S.documentTypeList('fileDocument').title('Files')),
+        S.listItem()
+          .title('Learning Resources')
+          .icon(BookIcon)
+          .child(
+            S.documentTypeList('learningResourceDocument').title(
+              'Learning Resources'
+            )
+          ),
         S.listItem()
           .title('Website Policies')
           .icon(DocumentTextIcon)

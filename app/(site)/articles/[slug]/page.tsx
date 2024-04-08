@@ -64,8 +64,6 @@ export default async function Page({ params }: { params: QueryParams }) {
     notFound()
   }
 
-  console.log(article?.body)
-
   return (
     <>
       <Container as='div' className='mt-24 sm:mt-32 lg:mt-40'>
