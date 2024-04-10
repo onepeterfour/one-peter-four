@@ -32,9 +32,24 @@ export default defineType({
       type: 'array',
       validation: (Rule) => Rule.required(),
       of: [{ type: 'block' }]
+    }),
+    defineField({
+      name: 'file',
+      title: 'File',
+      type: 'file'
     })
   ]
 })
+
+interface File {
+  _type: 'file'
+  asset: {
+    _ref: string
+    _type: 'reference'
+  }
+  url: string
+  originalFilename: string
+}
 
 // INTERFACE
 export interface WebsitePolicyDocument {
@@ -50,6 +65,7 @@ export interface WebsitePolicyDocument {
     current: string
   }
   policy: TypedObject[]
+  file?: File
 }
 
 // QUERIES
@@ -58,7 +74,14 @@ export interface WebsitePolicyDocument {
  * Fetches all published website policies
  */
 export const fetchWebsitePolicies = async () => {
-  const query = groq`*[_type == "websitePolicyDocument" && !(_id in path("drafts.**"))]`
+  const query = groq`*[_type == "websitePolicyDocument" && !(_id in path("drafts.**"))]{
+    ...,
+    file {
+      ...,
+    "url": asset -> url,
+    "originalFilename": asset -> originalFilename
+    }
+  }`
   return await client.fetch<WebsitePolicyDocument[]>(query)
 }
 
@@ -67,7 +90,12 @@ export const fetchWebsitePolicies = async () => {
  */
 export const fetchWebsitePolicyBySlug = async (slug: string) => {
   const query = groq`*[_type == "websitePolicyDocument" && slug.current == "${slug}" && !(_id in path("drafts.**"))]{
-  ...
+  ...,
+  file {
+    ...,
+  "url": asset -> url,
+  "originalFilename": asset -> originalFilename
+  }
 }[0]`
   return await client.fetch<WebsitePolicyDocument>(query)
 }

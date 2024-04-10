@@ -4,7 +4,9 @@ import {
   fetchWebsitePolicies,
   fetchWebsitePolicyBySlug
 } from '@/sanity/schemas/documents/data/websitePolicy'
+import { ArchiveIcon } from '@sanity/icons'
 import { QueryParams } from 'next-sanity'
+import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
@@ -26,6 +28,18 @@ export default async function Page({ params }: { params: QueryParams }) {
       {policy?.policy.length > 0 && (
         <div className='prose'>
           <PortableText value={policy.policy} />
+          {policy?.file && (
+            <Link
+              key={policy?._id}
+              href={`${policy.file.url}?dl=${policy.file.originalFilename}`}
+              className='justify-left flex items-center gap-2 text-lg'
+            >
+              <span>Download Policy</span>
+              <span>
+                <ArchiveIcon className='text-lg' />
+              </span>
+            </Link>
+          )}
         </div>
       )}
     </Container>

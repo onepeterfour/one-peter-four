@@ -22,15 +22,14 @@ export default async function Policies() {
             <PortableText value={policiesPage.content} />
           )}
           {policiesPage?.policiesList.length > 0 && (
-            <ul>
+            <ul className='padding'>
               {policiesPage?.policiesList.map((policy) => {
                 return (
-                  <Link
-                    key={policy?._id}
-                    href={`/policies/${policy?.slug.current}`}
-                  >
-                    {policy?.title}
-                  </Link>
+                  <li key={policy?._id}>
+                    <Link href={`/policies/${policy?.slug.current}`}>
+                      {policy?.title + ' Policy'}
+                    </Link>
+                  </li>
                 )
               })}
             </ul>
