@@ -26,8 +26,8 @@ const components: Partial<PortableTextReactComponents> = {
           className='aspect-[16/10] w-full rounded-4xl object-cover'
           src={urlForImage(value)}
           alt={value?.alt}
-          width={200}
-          height={200}
+          width={1000}
+          height={1000}
         />
       )
     }
@@ -78,7 +78,7 @@ export default async function Page({ params }: { params: QueryParams }) {
           />
           <FadeIn className='prose mx-auto'>
             {article?.fileList && (
-              <div className='flex flex-wrap items-center justify-center gap-4'>
+              <div className='mt-24 flex flex-wrap items-center justify-center gap-4'>
                 {article.fileList?.map((file) => {
                   return (
                     <Link
@@ -95,9 +95,11 @@ export default async function Page({ params }: { params: QueryParams }) {
                 })}
               </div>
             )}
-            <PortableText value={article?.body} components={components} />
+            <div className='mt-24 sm:mt-32 lg:mt-40'>
+              <PortableText value={article?.body} components={components} />
+            </div>
           </FadeIn>
-          <FadeIn className='my-8 text-center'>
+          <FadeIn className='my-24 text-center sm:my-32 lg:my-40'>
             <Button href='/articles'>Back</Button>
           </FadeIn>
         </article>

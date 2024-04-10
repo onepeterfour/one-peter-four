@@ -88,8 +88,8 @@ export default async function Page({ params }: { params: QueryParams }) {
                 <GrayscaleTransitionImage
                   src={urlForImage(caseStudy?.image)}
                   quality={90}
-                  width={100}
-                  height={100}
+                  width={1000}
+                  height={1000}
                   className='w-full'
                   sizes='(min-width: 1216px) 76rem, 100vw'
                   priority
