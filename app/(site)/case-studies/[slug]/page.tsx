@@ -119,7 +119,7 @@ export default async function Page({ params }: { params: QueryParams }) {
             )}
           </FadeIn>
           <FadeIn className='my-24 text-center sm:my-32 lg:my-40'>
-            <Button href='/articles'>Back</Button>
+            <Button href='/case-studies'>Back</Button>
           </FadeIn>
         </article>
       </div>
