@@ -116,6 +116,12 @@ export const fetchPage = async <T>(pageName: PageName) => {
             email,
             linkedIn
           }
+        },
+        _type == "partnerListSection" => {
+          ...,
+          partnerList[] -> {
+            ...,
+          }
         }
       }
     }[0]`)

@@ -20,6 +20,7 @@ import imageTextDetailedListSection from './objects/pageSections/imageTextDetail
 import imageListSection from './objects/pageSections/imageTextListSection'
 import logoListSection from './objects/pageSections/logoListSection'
 import pageIntroSection from './objects/pageSections/pageIntroSection'
+import partnerListSection from './objects/pageSections/partnerListSection'
 import statisticListSection from './objects/pageSections/statisticListSection'
 import teamMemberListSection from './objects/pageSections/teamMemberListSections'
 import testimonialSection from './objects/pageSections/testimonialSection'
@@ -47,8 +48,6 @@ import partnerOrganisation from './documents/data/partnerOrganisation'
 import teamMember from './documents/data/teamMember'
 import websitePolicy from './documents/data/websitePolicy'
 
-// WE CAN USE SETS HERE!
-
 const PAGE_SECTION_OBJECTS = new Set([
   articleListSection,
   callToActionsSection,
@@ -61,6 +60,7 @@ const PAGE_SECTION_OBJECTS = new Set([
   imageTextDetailedListSection,
   logoListSection,
   pageIntroSection,
+  partnerListSection,
   statisticListSection,
   teamMemberListSection,
   testimonialSection,

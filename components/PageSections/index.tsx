@@ -11,28 +11,30 @@ import { ImageTextDetailedListSection } from './ImageTextDetailedListSection'
 import { ImageTextListSection } from './ImageTextListSection'
 import { LogoListSection } from './LogoListSection'
 import { PageIntroSection } from './PageIntroSection'
+import { PartnerListSection } from './PartnerListSection'
 import { StatisticListSection } from './StatisticListSection'
 import { TeamMemberListSection } from './TeamMemberListSection'
 import { TestimonialSection } from './TestimonialSection'
 import { TextListSection } from './TextListSection'
 
-const pageSectionsMap = new Map<PageSection['_type'], ComponentType<any>>([
-  ['articleListSection', ArticleListSection],
-  ['callToActionSection', CallToActionSection],
-  ['caseStudyCardListSection', CaseStudyCardListSection],
-  ['caseStudyListSection', CaseStudyListSection],
-  ['contactSection', ContactSection],
-  ['heroImageSection', HeroImageSection],
-  ['heroTextSection', HeroTextSection],
-  ['imageTextDetailedListSection', ImageTextDetailedListSection],
-  ['imageTextListSection', ImageTextListSection],
-  ['logoListSection', LogoListSection],
-  ['pageIntroSection', PageIntroSection],
-  ['statisticListSection', StatisticListSection],
-  ['teamMemberListSection', TeamMemberListSection],
-  ['testimonialSection', TestimonialSection],
-  ['textListSection', TextListSection]
-])
+const pageSectionDict: Record<PageSection['_type'], ComponentType<any>> = {
+  articleListSection: ArticleListSection,
+  callToActionSection: CallToActionSection,
+  caseStudyCardListSection: CaseStudyCardListSection,
+  caseStudyListSection: CaseStudyListSection,
+  contactSection: ContactSection,
+  heroImageSection: HeroImageSection,
+  heroTextSection: HeroTextSection,
+  imageTextDetailedListSection: ImageTextDetailedListSection,
+  imageTextListSection: ImageTextListSection,
+  logoListSection: LogoListSection,
+  pageIntroSection: PageIntroSection,
+  partnerListSection: PartnerListSection,
+  statisticListSection: StatisticListSection,
+  teamMemberListSection: TeamMemberListSection,
+  testimonialSection: TestimonialSection,
+  textListSection: TextListSection
+}
 
 type PageSectionsProps = {
   pageSections?: PageSection[]
@@ -45,7 +47,7 @@ export const PageSections = ({ pageSections }: PageSectionsProps) => {
         if (!isEnabled) {
           return null
         }
-        const PageSection = pageSectionsMap.get(section._type)
+        const PageSection = pageSectionDict[section._type]
         return PageSection ? (
           <PageSection key={section._key} {...section} />
         ) : (

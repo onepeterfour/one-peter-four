@@ -1,19 +1,20 @@
 import { defineArrayMember, defineType } from 'sanity'
-import { ArticleListSectionSchema } from './articleListSection'
+import type { ArticleListSectionSchema } from './articleListSection'
 import type { CallToActionSectionSchema } from './callToActionsSection'
-import { CaseStudyCardListSectionSchema } from './caseStudyCardListSection'
+import type { CaseStudyCardListSectionSchema } from './caseStudyCardListSection'
 import type { CaseStudyListSectionSchema } from './caseStudyListSection'
-import { ContactSectionSchema } from './contactSection'
-import { HeroImageSectionSchema } from './heroImageSection'
-import { HeroTextSectionSchema } from './heroTextSection'
-import { ImageTextDetailedListSectionSchema } from './imageTextDetailedListSection'
-import { ImageTextListSectionSchema } from './imageTextListSection'
-import { LogoListSectionSchema } from './logoListSection'
-import { PageIntroSectionSchema } from './pageIntroSection'
-import { StatisticListSectionSchema } from './statisticListSection'
-import { TeamMemberListSectionSchema } from './teamMemberListSections'
-import { TestimonialSectionSchema } from './testimonialSection'
-import { TextListSectionSchema } from './textListSection'
+import type { ContactSectionSchema } from './contactSection'
+import type { HeroImageSectionSchema } from './heroImageSection'
+import type { HeroTextSectionSchema } from './heroTextSection'
+import type { ImageTextDetailedListSectionSchema } from './imageTextDetailedListSection'
+import type { ImageTextListSectionSchema } from './imageTextListSection'
+import type { LogoListSectionSchema } from './logoListSection'
+import type { PageIntroSectionSchema } from './pageIntroSection'
+import type { PartnerListSectionSchema } from './partnerListSection'
+import type { StatisticListSectionSchema } from './statisticListSection'
+import type { TeamMemberListSectionSchema } from './teamMemberListSections'
+import type { TestimonialSectionSchema } from './testimonialSection'
+import type { TextListSectionSchema } from './textListSection'
 
 export type PageSection =
   | ArticleListSectionSchema
@@ -31,6 +32,7 @@ export type PageSection =
   | TeamMemberListSectionSchema
   | TestimonialSectionSchema
   | TextListSectionSchema
+  | PartnerListSectionSchema
 
 export default defineType({
   name: 'pageSectionsArray',
@@ -93,6 +95,11 @@ export default defineType({
       type: 'pageIntroSection',
       name: 'pageIntroSection',
       title: 'Page Intro Section'
+    }),
+    defineArrayMember({
+      type: 'partnerListSection',
+      name: 'partnerListSection',
+      title: 'Partner List Section'
     }),
     defineArrayMember({
       type: 'statisticListSection',

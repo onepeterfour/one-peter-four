@@ -29,13 +29,13 @@ export default defineType({
       name: 'description',
       title: 'Description',
       type: 'text',
-      rows: 3,
-      validation: (Rule) => Rule.required()
+      rows: 3
     }),
     defineField({
       name: 'body',
       title: 'Body',
       type: 'array',
+      validation: (Rule) => Rule.required(),
       of: [{ type: 'block' }]
     }),
     defineField({
@@ -57,7 +57,7 @@ export interface PartnerOrganisationDocument {
   _originalId?: string | undefined
   logo: ImageWithMetaDataObject
   name: string
-  description: string
-  body?: TypedObject[]
+  description?: string
+  body: TypedObject[]
   url: string
 }
