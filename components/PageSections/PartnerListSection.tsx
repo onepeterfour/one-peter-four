@@ -14,7 +14,7 @@ export const PartnerListSection = ({
   _type
 }: Omit<PartnerListSectionSchema, 'isEnabled'>) => {
   return (
-    <Container id={_type}>
+    <Container id={_type} className='mt-24 sm:mt-32 lg:mt-40'>
       <FadeIn>
         {eyebrow && (
           <h2 className='font-display text-2xl font-semibold text-neutral-950'>

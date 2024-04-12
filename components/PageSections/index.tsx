@@ -43,6 +43,7 @@ type PageSectionsProps = {
 export const PageSections = ({ pageSections }: PageSectionsProps) => {
   return (
     <>
+      <div className='mt-24 sm:mt-32 lg:mt-40' />
       {pageSections?.map(({ isEnabled, ...section }) => {
         if (!isEnabled) {
           return null
