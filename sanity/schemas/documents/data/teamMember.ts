@@ -59,6 +59,11 @@ export default defineType({
       name: 'linkedIn',
       title: 'LinkedIn',
       type: 'url'
+    }),
+    defineField({
+      name: 'twitter',
+      title: 'Twitter',
+      type: 'url'
     })
   ]
 })
@@ -78,6 +83,7 @@ export interface TeamMemberDocument {
   bio: string
   email?: string
   linkedIn?: string
+  twitter?: string
 }
 
 // QUERIES
