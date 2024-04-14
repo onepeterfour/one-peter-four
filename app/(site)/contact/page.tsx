@@ -1,12 +1,12 @@
+import { fetchPageSectionPage } from '@/app/api/fetchPageSectionPage'
 import { Container } from '@/components/Container'
 import { PageSections } from '@/components/PageSections'
 import { ContactDetails } from '@/components/pageSpecific/contact/ContactDetails'
 import { ContactForm } from '@/components/pageSpecific/contact/ContactForm'
-import { fetchContactPage } from '@/sanity/schemas/documents/pages/contactPage'
 import { Metadata } from 'next'
 
 // sanity page query
-const contactPage = await fetchContactPage()
+const contactPage = await fetchPageSectionPage('contactPage')
 
 // nextJS api
 export const metadata: Metadata = {
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Contact() {
-  const contactPage = await fetchContactPage()
+  const contactPage = await fetchPageSectionPage('contactPage')
 
   return (
     <>

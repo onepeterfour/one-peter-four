@@ -1,8 +1,8 @@
+import { fetchPageSectionPage } from '@/app/api/fetchPageSectionPage'
 import { PageSections } from '@/components/PageSections'
-import { fetchServicesPage } from '@/sanity/schemas/documents/pages/servicesPage'
 import { Metadata } from 'next'
 
-const servicesPage = await fetchServicesPage()
+const servicesPage = await fetchPageSectionPage('servicesPage')
 
 export const metadata: Metadata = {
   title: `${servicesPage?.metaData?.title} - 1P4`,
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 }
 
 export default async function Services() {
-  const servicesPage = await fetchServicesPage()
+  const servicesPage = await fetchPageSectionPage('servicesPage')
 
   return (
     <>

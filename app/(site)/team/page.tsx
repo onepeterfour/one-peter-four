@@ -1,9 +1,8 @@
+import { fetchPageSectionPage } from '@/app/api/fetchPageSectionPage'
 import { PageSections } from '@/components/PageSections'
-import { fetchTeamPage } from '@/sanity/schemas/documents/pages/teamPage'
 import { Metadata } from 'next'
 
-// sanity page query
-const teamPage = await fetchTeamPage()
+const teamPage = await fetchPageSectionPage('teamPage')
 
 // nextJS api
 export const metadata: Metadata = {
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 export default async function TeamPage() {
-  const teamPage = await fetchTeamPage()
+  const teamPage = await fetchPageSectionPage('teamPage')
 
   return (
     <>

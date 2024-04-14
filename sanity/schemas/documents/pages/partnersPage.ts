@@ -1,7 +1,4 @@
-import type { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
-import type { PageSection } from '@/sanity/schemas/objects/pageSections'
 import { defineField, defineType } from 'sanity'
-import { fetchPage } from './homePage'
 
 // SANITY SCHEMA
 export default defineType({
@@ -21,19 +18,3 @@ export default defineType({
     })
   ]
 })
-
-// INTERFACE
-interface PartnersPageDocument {
-  _type: 'partnersPage'
-  _id: string
-  _rev: string
-  _createdAt: string
-  _updatedAt: string
-  _originalId?: string | undefined
-  metaData: MetaDataObject
-  pageSections: PageSection[]
-}
-
-//QUERY
-export const fetchPartnersPage = async () =>
-  fetchPage<PartnersPageDocument>('partnersPage')
