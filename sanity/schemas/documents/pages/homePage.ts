@@ -114,7 +114,8 @@ export const fetchPage = async <T>(pageName: PageName) => {
             image,
             bio,
             email,
-            linkedIn
+            linkedIn,
+            twitter
           }
         },
         _type == "partnerListSection" => {
