@@ -25,7 +25,7 @@ export const PartnerListSection = ({
       <div className='mt-10 space-y-20 sm:space-y-24 lg:space-y-32'>
         {partnerList.map((partner) => (
           <FadeIn key={partner?._id}>
-            <article>
+            <article id={partner?.slug.current}>
               <Border className='grid grid-cols-3 gap-x-8 gap-y-8 pt-16'>
                 <div className='col-span-full justify-center sm:flex sm:items-center sm:gap-x-8 lg:col-span-1 lg:block lg:justify-between'>
                   <div className='flex justify-center sm:items-center sm:gap-x-6 lg:block'>

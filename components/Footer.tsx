@@ -4,75 +4,51 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Logo } from '@/components/Logo'
 import { Offices } from '@/components/Offices'
-import { socialMediaProfiles } from '@/components/SocialMedia'
+import { FooterNavigationDocument } from '@/sanity/schemas/documents/settings/footerNavigation'
 
-const navigation = [
-  {
-    title: 'Company',
-    links: [
-      { title: 'Our Team', href: '/team' },
-      { title: 'Services', href: '/services' },
-      { title: 'Case Studies', href: '/case-studies' },
-      { title: 'Articles', href: '/articles' }
-    ]
-  },
-  {
-    title: 'Connect',
-    links: [{ title: 'Contact Us', href: '/contact' }, ...socialMediaProfiles]
-  },
-  {
-    title: 'Partners',
-    links: [
-      { title: 'Partner 1', href: '/partners' },
-      { title: 'Partner 2', href: '/partners' },
-      { title: 'Partner 3', href: '/partners' },
-      {
-        title: (
-          <>
-            See all <span aria-hidden='true'>&rarr;</span>
-          </>
-        ),
-        href: '/partners'
-      }
-    ]
-  },
-  {
-    title: 'Policies',
-    links: [
-      { title: 'Privacy Policy', href: '/policies/privacy' },
-      { title: 'Terms of Service', href: 'policies/terms' },
-      {
-        title: (
-          <>
-            See all <span aria-hidden='true'>&rarr;</span>
-          </>
-        ),
-        href: '/policies'
-      }
-    ]
-  }
-]
-
-function Navigation() {
+function Navigation({ data }: { data: FooterNavigationDocument }) {
   return (
     <nav>
       <ul role='list' className='grid grid-cols-2 gap-8 sm:grid-cols-4'>
-        {navigation.map((section, sectionIndex) => (
-          <li key={sectionIndex}>
+        {data.navigationColumns.map((column) => (
+          <li key={column._key}>
             <div className='font-display text-sm font-semibold tracking-wider text-neutral-950'>
-              {section.title}
+              {column.columnTitle}
             </div>
             <ul role='list' className='mt-4 text-sm text-neutral-600'>
-              {section.links.map((link, linkIndex) => (
-                <li key={linkIndex} className='mt-4'>
-                  <Link
-                    href={link.href}
-                    className='transition hover:text-neutral-950'
-                  >
-                    {link.title}
-                  </Link>
-                </li>
-              ))}
+              {column.navigationLinks.map((navigationLink) => {
+                return (
+                  <li key={navigationLink._key} className='mt-4'>
+                    {navigationLink.path[0] === '/' ? (
+                      <Link
+                        href={navigationLink.path}
+                        className='transition hover:text-neutral-950'
+                      >
+                        <>
+                          {navigationLink.label}
+                          {navigationLink.label === 'See all' && (
+                            <>
+                              <span aria-hidden='true'> </span>
+                              <span aria-hidden='true'>&rarr;</span>
+                            </>
+                          )}
+                        </>
+                      </Link>
+                    ) : (
+                      <Link href={navigationLink.path} passHref legacyBehavior>
+                        <a
+                          aria-label={navigationLink.label}
+                          className='transition hover:text-neutral-950'
+                          target='_blank'
+                          rel='noopener noreferrer'
+                        >
+                          {navigationLink.label}
+                        </a>
+                      </Link>
+                    )}
+                  </li>
+                )
+              })}
             </ul>
           </li>
         ))}
@@ -81,12 +57,12 @@ function Navigation() {
   )
 }
 
-export function Footer() {
+export function Footer({ data }: { data: FooterNavigationDocument }) {
   return (
     <Container as='footer' className='mt-24 w-full sm:mt-32 lg:mt-40'>
       <FadeIn>
         <div className='grid grid-cols-1 gap-x-8 gap-y-16 lg:grid-cols-2'>
-          <Navigation />
+          <Navigation data={data} />
           <div className='flex lg:justify-end'>
             <div>
               <h2 className='font-display text-base font-semibold'>

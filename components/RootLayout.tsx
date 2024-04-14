@@ -8,6 +8,7 @@ import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
 import { MenuIcon } from '@/components/icons/MenuIcon'
 import { XIcon } from '@/components/icons/XIcon'
+import { FooterNavigationDocument } from '@/sanity/schemas/documents/settings/footerNavigation'
 import { HeaderNavigationDocument } from '@/sanity/schemas/documents/settings/headerNavigation'
 import { MotionConfig, motion, useReducedMotion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
@@ -21,11 +22,13 @@ import React, {
 
 type RootLayoutInnerProps = PropsWithChildren<{
   headerNavigation: HeaderNavigationDocument
+  footerNavigation: FooterNavigationDocument
 }>
 
 const RootLayoutInner = ({
   children,
-  headerNavigation
+  headerNavigation,
+  footerNavigation
 }: RootLayoutInnerProps) => {
   let panelId = useId()
   let [expanded, setExpanded] = useState(false)
@@ -135,7 +138,7 @@ const RootLayoutInner = ({
           className='relative isolate flex w-full flex-col pt-9'
         >
           <main className='w-full flex-auto'>{children}</main>
-          <Footer />
+          <Footer data={footerNavigation} />
         </motion.div>
       </motion.div>
     </MotionConfig>
@@ -144,13 +147,22 @@ const RootLayoutInner = ({
 
 type RootLayoutProps = PropsWithChildren<{
   headerNavigation: HeaderNavigationDocument
+  footerNavigation: FooterNavigationDocument
 }>
 
-export function RootLayout({ children, headerNavigation }: RootLayoutProps) {
+export function RootLayout({
+  children,
+  headerNavigation,
+  footerNavigation
+}: RootLayoutProps) {
   let pathname = usePathname()
 
   return (
-    <RootLayoutInner key={pathname} headerNavigation={headerNavigation}>
+    <RootLayoutInner
+      key={pathname}
+      headerNavigation={headerNavigation}
+      footerNavigation={footerNavigation}
+    >
       {children}
     </RootLayoutInner>
   )

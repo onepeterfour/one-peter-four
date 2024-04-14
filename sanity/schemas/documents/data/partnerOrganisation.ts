@@ -43,6 +43,12 @@ export default defineType({
       title: 'Url',
       type: 'url',
       validation: (Rule) => Rule.required()
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      validation: (Rule) => Rule.required()
     })
   ]
 })
@@ -60,4 +66,8 @@ export interface PartnerOrganisationDocument {
   description?: string
   body: TypedObject[]
   url: string
+  slug: {
+    _type: 'slug'
+    current: string
+  }
 }
