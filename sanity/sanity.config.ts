@@ -5,6 +5,8 @@
 import { locate } from '@/sanity/presentation/locate'
 import {
   BookIcon,
+  CodeBlockIcon,
+  CogIcon,
   DocumentPdfIcon,
   DocumentTextIcon,
   DocumentsIcon,
@@ -171,6 +173,38 @@ const deskToolOptions: DeskToolOptions = {
             S.documentTypeList('websitePolicyDocument').title(
               'Website Policies'
             )
+          ),
+        S.divider(),
+        S.listItem()
+          .title('Settings')
+          .icon(CogIcon)
+          .child(
+            S.list()
+              .title('Settings Documents')
+              .items([
+                S.listItem()
+                  .title('Metadata')
+                  .icon(CodeBlockIcon)
+                  .child(
+                    S.document().schemaType('metadata').documentId('metadata')
+                  ),
+                S.listItem()
+                  .title('Header Navigation')
+                  .icon(CodeBlockIcon)
+                  .child(
+                    S.document()
+                      .schemaType('headerNavigation')
+                      .documentId('headerNavigation')
+                  ),
+                S.listItem()
+                  .title('Footer Navigation')
+                  .icon(CodeBlockIcon)
+                  .child(
+                    S.document()
+                      .schemaType('footerNavigation')
+                      .documentId('footerNavigation')
+                  )
+              ])
           )
       ])
 }

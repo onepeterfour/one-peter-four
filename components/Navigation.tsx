@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container'
-import { headerNavigation } from '@/mockedCMSData'
+import { HeaderNavigationDocument } from '@/sanity/schemas/documents/settings/headerNavigation'
 import Link from 'next/link'
 import React from 'react'
 
@@ -31,16 +31,19 @@ function NavigationItem({
   )
 }
 
-export function Navigation() {
+export function Navigation({ data }: { data: HeaderNavigationDocument }) {
   return (
     <nav className='mt-px font-display text-5xl font-medium tracking-tight text-white'>
-      {headerNavigation &&
-        headerNavigation.rows.map((row) => {
+      {data &&
+        data.rows.map((row) => {
           return (
             <NavigationRow key={row?._key}>
-              {row?.items.map((item) => (
-                <NavigationItem key={item?._key} href={item?.path}>
-                  {item?.label}
+              {row?.columns.map((navigationLink) => (
+                <NavigationItem
+                  key={navigationLink?._key}
+                  href={navigationLink?.path}
+                >
+                  {navigationLink?.label}
                 </NavigationItem>
               ))}
             </NavigationRow>

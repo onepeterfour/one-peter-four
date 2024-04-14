@@ -48,6 +48,11 @@ import partnerOrganisation from './documents/data/partnerOrganisation'
 import teamMember from './documents/data/teamMember'
 import websitePolicy from './documents/data/websitePolicy'
 
+// IMPORT SITE SETTINGS DOCUMENTS
+import footerNavigation from './documents/settings/footerNavigation'
+import headerNavigation from './documents/settings/headerNavigation'
+import metadata from './documents/settings/metadata'
+
 const PAGE_SECTION_OBJECTS = new Set([
   articleListSection,
   callToActionsSection,
@@ -100,11 +105,18 @@ const DATA_DOCUMENTS = new Set([
   partnerOrganisation
 ])
 
+const SETTINGS_DOCUMENTS = new Set([
+  metadata,
+  headerNavigation,
+  footerNavigation
+])
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     ...OBJECTS,
     ...PAGE_SECTION_OBJECTS,
     ...PAGE_DOCUMENTS,
-    ...DATA_DOCUMENTS
+    ...DATA_DOCUMENTS,
+    ...SETTINGS_DOCUMENTS
   ]
 }

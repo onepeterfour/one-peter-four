@@ -8,6 +8,7 @@ import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
 import { MenuIcon } from '@/components/icons/MenuIcon'
 import { XIcon } from '@/components/icons/XIcon'
+import { HeaderNavigationDocument } from '@/sanity/schemas/documents/settings/headerNavigation'
 import { MotionConfig, motion, useReducedMotion } from 'framer-motion'
 import { usePathname } from 'next/navigation'
 import React, {
@@ -18,9 +19,14 @@ import React, {
   useState
 } from 'react'
 
-type RootLayoutInnerProps = PropsWithChildren<{}>
+type RootLayoutInnerProps = PropsWithChildren<{
+  headerNavigation: HeaderNavigationDocument
+}>
 
-const RootLayoutInner = ({ children }: RootLayoutInnerProps) => {
+const RootLayoutInner = ({
+  children,
+  headerNavigation
+}: RootLayoutInnerProps) => {
   let panelId = useId()
   let [expanded, setExpanded] = useState(false)
   let openRef = useRef<React.ElementRef<'button'>>(null)
@@ -61,8 +67,8 @@ const RootLayoutInner = ({ children }: RootLayoutInnerProps) => {
             expanded={expanded}
             onToggle={() => {
               setExpanded((expanded) => !expanded)
-              window.setTimeout(
-                () => closeRef.current?.focus({ preventScroll: true })
+              window.setTimeout(() =>
+                closeRef.current?.focus({ preventScroll: true })
               )
             }}
           />
@@ -87,13 +93,13 @@ const RootLayoutInner = ({ children }: RootLayoutInnerProps) => {
                 expanded={expanded}
                 onToggle={() => {
                   setExpanded((expanded) => !expanded)
-                  window.setTimeout(
-                    () => openRef.current?.focus({ preventScroll: true })
+                  window.setTimeout(() =>
+                    openRef.current?.focus({ preventScroll: true })
                   )
                 }}
               />
             </div>
-            <Navigation />
+            <Navigation data={headerNavigation} />
             <div className='relative bg-neutral-950 before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-neutral-800'>
               <Container>
                 <div className='grid grid-cols-1 gap-y-10 pb-16 pt-10 sm:grid-cols-2 sm:pt-16'>
@@ -136,10 +142,16 @@ const RootLayoutInner = ({ children }: RootLayoutInnerProps) => {
   )
 }
 
-type RootLayoutProps = PropsWithChildren<{}>
+type RootLayoutProps = PropsWithChildren<{
+  headerNavigation: HeaderNavigationDocument
+}>
 
-export function RootLayout({ children }: RootLayoutProps) {
+export function RootLayout({ children, headerNavigation }: RootLayoutProps) {
   let pathname = usePathname()
 
-  return <RootLayoutInner key={pathname}>{children}</RootLayoutInner>
+  return (
+    <RootLayoutInner key={pathname} headerNavigation={headerNavigation}>
+      {children}
+    </RootLayoutInner>
+  )
 }
