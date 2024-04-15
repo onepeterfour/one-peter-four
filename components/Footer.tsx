@@ -5,6 +5,37 @@ import { FadeIn } from '@/components/FadeIn'
 import { Logo } from '@/components/Logo'
 import { Offices } from '@/components/Offices'
 import { FooterNavigationDocument } from '@/sanity/schemas/documents/settings/footerNavigation'
+import { ExternalLink, FooterInternalLink } from '@/types'
+import { ExternalLink as External } from './ExternalLink'
+
+const NavigationItem = ({
+  data
+}: {
+  data: FooterInternalLink | ExternalLink
+}) => {
+  return (
+    <li className='mt-4'>
+      {data._type === 'internalLink' ? (
+        <Link
+          href={data.path.current}
+          className='transition hover:text-neutral-950'
+        >
+          {data.label}
+          {data.hasArrow && (
+            <>
+              <span aria-hidden='true'> </span>
+              <span aria-hidden='true'>&rarr;</span>
+            </>
+          )}
+        </Link>
+      ) : (
+        <External href={data.url} className='transition hover:text-neutral-950'>
+          {data.label}
+        </External>
+      )}
+    </li>
+  )
+}
 
 function Navigation({ data }: { data: FooterNavigationDocument }) {
   return (
@@ -18,35 +49,10 @@ function Navigation({ data }: { data: FooterNavigationDocument }) {
             <ul role='list' className='mt-4 text-sm text-neutral-600'>
               {column.navigationLinks.map((navigationLink) => {
                 return (
-                  <li key={navigationLink._key} className='mt-4'>
-                    {navigationLink.path[0] === '/' ? (
-                      <Link
-                        href={navigationLink.path}
-                        className='transition hover:text-neutral-950'
-                      >
-                        <>
-                          {navigationLink.label}
-                          {navigationLink.label === 'See all' && (
-                            <>
-                              <span aria-hidden='true'> </span>
-                              <span aria-hidden='true'>&rarr;</span>
-                            </>
-                          )}
-                        </>
-                      </Link>
-                    ) : (
-                      <Link href={navigationLink.path} passHref legacyBehavior>
-                        <a
-                          aria-label={navigationLink.label}
-                          className='transition hover:text-neutral-950'
-                          target='_blank'
-                          rel='noopener noreferrer'
-                        >
-                          {navigationLink.label}
-                        </a>
-                      </Link>
-                    )}
-                  </li>
+                  <NavigationItem
+                    key={navigationLink._key}
+                    data={navigationLink}
+                  />
                 )
               })}
             </ul>

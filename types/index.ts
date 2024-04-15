@@ -17,6 +17,10 @@ export interface InternalLink {
   label: string
 }
 
+export interface FooterInternalLink extends InternalLink {
+  hasArrow?: boolean
+}
+
 export interface ExternalLink {
   _type: 'externalLink'
   _key: string
