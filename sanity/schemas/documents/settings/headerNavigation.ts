@@ -1,18 +1,12 @@
+import { ExternalLink, InternalLink } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
 import { type SanityDocument } from 'next-sanity'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
-interface NavigationLink {
-  _type: 'navigationLink'
-  path: string
-  _key: string
-  label: string
-}
-
 interface HeaderNavigationRow {
   _type: 'row'
   _key: string
-  columns: NavigationLink[]
+  columns: Array<InternalLink | ExternalLink>
 }
 
 export interface HeaderNavigationDocument extends SanityDocument {
@@ -64,8 +58,8 @@ export default defineType({
               validation: (Rule) => Rule.required().max(2),
               of: [
                 defineArrayMember({
-                  name: 'navigationLink',
-                  title: 'Navigation Link',
+                  name: 'internalLink',
+                  title: 'Internal Link',
                   type: 'object',
                   validation: (Rule) => Rule.required(),
                   fields: [
@@ -78,7 +72,27 @@ export default defineType({
                     defineField({
                       name: 'path',
                       title: 'Path',
+                      type: 'slug',
+                      validation: (Rule) => Rule.required()
+                    })
+                  ]
+                }),
+                defineArrayMember({
+                  name: 'externalLink',
+                  title: 'External Link',
+                  type: 'object',
+                  validation: (Rule) => Rule.required(),
+                  fields: [
+                    defineField({
+                      name: 'label',
+                      title: 'Label',
                       type: 'string',
+                      validation: (Rule) => Rule.required()
+                    }),
+                    defineField({
+                      name: 'url',
+                      title: 'Url',
+                      type: 'url',
                       validation: (Rule) => Rule.required()
                     })
                   ]

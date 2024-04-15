@@ -5,22 +5,9 @@ import { urlForImage } from '@/sanity/lib/image'
 import { TeamMemberDocument } from '@/sanity/schemas/documents/data/teamMember'
 import { TeamMemberListSectionSchema } from '@/sanity/schemas/objects/pageSections/teamMemberListSections'
 import Image from 'next/image'
-import Link, { LinkProps } from 'next/link'
-import { PropsWithChildren } from 'react'
+import { ExternalLink } from '../ExternalLink'
 import { LinkedInIcon } from '../icons/LinkedInIcon'
 import { TwitterIcon } from '../icons/TwitterIcon'
-
-const ExternalLink = (
-  props: PropsWithChildren<LinkProps> & { className: string }
-) => {
-  return (
-    <Link href={props.href} passHref legacyBehavior>
-      <a className={props.className} target='_blank' rel='noopener noreferrer'>
-        {props.children}
-      </a>
-    </Link>
-  )
-}
 
 const TeamMemberListItem = (teamMember: TeamMemberDocument) => {
   return (
