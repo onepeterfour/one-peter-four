@@ -9,6 +9,7 @@ import { HeroImageSection } from './Hero'
 import { HeroTextSection } from './HeroTextSection'
 import { ImageTextDetailedListSection } from './ImageTextDetailedListSection'
 import { ImageTextListSection } from './ImageTextListSection'
+import { LearningResourceListSection } from './LearningResourceListSection'
 import { LogoListSection } from './LogoListSection'
 import { PageIntroSection } from './PageIntroSection'
 import { PartnerListSection } from './PartnerListSection'
@@ -27,6 +28,7 @@ const pageSectionDict: Record<PageSection['_type'], ComponentType<any>> = {
   heroTextSection: HeroTextSection,
   imageTextDetailedListSection: ImageTextDetailedListSection,
   imageTextListSection: ImageTextListSection,
+  learningResourceListSection: LearningResourceListSection,
   logoListSection: LogoListSection,
   pageIntroSection: PageIntroSection,
   partnerListSection: PartnerListSection,
@@ -52,7 +54,7 @@ export const PageSections = ({ pageSections }: PageSectionsProps) => {
         return PageSection ? (
           <PageSection key={section._key} {...section} />
         ) : (
-          <div>This Page Section does not exist</div>
+          <div key={section._key}>This Page Section does not exist</div>
         )
       })}
     </>

@@ -8,6 +8,7 @@ import type { HeroImageSectionSchema } from './heroImageSection'
 import type { HeroTextSectionSchema } from './heroTextSection'
 import type { ImageTextDetailedListSectionSchema } from './imageTextDetailedListSection'
 import type { ImageTextListSectionSchema } from './imageTextListSection'
+import type { LearningResourceListSectionSchema } from './learningResourceListSection'
 import type { LogoListSectionSchema } from './logoListSection'
 import type { PageIntroSectionSchema } from './pageIntroSection'
 import type { PartnerListSectionSchema } from './partnerListSection'
@@ -26,6 +27,7 @@ export type PageSection =
   | HeroTextSectionSchema
   | ImageTextListSectionSchema
   | ImageTextDetailedListSectionSchema
+  | LearningResourceListSectionSchema
   | LogoListSectionSchema
   | PageIntroSectionSchema
   | StatisticListSectionSchema
@@ -85,6 +87,11 @@ export default defineType({
       type: 'imageTextDetailedListSection',
       name: 'imageTextDetailedListSection',
       title: 'Image Text Detailed List Section'
+    }),
+    defineArrayMember({
+      type: 'learningResourceListSection',
+      name: 'learningResourceListSection',
+      title: 'Learning Resource List Section'
     }),
     defineArrayMember({
       type: 'logoListSection',

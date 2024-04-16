@@ -102,6 +102,12 @@ export const fetchPageSectionPage = cache(async (pageName: PageName) => {
         partnerList[] -> {
           ...,
         }
+      },
+      _type == "learningResourceListSection" => {
+        ...,
+        learningResourceList[] -> {
+          ...,
+        }
       }
     }
   }[0]`)

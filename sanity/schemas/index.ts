@@ -18,6 +18,7 @@ import heroImageSection from './objects/pageSections/heroImageSection'
 import heroTextSection from './objects/pageSections/heroTextSection'
 import imageTextDetailedListSection from './objects/pageSections/imageTextDetailedListSection'
 import imageListSection from './objects/pageSections/imageTextListSection'
+import learningResourceListSection from './objects/pageSections/learningResourceListSection'
 import logoListSection from './objects/pageSections/logoListSection'
 import pageIntroSection from './objects/pageSections/pageIntroSection'
 import partnerListSection from './objects/pageSections/partnerListSection'
@@ -63,6 +64,7 @@ const PAGE_SECTION_OBJECTS = new Set([
   heroTextSection,
   imageListSection,
   imageTextDetailedListSection,
+  learningResourceListSection,
   logoListSection,
   pageIntroSection,
   partnerListSection,
