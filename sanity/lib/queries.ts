@@ -87,3 +87,57 @@ export const PAGE_SECTION_PAGE_QUERY = (
 export const NAVIGATION_QUERY = (
   type: 'headerNavigation' | 'footerNavigation'
 ) => groq`*[_type == "${type}" ][0]`
+
+export const FETCH_ARTICLES_QUERY = groq`*[_type == "articleDocument"]{
+  ...,
+  categories[] -> {
+    _id,
+    title,
+    slug,
+    description
+  },
+  author -> {
+    _type,
+    _id,
+    name,
+    role,
+    image,
+    slug
+  },
+  fileList[] -> {
+    ...,
+        file{
+    ...,
+    "url": asset -> url,
+    "originalFilename": asset -> originalFilename
+    }
+  }
+}`
+
+export const FETCH_ARTICLE_BY_SLUG_QUERY = (
+  slug: string
+) => groq`*[_type == "articleDocument" && slug.current == "${slug}"][0]{
+  ...,
+  categories[] -> {
+    _id,
+    title,
+    slug,
+    description
+  },
+  author -> {
+    _type,
+    _id,
+    name,
+    role,
+    image,
+    slug
+  },
+  fileList[] -> {
+    ...,
+        file{
+    ...,
+    "url": asset -> url,
+    "originalFilename": asset -> originalFilename
+    }
+  }
+}`
