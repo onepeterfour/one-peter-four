@@ -1,14 +1,10 @@
-import Homepage from '@/components/Homepage'
-import PreviewHomepage from '@/components/PreviewHomePage'
-import { PAGE_SECTION_PAGE_QUERY } from '@/sanity/lib/queries'
-import { loadQuery } from '@/sanity/lib/store'
-import { PageSectionPage } from '@/types'
+import { PageSections } from '@/components/PageSections'
+import PreviewPageSectionPage from '@/components/PreviewPageSectionPage'
+import { fetchPageSectionPage } from '@/sanity/lib/store'
 import { draftMode } from 'next/headers'
 
 export async function generateMetadata() {
-  const initial = await loadQuery<PageSectionPage>(
-    PAGE_SECTION_PAGE_QUERY('homePage')
-  )
+  const initial = await fetchPageSectionPage('homePage')
   return {
     title: `${initial?.data?.metaData?.title} - 1P4`,
     description: initial?.data?.metaData?.description
@@ -16,13 +12,11 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-  const initial = await loadQuery<PageSectionPage>(
-    PAGE_SECTION_PAGE_QUERY('homePage')
-  )
+  const initial = await fetchPageSectionPage('homePage')
 
   return draftMode().isEnabled ? (
-    <PreviewHomepage initial={initial} />
+    <PreviewPageSectionPage pageName='homePage' initial={initial} />
   ) : (
-    <Homepage data={initial.data} />
+    <PageSections pageSections={initial.data.pageSections} />
   )
 }
