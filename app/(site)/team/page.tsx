@@ -1,21 +1,26 @@
-import { fetchPageSectionPage } from '@/app/api/fetchPageSectionPage'
 import { PageSections } from '@/components/PageSections'
-import { Metadata } from 'next'
+import { PAGE_SECTION_PAGE_QUERY } from '@/sanity/lib/queries'
+import { PageSectionPage } from '@/types'
+import { loadQuery } from '@sanity/react-loader'
 
-const teamPage = await fetchPageSectionPage('teamPage')
-
-// nextJS api
-export const metadata: Metadata = {
-  title: `${teamPage?.metaData?.title} - 1P4`,
-  description: teamPage?.metaData?.description
+export async function generateMetadata() {
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('teamPage')
+  )
+  return {
+    title: `${initial?.data?.metaData?.title} - 1P4`,
+    description: initial?.data?.metaData?.description
+  }
 }
 
 export default async function TeamPage() {
-  const teamPage = await fetchPageSectionPage('teamPage')
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('teamPage')
+  )
 
   return (
     <>
-      <PageSections pageSections={teamPage?.pageSections} />
+      <PageSections pageSections={initial?.data?.pageSections} />
     </>
   )
 }

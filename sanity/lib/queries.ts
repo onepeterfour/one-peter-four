@@ -1,37 +1,9 @@
-import { client } from '@/sanity/lib/client'
-import { MetaDataObject } from '@/sanity/schemas/objects/metaDataObject'
-import { PageSection } from '@/sanity/schemas/objects/pageSections'
+import { PageName } from '@/types'
 import { groq } from 'next-sanity'
-import { cache } from 'react'
-import 'server-only'
 
-type PageName =
-  | 'homePage'
-  | 'servicesPage'
-  | 'caseStudiesPage'
-  | 'articlesPage'
-  | 'contactPage'
-  | 'learningPage'
-  | 'partnersPage'
-  | 'teamPage'
-
-interface PageSectionPage {
-  _type: PageName
-  _id: string
-  _rev: string
-  _createdAt: string
-  _updatedAt: string
-  _originalId?: string | undefined
-  metaData: MetaDataObject
-  pageSections: PageSection[]
-}
-
-/**
- * Fetches a page of type PageSectionPage and uses reacts cache  to store the result.
- * [NextJS Docs](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating)
- */
-export const fetchPageSectionPage = cache(async (pageName: PageName) => {
-  return await client.fetch<PageSectionPage>(groq`*[_type == "${pageName}" && !(_id in path("drafts.**"))]{
+export const PAGE_SECTION_PAGE_QUERY = (
+  pageName: PageName
+) => groq`*[_type == "${pageName}"]{
   ...,
     pageSections[]{
       ...,
@@ -110,5 +82,8 @@ export const fetchPageSectionPage = cache(async (pageName: PageName) => {
         }
       }
     }
-  }[0]`)
-})
+  }[0]`
+
+export const NAVIGATION_QUERY = (
+  type: 'headerNavigation' | 'footerNavigation'
+) => groq`*[_type == "${type}" ][0]`

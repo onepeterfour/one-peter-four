@@ -1,22 +1,26 @@
-import { fetchPageSectionPage } from '@/app/api/fetchPageSectionPage'
 import { PageSections } from '@/components/PageSections'
-import { Metadata } from 'next'
+import { PAGE_SECTION_PAGE_QUERY } from '@/sanity/lib/queries'
+import { loadQuery } from '@/sanity/lib/store'
+import { PageSectionPage } from '@/types'
 
-// this page can reuse the same layout as the partners page, just with some slight modifications.
-
-const articlesPage = await fetchPageSectionPage('articlesPage')
-
-export const metadata: Metadata = {
-  title: `${articlesPage?.metaData?.title} - 1P4`,
-  description: articlesPage?.metaData?.description
+export async function generateMetadata() {
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('articlesPage')
+  )
+  return {
+    title: `${initial?.data?.metaData?.title} - 1P4`,
+    description: initial?.data?.metaData?.description
+  }
 }
 
 export default async function Articles() {
-  const articlesPage = await fetchPageSectionPage('articlesPage')
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('articlesPage')
+  )
 
   return (
     <>
-      <PageSections pageSections={articlesPage?.pageSections} />
+      <PageSections pageSections={initial?.data?.pageSections} />
     </>
   )
 }

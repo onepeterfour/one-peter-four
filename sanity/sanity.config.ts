@@ -23,12 +23,12 @@ import {
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
-import { DeskToolOptions, deskTool } from 'sanity/desk'
 import { presentationTool } from 'sanity/presentation'
+import { structureTool, type StructureToolOptions } from 'sanity/structure'
 import { apiVersion, dataset, projectId } from './env'
 import { schema } from './schemas'
 
-const deskToolOptions: DeskToolOptions = {
+const structureToolOptions: StructureToolOptions = {
   structure: (S) =>
     S.list()
       .title('Content')
@@ -216,7 +216,7 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schema' folder
   schema,
   plugins: [
-    deskTool(deskToolOptions),
+    structureTool(structureToolOptions),
     // Vision is a tool that lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({ defaultApiVersion: apiVersion }),

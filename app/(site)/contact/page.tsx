@@ -1,25 +1,29 @@
-import { fetchPageSectionPage } from '@/app/api/fetchPageSectionPage'
 import { Container } from '@/components/Container'
 import { PageSections } from '@/components/PageSections'
 import { ContactDetails } from '@/components/pageSpecific/contact/ContactDetails'
 import { ContactForm } from '@/components/pageSpecific/contact/ContactForm'
-import { Metadata } from 'next'
+import { PAGE_SECTION_PAGE_QUERY } from '@/sanity/lib/queries'
+import { loadQuery } from '@/sanity/lib/store'
+import { PageSectionPage } from '@/types'
 
-// sanity page query
-const contactPage = await fetchPageSectionPage('contactPage')
-
-// nextJS api
-export const metadata: Metadata = {
-  title: `${contactPage?.metaData?.title} - 1P4`,
-  description: contactPage?.metaData?.description
+export async function generateMetadata() {
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('contactPage')
+  )
+  return {
+    title: `${initial?.data?.metaData?.title} - 1P4`,
+    description: initial?.data?.metaData?.description
+  }
 }
 
 export default async function Contact() {
-  const contactPage = await fetchPageSectionPage('contactPage')
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('contactPage')
+  )
 
   return (
     <>
-      <PageSections pageSections={contactPage?.pageSections} />
+      <PageSections pageSections={initial?.data?.pageSections} />
 
       <Container className='mt-24 sm:mt-32 lg:mt-40'>
         <div className='grid grid-cols-1 gap-x-8 gap-y-24 lg:grid-cols-2'>

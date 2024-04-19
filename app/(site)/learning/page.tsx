@@ -1,19 +1,25 @@
-import { fetchPageSectionPage } from '@/app/api/fetchPageSectionPage'
 import { PageSections } from '@/components/PageSections'
-import { Metadata } from 'next'
+import { PAGE_SECTION_PAGE_QUERY } from '@/sanity/lib/queries'
+import { loadQuery } from '@/sanity/lib/store'
+import { PageSectionPage } from '@/types'
 
-const learningPage = await fetchPageSectionPage('learningPage')
-
-export const metadata: Metadata = {
-  title: `${learningPage?.metaData?.title} - 1P4`,
-  description: learningPage?.metaData?.description
+export async function generateMetadata() {
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('learningPage')
+  )
+  return {
+    title: `${initial?.data?.metaData?.title} - 1P4`,
+    description: initial?.data?.metaData?.description
+  }
 }
 export default async function Learning() {
-  const learningPage = await fetchPageSectionPage('learningPage')
+  const initial = await loadQuery<PageSectionPage>(
+    PAGE_SECTION_PAGE_QUERY('learningPage')
+  )
 
   return (
     <>
-      <PageSections pageSections={learningPage?.pageSections} />
+      <PageSections pageSections={initial?.data?.pageSections} />
     </>
   )
 }

@@ -1,5 +1,5 @@
+import LiveVisualEditing from '@/components/LiveVisualEditing'
 import { RootLayout } from '@/components/RootLayout'
-import VisualEditing from '@/components/VisualEditing'
 import { FooterNavigationDocument } from '@/sanity/schemas/documents/settings/footerNavigation'
 import { HeaderNavigationDocument } from '@/sanity/schemas/documents/settings/headerNavigation'
 import { draftMode } from 'next/headers'
@@ -27,7 +27,7 @@ export default async function SiteLayout({ children }: PropsWithChildren) {
         >
           {children}
         </RootLayout>
-        {draftMode().isEnabled && <VisualEditing />}
+        {draftMode().isEnabled && <LiveVisualEditing />}
       </body>
     </html>
   )
