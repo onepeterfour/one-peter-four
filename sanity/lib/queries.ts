@@ -116,7 +116,7 @@ export const FETCH_ARTICLES_QUERY = groq`*[_type == "articleDocument"]{
 
 export const FETCH_ARTICLE_BY_SLUG_QUERY = (
   slug: string
-) => groq`*[_type == "articleDocument" && slug.current == "${slug}"][0]{
+) => groq`*[_type == "articleDocument" && slug.current == "${slug}"]{
   ...,
   categories[] -> {
     _id,
@@ -140,4 +140,4 @@ export const FETCH_ARTICLE_BY_SLUG_QUERY = (
     "originalFilename": asset -> originalFilename
     }
   }
-}`
+}[0]`

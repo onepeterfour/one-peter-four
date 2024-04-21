@@ -4,6 +4,7 @@ import { ArticleListSection } from './ArticleListSection'
 import { CallToActionSection } from './CallToActionSection'
 import { CaseStudyCardListSection } from './CaseStudyCardListSection'
 import { CaseStudyListSection } from './CaseStudyListSection'
+import { ContactFormSection } from './ContactFormSection'
 import { ContactSection } from './ContactSection'
 import { HeroImageSection } from './Hero'
 import { HeroTextSection } from './HeroTextSection'
@@ -24,6 +25,7 @@ const pageSectionDict: Record<PageSection['_type'], ComponentType<any>> = {
   caseStudyCardListSection: CaseStudyCardListSection,
   caseStudyListSection: CaseStudyListSection,
   contactSection: ContactSection,
+  contactFormSection: ContactFormSection,
   heroImageSection: HeroImageSection,
   heroTextSection: HeroTextSection,
   imageTextDetailedListSection: ImageTextDetailedListSection,

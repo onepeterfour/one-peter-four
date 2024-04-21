@@ -13,6 +13,7 @@ import articleListSection from './objects/pageSections/articleListSection'
 import callToActionsSection from './objects/pageSections/callToActionsSection'
 import caseStudyCardListSection from './objects/pageSections/caseStudyCardListSection'
 import caseStudiesListSection from './objects/pageSections/caseStudyListSection'
+import contactFormSection from './objects/pageSections/contactFormSection'
 import contactSection from './objects/pageSections/contactSection'
 import heroImageSection from './objects/pageSections/heroImageSection'
 import heroTextSection from './objects/pageSections/heroTextSection'
@@ -60,6 +61,7 @@ const PAGE_SECTION_OBJECTS = new Set([
   caseStudyCardListSection,
   caseStudiesListSection,
   contactSection,
+  contactFormSection,
   heroImageSection,
   heroTextSection,
   imageListSection,
