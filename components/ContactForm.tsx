@@ -23,7 +23,7 @@ function SubmitButton({
       disabled={pending}
       className='mt-10 inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800'
     >
-      {successLabel || defaultLabel}
+      {pending ? 'Sending' : successLabel || defaultLabel}
     </button>
   )
 }
@@ -36,16 +36,23 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
         Work inquiries
       </h2>
       <div className='isolate mt-6 -space-y-px rounded-2xl bg-white/50'>
-        <TextInput label='Name' name='name' autoComplete='name' />
+        <TextInput label='Name' name='name' autoComplete='name' required />
         <TextInput
           label='Email'
           type='email'
           name='email'
           autoComplete='email'
+          required
         />
         <TextInput label='Company' name='company' autoComplete='organization' />
-        <TextInput label='Phone' type='tel' name='phone' autoComplete='tel' />
-        <TextInput label='Message' name='message' />
+        <TextInput
+          label='Phone'
+          type='tel'
+          name='phone'
+          autoComplete='tel'
+          pattern='(\\+44|0)[0-9]{10}'
+        />
+        <TextInput label='Message' name='message' required />
       </div>
       {buttonLabel && <SubmitButton successLabel={state.message} />}
     </form>
