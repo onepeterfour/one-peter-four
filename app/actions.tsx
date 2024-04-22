@@ -47,7 +47,7 @@ export async function createContactRequest(
   })
 
   if (sendError) {
-    console.log(sendError)
+    console.error(sendError)
     return { message: 'Try again' }
   }
 

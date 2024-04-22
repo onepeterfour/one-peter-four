@@ -1,12 +1,14 @@
 'use client'
 
 import { createContactRequest } from '@/app/actions'
-import React, { useId } from 'react'
+import React, { createRef, useEffect, useId } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
 
 const initialState = {
   message: ''
 }
+
+const formRef = createRef<HTMLFormElement>()
 
 function SubmitButton({
   defaultLabel = 'Submit',
@@ -30,8 +32,15 @@ function SubmitButton({
 
 export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
   const [state, formAction] = useFormState(createContactRequest, initialState)
+
+  useEffect(() => {
+    if (state.message === 'Email sent!') {
+      formRef?.current?.reset()
+    }
+  }, [state.message])
+
   return (
-    <form action={formAction}>
+    <form action={formAction} ref={formRef}>
       <h2 className='font-display text-base font-bold text-neutral-950'>
         Work inquiries
       </h2>
