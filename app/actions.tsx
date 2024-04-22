@@ -1,6 +1,7 @@
 'use server'
 
-import ContactEmail from '@/emails/ContactEmail'
+import ContactFormSubmission from '@/emails/ContactFormSubmission'
+import EnquiryReply from '@/emails/EnquiryReply'
 import assertValue from '@/lib/assertValue'
 import { Resend } from 'resend'
 
@@ -36,7 +37,7 @@ export async function createContactRequest(
     to: RESEND_SEND_TO_EMAIL,
     subject: `Website Enquiry from ${userName}`,
     react: (
-      <ContactEmail
+      <ContactFormSubmission
         userEmail={userEmail}
         userName={userName}
         userMessage={userMessage}
@@ -49,6 +50,17 @@ export async function createContactRequest(
   if (sendError) {
     console.error(sendError)
     return { message: 'Try again' }
+  }
+
+  const { error: replyError } = await resend.emails.send({
+    from: RESEND_SEND_FROM_EMAIL,
+    to: userEmail,
+    subject: `Thank you for your enquiry to One Peter Four`,
+    react: <EnquiryReply userName={userName} />
+  })
+
+  if (replyError) {
+    console.error(replyError)
   }
 
   return { message: 'Email sent!' }
