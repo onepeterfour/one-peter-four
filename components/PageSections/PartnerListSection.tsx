@@ -3,8 +3,8 @@ import { PartnerListSectionSchema } from '@/sanity/schemas/objects/pageSections/
 import Image from 'next/image'
 import Link from 'next/link'
 import { Border } from '../Border'
-import { Button } from '../Button'
 import { Container } from '../Container'
+import { ExternalLink } from '../ExternalLink'
 import { FadeIn } from '../FadeIn'
 import { PortableText } from '../PortableText'
 
@@ -47,12 +47,13 @@ export const PartnerListSection = ({
                     <PortableText value={partner.body} />
                   </div>
                   <div className='mt-16 flex justify-center lg:justify-start'>
-                    <Button
+                    <ExternalLink
+                      className='inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800'
                       href={partner.url}
                       aria-label={`visit website for ${partner.name}`}
                     >
                       Visit site
-                    </Button>
+                    </ExternalLink>
                   </div>
                 </div>
               </Border>
