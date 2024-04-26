@@ -40,7 +40,7 @@ export default defineType({
           type: 'object',
           preview: {
             select: {
-              title: 'title',
+              title: 'columnTitle',
               link0: 'navigationLinks.0.label',
               link1: 'navigationLinks.1.label',
               link2: 'navigationLinks.2.label',
