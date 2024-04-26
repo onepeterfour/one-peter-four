@@ -48,6 +48,9 @@ export default defineType({
       name: 'slug',
       title: 'Slug',
       type: 'slug',
+      options: {
+        source: 'name'
+      },
       validation: (Rule) => Rule.required()
     })
   ]
