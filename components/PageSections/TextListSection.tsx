@@ -21,7 +21,6 @@ const InnerContent = ({
         title={title || 'Add title in Sanity'}
         invert={variant === 'dark'}
       >
-        <p>{variant}</p>
         <p>{subtitle || 'Add subtitle in Sanity'}</p>
       </SectionIntro>
       <Container as='div' className='mt-24'>
