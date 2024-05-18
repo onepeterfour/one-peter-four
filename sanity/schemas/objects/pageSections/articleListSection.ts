@@ -53,7 +53,7 @@ export default defineType({
       name: 'articleList',
       title: 'Article List',
       type: 'array',
-      validation: (Rule) => Rule.required().max(4),
+      validation: (Rule) => Rule.required().min(1),
       of: [
         defineField({
           name: 'article',
