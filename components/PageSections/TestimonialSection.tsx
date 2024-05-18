@@ -29,8 +29,8 @@ export function TestimonialSection({
                 src={urlForImage(client.logo)}
                 alt={client.logo?.alt}
                 unoptimized
-                width={50}
-                height={50}
+                width={150}
+                height={100}
               />
             </figcaption>
           </figure>

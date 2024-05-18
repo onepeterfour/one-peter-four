@@ -32,9 +32,9 @@ export const CaseStudyListSection = ({
                     <Image
                       src={urlForImage(caseStudy?.client?.logo)}
                       alt={caseStudy?.client?.logo?.alt}
-                      className='h-16 w-16 flex-none'
-                      width={50}
-                      height={50}
+                      className='flex-none'
+                      width={100}
+                      height={100}
                       unoptimized
                     />
                     <h3 className='mt-6 text-sm font-semibold text-neutral-950 sm:mt-0 lg:mt-8'>
