@@ -24,13 +24,11 @@ export const CaseStudyCardListSection = ({
                 <h3>
                   <Link href={`/case-studies/${card?.slug?.current}`}>
                     <span className='absolute inset-0 rounded-3xl' />
-
                     <Image
                       src={urlForImage(card?.client?.logo)}
                       alt={card?.client?.logo?.alt}
-                      className='h-16 w-16'
-                      width={50}
-                      height={50}
+                      width={100}
+                      height={100}
                       unoptimized
                     />
                   </Link>
