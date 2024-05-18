@@ -23,7 +23,7 @@ export const LogoListSection = ({
         <FadeInStagger faster>
           <ul
             role='list'
-            className='mt-10 grid grid-cols-2 gap-x-8 gap-y-10 lg:grid-cols-4'
+            className='mt-10 grid grid-cols-2 place-items-center gap-x-8 gap-y-10 lg:grid-cols-4'
           >
             {clientList &&
               clientList.map((client) => {
@@ -35,7 +35,7 @@ export const LogoListSection = ({
                         src={urlForImage(client?.logo)}
                         alt={client?.logo?.alt}
                         unoptimized
-                        width={50}
+                        width={100}
                         height={50}
                       />
                     </FadeIn>
