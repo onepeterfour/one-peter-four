@@ -18,6 +18,11 @@ const RESEND_SEND_TO_EMAIL = assertValue(
   'Missing environment variable: RESEND_SEND_TO_EMAIL'
 )
 
+const RESEND_AUDIENCE_ID = assertValue(
+  process.env.RESEND_AUDIENCE_ID,
+  'Missing environment variable: RESEND_AUDIENCE_ID'
+)
+
 const resend = new Resend(RESEND_API_KEY)
 
 export async function createContactRequest(
@@ -31,6 +36,8 @@ export async function createContactRequest(
     (payload.get('phone') as string) || 'no phone number provided'
   const userCompany =
     (payload.get('company') as string) || 'no company name provided'
+
+  const newsletter = (payload.get('newsletter') as string) || null
 
   const { error: sendError } = await resend.emails.send({
     from: RESEND_SEND_FROM_EMAIL,
@@ -61,6 +68,20 @@ export async function createContactRequest(
 
   if (replyError) {
     console.error(replyError)
+  }
+
+  if (newsletter) {
+    const { error } = await resend.contacts.create({
+      audienceId: RESEND_AUDIENCE_ID,
+      email: userEmail,
+      firstName: userName.split(' ')[0],
+      lastName: userName.split(' ')[1] || '',
+      unsubscribed: false
+    })
+
+    if (error) {
+      console.error({ error })
+    }
   }
 
   return { message: 'Email sent!' }

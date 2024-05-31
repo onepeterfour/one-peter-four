@@ -1,8 +1,9 @@
 'use client'
 
 import { createContactRequest } from '@/app/actions'
-import React, { createRef, useEffect, useId } from 'react'
+import React, { createRef, useEffect, useId, useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
+import { ToggleSwitch } from './ToggleSwitch'
 
 const initialState = {
   message: ''
@@ -32,6 +33,7 @@ function SubmitButton({
 
 export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
   const [state, formAction] = useFormState(createContactRequest, initialState)
+  const [newsletterEnabled, setNewsletterEnabled] = useState(false)
 
   useEffect(() => {
     if (state.message === 'Email sent!') {
@@ -62,6 +64,24 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
           pattern='(\\+44|0)[0-9]{10}'
         />
         <TextInput label='Message' name='message' required />
+        <div className='group relative z-0 transition-all focus-within:z-10'>
+          <div className='peer block w-full border border-neutral-300 bg-transparent px-6 pb-8 pt-8 text-base/6 text-neutral-500 ring-4 ring-transparent transition focus:border-neutral-950 focus:outline-none focus:ring-neutral-950/5 group-first:rounded-t-2xl group-last:rounded-b-2xl'>
+            <div className='flex items-center justify-between'>
+              Subsribe to our newsletter
+              <ToggleSwitch
+                enabled={newsletterEnabled}
+                setEnabled={setNewsletterEnabled}
+              />
+            </div>
+          </div>
+        </div>
+        <input
+          type='checkbox'
+          name='newsletter'
+          checked={newsletterEnabled}
+          hidden
+          readOnly
+        />
       </div>
       {buttonLabel && <SubmitButton successLabel={state.message} />}
     </form>

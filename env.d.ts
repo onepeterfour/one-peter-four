@@ -8,5 +8,6 @@ declare namespace NodeJS {
     RESEND_API_KEY?: string
     RESEND_SEND_FROM_EMAIL?: string
     RESEND_SEND_TO_EMAIL?: string
+    RESEND_AUDIENCE_ID?: string
   }
 }
