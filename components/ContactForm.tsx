@@ -47,7 +47,18 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
         Work inquiries
       </h2>
       <div className='isolate mt-6 -space-y-px rounded-2xl bg-white/50'>
-        <TextInput label='Name' name='name' autoComplete='name' required />
+        <TextInput
+          label='First Name'
+          name='firstName'
+          autoComplete='firstName'
+          required
+        />
+        <TextInput
+          label='Last Name'
+          name='lastName'
+          autoComplete='lastName'
+          required
+        />
         <TextInput
           label='Email'
           type='email'

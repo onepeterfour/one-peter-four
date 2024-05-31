@@ -29,7 +29,9 @@ export async function createContactRequest(
   state: { message: string },
   payload: FormData
 ) {
-  const userName = payload.get('name') as string
+  const userFirstName = payload.get('firstName') as string
+  const userLastName = payload.get('lastName') as string
+  const userName = `${userFirstName} ${userLastName}`
   const userEmail = payload.get('email') as string
   const userMessage = payload.get('message') as string
   const userPhone =
@@ -74,8 +76,8 @@ export async function createContactRequest(
     const { error } = await resend.contacts.create({
       audienceId: RESEND_AUDIENCE_ID,
       email: userEmail,
-      firstName: userName.split(' ')[0],
-      lastName: userName.split(' ')[1] || '',
+      firstName: userFirstName,
+      lastName: userLastName,
       unsubscribed: false
     })
 
