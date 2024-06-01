@@ -141,3 +141,19 @@ export const FETCH_ARTICLE_BY_SLUG_QUERY = (
     }
   }
 }[0]`
+
+export const FETCH_CASESTUDIES_QUERY = groq`*[_type == "caseStudyDocument"]{
+  ...,
+  client -> {
+    ...
+  }
+}`
+
+export const FETCH_CASESTUDY_BY_SLUG_QUERY = (
+  slug: string
+) => groq`*[_type == "caseStudyDocument" && slug.current == "${slug}"]{
+  ...,
+  client -> {
+    ...
+  }
+}[0]`

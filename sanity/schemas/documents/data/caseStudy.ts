@@ -1,4 +1,3 @@
-import { client } from '@/sanity/lib/client'
 import { BookIcon } from '@sanity/icons'
 import { TypedObject, defineField, defineType } from 'sanity'
 import { ImageWithMetaDataObject } from '../../objects/imageWithMetaDataObject'
@@ -124,33 +123,3 @@ export default defineType({
     })
   ]
 })
-
-/**
- * Fetch all published case studies
- *
- */
-export const fetchCaseStudies = async () => {
-  const query = `*[_type == "caseStudyDocument" && !(_id in path("drafts.**"))]{
-    ...,
-    client -> {
-      ...
-    }
-  }`
-
-  return await client.fetch<CaseStudyDocument[]>(query)
-}
-
-/**
- * Fetch an individual published case study by slug
- *
- */
-export const fetchCaseStudyBySlug = async (slug: string) => {
-  const query = `*[_type == "caseStudyDocument" && slug.current == "${slug}" && !(_id in path("drafts.**"))]{
-    ...,
-    client -> {
-      ...
-    }
-  }[0]`
-
-  return await client.fetch<CaseStudyDocument>(query)
-}
