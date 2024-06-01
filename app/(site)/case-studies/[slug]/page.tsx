@@ -7,19 +7,25 @@ import { ContactSection } from '@/components/PageSections/ContactSection'
 import { PageIntroSection } from '@/components/PageSections/PageIntroSection'
 import { PortableText } from '@/components/PortableText'
 import { ReadMore } from '@/components/ReadMore'
+import { client } from '@/sanity/lib/client'
 import { urlForImage } from '@/sanity/lib/image'
 import {
-  fetchCaseStudies,
-  fetchCaseStudyBySlug
-} from '@/sanity/schemas/documents/data/caseStudy'
+  FETCH_CASESTUDIES_QUERY,
+  FETCH_CASESTUDY_BY_SLUG_QUERY
+} from '@/sanity/lib/queries'
+import { loadQuery } from '@/sanity/lib/store'
+import { CaseStudyDocument } from '@/sanity/schemas/documents/data/caseStudy'
 import { Metadata } from 'next'
 import { QueryParams } from 'next-sanity'
+import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
 export async function generateStaticParams() {
-  const caseStudies = await fetchCaseStudies()
-  return caseStudies?.map((caseStudies) => ({
-    slug: caseStudies?.slug?.current
+  const caseStudies = await client.fetch<CaseStudyDocument[]>(
+    FETCH_CASESTUDIES_QUERY
+  )
+  return caseStudies?.map((caseStudy) => ({
+    slug: caseStudy?.slug?.current
   }))
 }
 
@@ -28,21 +34,37 @@ export async function generateMetadata({
 }: {
   params: QueryParams
 }): Promise<Metadata> {
-  const caseStudy = await fetchCaseStudyBySlug(params?.slug)
+  const initial = await loadQuery<CaseStudyDocument>(
+    FETCH_CASESTUDY_BY_SLUG_QUERY(params?.slug),
+    params,
+    {
+      perspective: draftMode().isEnabled ? 'previewDrafts' : 'published'
+    }
+  )
   return {
-    title: `${caseStudy?.title} - 1P4`,
-    description: caseStudy?.description
+    title: `${initial?.data?.title} - 1P4`,
+    description: initial?.data?.description
   }
 }
 
 export default async function Page({ params }: { params: QueryParams }) {
-  const caseStudy = await fetchCaseStudyBySlug(params?.slug)
-  const caseStudies = await fetchCaseStudies()
-  const readMoreCaseStudies = caseStudies
+  const initial = await loadQuery<CaseStudyDocument>(
+    FETCH_CASESTUDY_BY_SLUG_QUERY(params?.slug),
+    params,
+    {
+      perspective: draftMode().isEnabled ? 'previewDrafts' : 'published'
+    }
+  )
+
+  const caseStudiesInitial = await loadQuery<CaseStudyDocument[]>(
+    FETCH_CASESTUDIES_QUERY
+  )
+
+  const readMoreCaseStudies = caseStudiesInitial.data
     .filter((caseStudy) => caseStudy.slug.current !== params.slug)
     .slice(0, 2)
 
-  if (!caseStudy) {
+  if (!initial?.data) {
     notFound()
   }
 
@@ -52,11 +74,11 @@ export default async function Page({ params }: { params: QueryParams }) {
         <article>
           <PageIntroSection
             eyebrow='Case Study'
-            title={caseStudy?.title}
-            _type={caseStudy?._type}
+            title={initial?.data?.title}
+            _type={initial?.data?._type}
             centered
-            subtitle={caseStudy?.description}
-            _key={caseStudy?._id}
+            subtitle={initial?.data?.description}
+            _key={initial?.data?._id}
           />
           <FadeIn>
             <div className='mt-24 border-t border-neutral-200 bg-white/50 sm:mt-32 lg:mt-40'>
@@ -65,19 +87,19 @@ export default async function Page({ params }: { params: QueryParams }) {
                   <dl className='-mx-6 grid grid-cols-1 text-sm text-neutral-950 sm:mx-0 sm:grid-cols-3'>
                     <div className='border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0'>
                       <dt className='font-semibold'>Client</dt>
-                      <dd>{caseStudy.client.name}</dd>
+                      <dd>{initial?.data.client.name}</dd>
                     </div>
                     <div className='border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0'>
                       <dt className='font-semibold'>Year</dt>
                       <dd>
-                        <time dateTime={caseStudy.date.split('-')[0]}>
-                          {caseStudy.date.split('-')[0]}
+                        <time dateTime={initial?.data.date.split('-')[0]}>
+                          {initial?.data.date.split('-')[0]}
                         </time>
                       </dd>
                     </div>
                     <div className='border-t border-neutral-200 px-6 py-4 first:border-t-0 sm:border-l sm:border-t-0'>
                       <dt className='font-semibold'>Service</dt>
-                      <dd>{caseStudy.service}</dd>
+                      <dd>{initial?.data.service}</dd>
                     </div>
                   </dl>
                 </div>
@@ -86,7 +108,7 @@ export default async function Page({ params }: { params: QueryParams }) {
             <div className='border-y border-neutral-200 bg-neutral-100'>
               <div className='-my-px mx-auto max-w-[76rem] bg-neutral-200'>
                 <GrayscaleTransitionImage
-                  src={urlForImage(caseStudy?.image)}
+                  src={urlForImage(initial?.data?.image)}
                   quality={90}
                   width={1000}
                   height={1000}
@@ -100,20 +122,20 @@ export default async function Page({ params }: { params: QueryParams }) {
             <Container className='mt-24 sm:mt-32 lg:mt-40'>
               <FadeIn>
                 <div className='prose mx-auto'>
-                  <PortableText value={caseStudy?.body} />
+                  <PortableText value={initial?.data?.body} />
                 </div>
               </FadeIn>
             </Container>
-            {caseStudy?.testimonial && (
+            {initial?.data?.testimonial && (
               <Container>
                 <Blockquote
                   className='mx-auto mt-24 max-w-[80ch] sm:mt-32 lg:mt-40'
                   author={{
-                    name: caseStudy.testimonial.author,
-                    role: caseStudy.testimonial.role
+                    name: initial?.data.testimonial.author,
+                    role: initial?.data.testimonial.role
                   }}
                 >
-                  {caseStudy.testimonial.quote}
+                  {initial?.data.testimonial.quote}
                 </Blockquote>
               </Container>
             )}
@@ -125,7 +147,7 @@ export default async function Page({ params }: { params: QueryParams }) {
       </div>
       <ReadMore title='More case studies' items={readMoreCaseStudies} />
       <ContactSection
-        _key={caseStudy?._id}
+        _key={initial?.data?._id}
         _type='contactSection'
         buttonLabel='Say hi'
         title='Tell us about your project'
