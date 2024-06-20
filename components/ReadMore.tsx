@@ -76,7 +76,7 @@ function PageLink({ date, description, slug, title, id }: PageLinkProps) {
         </time>
         <p className='mt-2.5 text-base text-neutral-600'>{description}</p>
         <Link
-          href={`/articles/${slug}`}
+          href={slug}
           className='mt-6 flex gap-x-3 text-base font-semibold text-neutral-950 transition hover:text-neutral-700'
           aria-label={`Read more: ${title}`}
         >
