@@ -62,7 +62,7 @@ In order to access the Sanity CMS UI which is served on the `/studio` route, you
 
 ## Deployment
 
-This project is being auto-deployed via [Vercel](https://vercel.com) upon a successful merge of any feature branchpo into the main branch.
+This project is being auto-deployed via [Vercel](https://vercel.com) upon a successful merge of any feature branch into the main branch.
 
 ## Tech Stack
 
