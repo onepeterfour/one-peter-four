@@ -12,6 +12,9 @@
     "dev:email": "email dev"
   },
   "browserslist": "defaults, not ie <= 11",
+  "engines": {
+    "node": ">= 20.0.0"
+  },
   "dependencies": {
     "@headlessui/react": "^1.7.19",
     "@portabletext/react": "^3.0.15",
