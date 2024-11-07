@@ -65,7 +65,7 @@ export default defineType({
       name: 'fileList',
       title: 'File List',
       type: 'array',
-      description: 'Optionally add up to 5 files to this article.',
+      description: 'Optionally add up to 5 attachments to this article.',
       validation: (Rule) => Rule.max(5),
       of: [
         defineArrayMember({

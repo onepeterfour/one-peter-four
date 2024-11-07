@@ -1,32 +1,27 @@
 import { CustomListPreview } from '@/sanity/components/CustomListPreview'
 import { BasePageSectionSchema } from '@/types'
 import { BlockElementIcon } from '@sanity/icons'
-import { defineField, defineType } from 'sanity'
+import { TypedObject, defineField, defineType } from 'sanity'
 
-export interface CallToActionSectionSchema extends BasePageSectionSchema {
-  _type: 'callToActionSection'
-  title: string
-  link: string
+export interface CopyPageSectionSchema extends BasePageSectionSchema {
+  _type: 'copyPageSection'
+  body: TypedObject[]
 }
 
 export default defineType({
   type: 'object',
-  name: 'callToActionSection',
-  title: 'Call to Action Section',
+  name: 'copyPageSection',
+  title: 'Copy Page Section',
   icon: BlockElementIcon,
   preview: {
     select: {
-      title: 'title',
       isEnabled: 'isEnabled'
     },
-    prepare({ title, isEnabled }) {
-      return {
-        title: 'Call to Action Section',
-        subtitle: title || 'untitled',
-        media: BlockElementIcon,
-        isEnabled
-      }
-    }
+    prepare: ({ isEnabled }) => ({
+      title: 'Copy Page Section',
+      media: BlockElementIcon,
+      isEnabled
+    })
   },
   components: {
     preview: CustomListPreview
@@ -39,12 +34,11 @@ export default defineType({
       initialValue: false
     }),
     defineField({
-      name: 'title',
-      type: 'string'
-    }),
-    defineField({
-      name: 'link',
-      type: 'string'
+      name: 'body',
+      title: 'Body',
+      type: 'array',
+      validation: (Rule) => Rule.required(),
+      of: [{ type: 'block' }, { type: 'imageWithMetadata' }]
     })
   ]
 })

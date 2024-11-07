@@ -6,6 +6,7 @@ import { CaseStudyCardListSection } from './CaseStudyCardListSection'
 import { CaseStudyListSection } from './CaseStudyListSection'
 import { ContactFormSection } from './ContactFormSection'
 import { ContactSection } from './ContactSection'
+import { CopyPageSection } from './CopyPageSection'
 import { HeroImageSection } from './Hero'
 import { HeroTextSection } from './HeroTextSection'
 import { ImageTextDetailedListSection } from './ImageTextDetailedListSection'
@@ -26,6 +27,7 @@ const pageSectionDict: Record<PageSection['_type'], ComponentType<any>> = {
   caseStudyListSection: CaseStudyListSection,
   contactSection: ContactSection,
   contactFormSection: ContactFormSection,
+  copyPageSection: CopyPageSection,
   heroImageSection: HeroImageSection,
   heroTextSection: HeroTextSection,
   imageTextDetailedListSection: ImageTextDetailedListSection,

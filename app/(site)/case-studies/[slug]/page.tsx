@@ -76,7 +76,7 @@ export default async function Page({ params }: { params: QueryParams }) {
             eyebrow='Case Study'
             title={initial?.data?.title}
             _type={initial?.data?._type}
-            centered
+            isCentered
             subtitle={initial?.data?.description}
             _key={initial?.data?._id}
           />

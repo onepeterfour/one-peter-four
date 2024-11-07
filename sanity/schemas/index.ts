@@ -15,6 +15,7 @@ import caseStudyCardListSection from './objects/pageSections/caseStudyCardListSe
 import caseStudiesListSection from './objects/pageSections/caseStudyListSection'
 import contactFormSection from './objects/pageSections/contactFormSection'
 import contactSection from './objects/pageSections/contactSection'
+import copyPageSection from './objects/pageSections/copyPageSection'
 import heroImageSection from './objects/pageSections/heroImageSection'
 import heroTextSection from './objects/pageSections/heroTextSection'
 import imageTextDetailedListSection from './objects/pageSections/imageTextDetailedListSection'
@@ -34,6 +35,7 @@ import caseStudiesPage from './documents/pages/caseStudiesPage'
 import contactPage from './documents/pages/contactPage'
 import homePage from './documents/pages/homePage'
 import learningPage from './documents/pages/learningPage'
+import mentoringPage from './documents/pages/mentoringPage'
 import partnersPage from './documents/pages/partnersPage'
 import policiesPage from './documents/pages/policiesPage'
 import servicesPage from './documents/pages/servicesPage'
@@ -62,6 +64,7 @@ const PAGE_SECTION_OBJECTS = new Set([
   caseStudiesListSection,
   contactSection,
   contactFormSection,
+  copyPageSection,
   heroImageSection,
   heroTextSection,
   imageListSection,
@@ -94,7 +97,8 @@ const PAGE_DOCUMENTS = new Set([
   articlesPage,
   servicesPage,
   policiesPage,
-  caseStudiesPage
+  caseStudiesPage,
+  mentoringPage
 ])
 
 const DATA_DOCUMENTS = new Set([
