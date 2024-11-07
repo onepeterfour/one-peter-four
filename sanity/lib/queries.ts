@@ -14,21 +14,20 @@ export const PAGE_SECTION_PAGE_QUERY = (
           }
       },
       _type == "articleListSection" => {
-        ...,
-        articleList[] -> {
-          _id,
-          slug,
-          title,
-          description,
-          _updatedAt,
-          _createdAt,
-          author -> {
-            _id,
-            name,
-            role,
-            image
-          }
-        }
+        "articleList": *[_type == "articleDocument" && !(_id in path("drafts.**"))] | order(_createdAt desc) {
+    _id,
+    slug,
+    title,
+    description,
+    _updatedAt,
+    _createdAt,
+    author -> {
+      _id,
+      name,
+      role,
+      image
+    }
+  }
       },
       _type == "logoListSection" => {
         ...,
