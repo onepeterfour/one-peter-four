@@ -52,7 +52,7 @@ export default function ArticlePage({
           <PageIntroSection
             title={article?.title}
             _type={article?._type}
-            centered
+            isCentered
             eyebrow={formatDateString(article?._createdAt)}
             subtitle={`By ${article?.author?.name}, ${article?.author?.role}`}
             _key={article?._id}

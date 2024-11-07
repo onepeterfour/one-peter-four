@@ -17,6 +17,7 @@ import {
   OkHandIcon,
   RobotIcon,
   RocketIcon,
+  SparklesIcon,
   UserIcon,
   UsersIcon
 } from '@sanity/icons'
@@ -120,6 +121,15 @@ const structureToolOptions: StructureToolOptions = {
                       .schemaType('policiesPage')
                       .documentId('policiesPage')
                       .title('Policies')
+                  ),
+                S.listItem()
+                  .title('Mentoring')
+                  .icon(SparklesIcon)
+                  .child(
+                    S.document()
+                      .schemaType('mentoringPage')
+                      .documentId('mentoringPage')
+                      .title('Mentoring')
                   )
               ])
           ),

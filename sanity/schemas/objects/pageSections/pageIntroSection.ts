@@ -6,6 +6,7 @@ import { TypedObject, defineField, defineType } from 'sanity'
 export interface PageIntroSectionSchema extends BasePageSectionSchema {
   _type: 'pageIntroSection'
   eyebrow?: string
+  isCentered?: boolean
   subtitle?: string
   title?: string
   body?: TypedObject[]
@@ -38,6 +39,13 @@ export default defineType({
       name: 'isEnabled',
       type: 'boolean',
       description: 'If checked, this section will be shown on the page',
+      initialValue: false
+    }),
+    defineField({
+      name: 'isCentered',
+      type: 'boolean',
+      description:
+        'If checked, the title and subtitle will be centered on the page',
       initialValue: false
     }),
     defineField({

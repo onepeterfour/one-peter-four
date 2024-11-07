@@ -5,6 +5,7 @@ import type { CaseStudyCardListSectionSchema } from './caseStudyCardListSection'
 import type { CaseStudyListSectionSchema } from './caseStudyListSection'
 import type { ContactFormSectionSchema } from './contactFormSection'
 import type { ContactSectionSchema } from './contactSection'
+import type { CopyPageSectionSchema } from './copyPageSection'
 import type { HeroImageSectionSchema } from './heroImageSection'
 import type { HeroTextSectionSchema } from './heroTextSection'
 import type { ImageTextDetailedListSectionSchema } from './imageTextDetailedListSection'
@@ -25,6 +26,7 @@ export type PageSection =
   | CaseStudyListSectionSchema
   | ContactSectionSchema
   | ContactFormSectionSchema
+  | CopyPageSectionSchema
   | HeroImageSectionSchema
   | HeroTextSectionSchema
   | ImageTextListSectionSchema
@@ -74,6 +76,11 @@ export default defineType({
       type: 'contactFormSection',
       name: 'contactFormSection',
       title: 'Contact Form Section'
+    }),
+    defineArrayMember({
+      type: 'copyPageSection',
+      name: 'copyPageSection',
+      title: 'Copy Page Section'
     }),
     defineArrayMember({
       type: 'heroImageSection',

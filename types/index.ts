@@ -40,6 +40,7 @@ export type PageName =
   | 'learningPage'
   | 'partnersPage'
   | 'teamPage'
+  | 'mentoringPage'
 
 export interface PageSectionPage {
   _type: PageName

@@ -5,14 +5,13 @@ import clsx from 'clsx'
 import { PortableText } from '../PortableText'
 
 type PageIntroProps = Omit<PageIntroSectionSchema, 'isEnabled' | '_type'> & {
-  centered?: boolean
   _type: string
 }
 
 export function PageIntroSection({
   eyebrow,
   title,
-  centered = false,
+  isCentered = false,
   subtitle,
   body,
   _type
@@ -20,7 +19,7 @@ export function PageIntroSection({
   return (
     <Container
       id={_type}
-      className={clsx(centered && 'text-center', 'mt-24 sm:mt-32 lg:mt-40')}
+      className={clsx(isCentered && 'text-center', 'mt-24 sm:mt-32 lg:mt-40')}
     >
       <FadeIn>
         <h1>
@@ -31,7 +30,7 @@ export function PageIntroSection({
           <span
             className={clsx(
               'mt-6 block max-w-5xl font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-6xl',
-              centered && 'mx-auto'
+              isCentered && 'mx-auto'
             )}
           >
             {title}
@@ -40,7 +39,7 @@ export function PageIntroSection({
         <div
           className={clsx(
             'mt-6 max-w-3xl text-xl text-neutral-600',
-            centered && 'mx-auto'
+            isCentered && 'mx-auto'
           )}
         >
           {subtitle && <p>{subtitle}</p>}
