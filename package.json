@@ -6,6 +6,7 @@
     "prepare": "husky install",
     "dev:op": "op run --env-file=.env.local --no-masking -- npm run dev",
     "dev": "next dev",
+    "typecheck": "tsc --noEmit",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
