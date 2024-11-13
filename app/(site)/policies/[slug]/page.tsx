@@ -9,6 +9,8 @@ import { QueryParams } from 'next-sanity'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+export const revalidate = 3600
+
 export async function generateStaticParams() {
   const policies = await fetchWebsitePolicies()
   return policies.map((policy) => ({

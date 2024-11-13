@@ -6,6 +6,8 @@ import Link from 'next/link'
 
 const policiesPage = await fetchPoliciesPage()
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
   title: `${policiesPage?.metaData?.title} - 1P4`,
   description: policiesPage?.metaData?.description
