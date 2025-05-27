@@ -1,9 +1,16 @@
 'use client'
 
 import { createContactRequest } from '@/app/actions'
+import assertValue from '@/lib/assertValue'
+import { Turnstile } from 'next-turnstile'
 import React, { createRef, useEffect, useId, useState } from 'react'
 import { useFormState, useFormStatus } from 'react-dom'
 import { ToggleSwitch } from './ToggleSwitch'
+
+const turnstileSiteKey = assertValue(
+  process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY,
+  'Missing environment variable: NEXT_PUBLIC_TURNSTILE_SITE_KEY'
+)
 
 const initialState = {
   message: ''
@@ -13,18 +20,20 @@ const formRef = createRef<HTMLFormElement>()
 
 function SubmitButton({
   defaultLabel = 'Submit',
-  successLabel
+  successLabel,
+  token
 }: {
   defaultLabel?: string
   successLabel: string
+  token: string | null
 }) {
   const { pending } = useFormStatus()
 
   return (
     <button
       type='submit'
-      disabled={pending}
-      className='mt-10 inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800'
+      disabled={pending || !token}
+      className='mt-10 inline-flex rounded-full bg-neutral-950 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:cursor-not-allowed disabled:bg-neutral-300 disabled:text-neutral-500'
     >
       {pending ? 'Sending' : successLabel || defaultLabel}
     </button>
@@ -34,10 +43,14 @@ function SubmitButton({
 export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
   const [state, formAction] = useFormState(createContactRequest, initialState)
   const [newsletterEnabled, setNewsletterEnabled] = useState(false)
+  const [token, setToken] = useState<string | null>(null)
 
   useEffect(() => {
     if (state.message === 'Email sent!') {
       formRef?.current?.reset()
+    }
+    if (state.message === 'Turnstile validation failed.') {
+      setToken(null)
     }
   }, [state.message])
 
@@ -94,7 +107,21 @@ export function ContactForm({ buttonLabel }: { buttonLabel: string }) {
           readOnly
         />
       </div>
-      {buttonLabel && <SubmitButton successLabel={state.message} />}
+      <div className='mt-10'>
+        <Turnstile
+          siteKey={turnstileSiteKey}
+          sandbox={process.env.NODE_ENV === 'development'}
+          appearance='always'
+          theme='auto'
+          onVerify={setToken}
+          onError={() => {
+            setToken(null)
+          }}
+        />
+      </div>
+      {buttonLabel && (
+        <SubmitButton successLabel={state.message} token={token} />
+      )}
     </form>
   )
 }
