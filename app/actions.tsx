@@ -3,6 +3,7 @@
 import ContactFormSubmission from '@/emails/ContactFormSubmission'
 import EnquiryReply from '@/emails/EnquiryReply'
 import assertValue from '@/lib/assertValue'
+import { validateTurnstile } from '@/lib/turnstile'
 import { Resend } from 'resend'
 
 const RESEND_API_KEY = assertValue(
@@ -40,6 +41,18 @@ export async function createContactRequest(
     (payload.get('company') as string) || 'no company name provided'
 
   const newsletter = (payload.get('newsletter') as string) || null
+
+  const turnstileToken = payload.get('cf-turnstile-response') as string | null
+
+  const { message: turnstileMessage, success: turnstileSuccess } =
+    await validateTurnstile({
+      token: turnstileToken
+    })
+
+  if (!turnstileSuccess) {
+    console.error(turnstileMessage)
+    return { message: 'Turnstile validation failed.' }
+  }
 
   const { error: sendError } = await resend.emails.send({
     from: RESEND_SEND_FROM_EMAIL,
