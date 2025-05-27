@@ -18,6 +18,8 @@ To run this project, you will need to add the following environment variables to
 
 `NEXT_PUBLIC_SANITY_GRAPHQL_URL`
 
+`NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+
 `SANITY_API_READ_TOKEN`
 
 `RESEND_API_KEY`
@@ -27,6 +29,8 @@ To run this project, you will need to add the following environment variables to
 `RESEND_SEND_TO_EMAIL`
 
 `RESEND_AUDIENCE_ID`
+
+`TURNSTILE_SECRET_KEY`
 
 ## Run Locally
 
