@@ -33,9 +33,9 @@ import textListSection from './objects/pageSections/textListSection'
 import articlesPage from './documents/pages/articlesPage'
 import caseStudiesPage from './documents/pages/caseStudiesPage'
 import contactPage from './documents/pages/contactPage'
+import developingChurchPage from './documents/pages/developingChurchPage'
 import homePage from './documents/pages/homePage'
 import learningPage from './documents/pages/learningPage'
-import mentoringPage from './documents/pages/mentoringPage'
 import partnersPage from './documents/pages/partnersPage'
 import policiesPage from './documents/pages/policiesPage'
 import servicesPage from './documents/pages/servicesPage'
@@ -98,7 +98,7 @@ const PAGE_DOCUMENTS = new Set([
   servicesPage,
   policiesPage,
   caseStudiesPage,
-  mentoringPage
+  developingChurchPage
 ])
 
 const DATA_DOCUMENTS = new Set([

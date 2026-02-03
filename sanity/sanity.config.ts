@@ -123,13 +123,13 @@ const structureToolOptions: StructureToolOptions = {
                       .title('Policies')
                   ),
                 S.listItem()
-                  .title('Mentoring')
+                  .title('Developing Church')
                   .icon(SparklesIcon)
                   .child(
                     S.document()
-                      .schemaType('mentoringPage')
-                      .documentId('mentoringPage')
-                      .title('Mentoring')
+                      .schemaType('developingChurchPage')
+                      .documentId('developingChurchPage')
+                      .title('Developing Church')
                   )
               ])
           ),

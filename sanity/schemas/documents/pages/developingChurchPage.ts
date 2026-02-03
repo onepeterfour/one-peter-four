@@ -3,8 +3,8 @@ import { defineField, defineType } from 'sanity'
 
 // SANITY SCHEMA
 export default defineType({
-  name: 'mentoringPage',
-  title: 'Mentoring Page',
+  name: 'developingChurchPage',
+  title: 'Developing Church Page',
   type: 'document',
   preview: {
     prepare() {
